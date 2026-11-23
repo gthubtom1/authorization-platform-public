@@ -1,0 +1,11 @@
+.venv
+.git
+.env
+data
+test-results
+__pycache__
+*.pyc
+staticfiles
+
+# Local design candidate; never part of the application image.
+界面预览

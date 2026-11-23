@@ -1,0 +1,3 @@
+{
+  "error": {"code": "KEY_UNKNOWN", "message": "响应签名密钥未知。", "request_id": "fixture-unknown-key", "retryable": false}
+}

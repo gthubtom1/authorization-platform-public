@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg?v=20260910-favicon-1" type="image/svg+xml" />
+    <title>管理端登录 · 授权平台</title>
+    <link rel="stylesheet" href="preview.css?v=20261117-suite-1" />
+  </head>
+  <body class="preview-index access-preview">
+    <header class="preview-bar">
+      <span class="preview-brand"
+        ><span class="brand-mark">AUTH</span><span>授权平台</span></span
+      ><span class="preview-state"><i></i> 管理端独立入口</span>
+    </header>
+    <main class="access-shell">
+      <section class="access-context">
+        <h1>管理端</h1>
+      </section>
+      <section class="access-panel" aria-labelledby="manageLoginTitle">
+        <h2 id="manageLoginTitle">登录授权控制室</h2>
+        <form method="post" action="#" data-preview-destination="manage.html" novalidate>
+          <p class="form-hint" data-session-switch-hint hidden></p>
+          <label class="form-label"
+            >管理员用户名<input
+              name="username"
+              type="text"
+              autocomplete="username"
+              required /></label
+          ><label class="form-label"
+            >密码<input
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+          /></label>
+          <p class="form-error" data-form-error role="alert"></p>
+          <button class="button button-primary access-submit" type="submit">
+            登录管理端
+          </button>
+        </form>
+      </section>
+    </main>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="preview.js?v=20261117-suite-1"></script>
+  </body>
+</html>

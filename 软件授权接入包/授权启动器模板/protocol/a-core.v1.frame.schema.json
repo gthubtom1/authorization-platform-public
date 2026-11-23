@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authorization-a.local/schema/a-core.v1.frame.schema.json",
+  "title": "Authorization A local transport frame",
+  "description": "Transport-neutral JSON envelope carried by the ACV1 length-prefixed frame.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "product_id", "kind", "body"],
+  "properties": {
+    "protocol": {"const": "a-core.v1"},
+    "product_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$"
+    },
+    "kind": {
+      "enum": ["authorization_snapshot", "module_envelope"]
+    },
+    "body": {
+      "oneOf": [
+        {"$ref": "a-core.v1.schema.json"},
+        {"$ref": "a-core.v1.schema.json#/$defs/module"}
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"kind": {"const": "authorization_snapshot"}},
+        "required": ["kind"]
+      },
+      "then": {
+        "properties": {"body": {"$ref": "a-core.v1.schema.json"}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"kind": {"const": "module_envelope"}},
+        "required": ["kind"]
+      },
+      "then": {
+        "properties": {
+          "body": {"$ref": "a-core.v1.schema.json#/$defs/module"}
+        }
+      }
+    }
+  ]
+}

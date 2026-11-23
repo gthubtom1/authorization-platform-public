@@ -1,0 +1,3171 @@
+{
+  "schema": "public-source-snapshot.v1",
+  "source_commit": "c79b68f83fc152a6d9453d9565add7a6620cbe5a",
+  "history_included": false,
+  "files": {
+    ".env.example": {
+      "size": 5528,
+      "sha256": "90ce8bee1765df5df9c2a9008ccb007a7aa395738d6e45bea534983190182d7f"
+    },
+    ".gitattributes": {
+      "size": 589,
+      "sha256": "cae454bafa1caa1901af5e86db3f61d2c7e3e33df0ebf1444729587375f247ca"
+    },
+    ".gitignore": {
+      "size": 2453,
+      "sha256": "903aa30baed48c85cd13e7e4f5f1ce0955e2589ddb254b536f91ce3d6c10797b"
+    },
+    ".worktreeinclude": {
+      "size": 163,
+      "sha256": "e67790e5e0db2d3b6b8a3595bf96798822bc1284ef0866dc38fe783403d16eda"
+    },
+    "00-老板先看这个.md": {
+      "size": 4619,
+      "sha256": "8f2980da9e0819554f70104400d4c560fe14a25ded76197247cb8e0cd5921494"
+    },
+    "AGENTS.md": {
+      "size": 9222,
+      "sha256": "ace1f77aaaca7580c71f972544424c8c27abc93bad71d28afcd6c24acf232737"
+    },
+    "deploy/backup/ap-object-list.sh": {
+      "size": 1792,
+      "sha256": "daf3c678946f0603ef0068c27fd910b59e89696ff77ef3b5e07d60adb155ca24"
+    },
+    "deploy/backup/app_guard.sh": {
+      "size": 4243,
+      "sha256": "ec5836334dface09af6fab624f83bbf92af50ef90dfe1b9a52191a362d80ef9d"
+    },
+    "deploy/backup/backup-diff.sh": {
+      "size": 2410,
+      "sha256": "39b00b2be8890e57df977c5e0ea08de2385342da7c9c2111b5860ed9a9a24bfe"
+    },
+    "deploy/backup/backup-dispatch.sh": {
+      "size": 1499,
+      "sha256": "cc5da722137f9fa6c50716beefc4fb162289439d7525a155014b0951a7d47faa"
+    },
+    "deploy/backup/backup-full.sh": {
+      "size": 3133,
+      "sha256": "fa085b30902fa7de4dd3257a4d1dd2b786bf4b89067b1488524eafa42c3d6e10"
+    },
+    "deploy/backup/backup-host-lib.sh": {
+      "size": 13839,
+      "sha256": "ee498c3cc2d5c119f00f25571220e72f46940bfe67555f9ecfe84040a03da300"
+    },
+    "deploy/backup/backup-policy.example.json": {
+      "size": 1630,
+      "sha256": "4cc3d264cf964d321ec893f8cf07d5e2b69a2fd044604b4b3124b339f6344e65"
+    },
+    "deploy/backup/backup-success-proof.example.json": {
+      "size": 2386,
+      "sha256": "473aa7b920089d3ff59d246675a9d8812e34cb59d5d80f5b3ebd4e26aaeafb54"
+    },
+    "deploy/backup/backup_alert.sh": {
+      "size": 2723,
+      "sha256": "ff33df656f319dccd0c24d60ec463d042301763d4de6a18de357a2c8d94ae449"
+    },
+    "deploy/backup/backup_runner.sh": {
+      "size": 17810,
+      "sha256": "7ab74178d2f4642b5fe8dcc6e70726d196df3616b38b9f044535d96eb2a5fde7"
+    },
+    "deploy/backup/code_runner.sh": {
+      "size": 3549,
+      "sha256": "a19c9a5927b4c721e23bb2a86712c0cd196d91f97a583e4e1de54eed5fd92bd5"
+    },
+    "deploy/backup/github_collapse.sh": {
+      "size": 10140,
+      "sha256": "6f9fc800a5e9383d9bb06db593e57f06ec8bc0a3477a0f81f1144189d11b7662"
+    },
+    "deploy/backup/maintenance.sh": {
+      "size": 5534,
+      "sha256": "a605f4854a19846e7ad09dcdfaa54258094a602942501f89b79c36dbb4681d73"
+    },
+    "deploy/backup/object-store-backup-policy.example.json": {
+      "size": 552,
+      "sha256": "17736ade10f4ef6cd454bad905597a4f5ec320d8b607b9dd6ccf0cafffcc3b07"
+    },
+    "deploy/backup/pgbackrest.conf.example": {
+      "size": 1177,
+      "sha256": "8a754eb2ce8ec1a835be7b1c1068fff654348973aa21643c2fdea32350d038a3"
+    },
+    "deploy/backup/postgresql.conf.example": {
+      "size": 364,
+      "sha256": "276d06347cf6573bd393160e8111979cd593edec4d5913486222ba747f9ba502"
+    },
+    "deploy/backup/README.md": {
+      "size": 1812,
+      "sha256": "17690d643201be075170d4361fb0a67a4d9d70480d29e4c2ffa21b70967ff80d"
+    },
+    "deploy/backup/secrets_runner.sh": {
+      "size": 4653,
+      "sha256": "cd0495fb0db8865f69941979403fbaf56fe68d2b020cfbe1c4a9c78c91522265"
+    },
+    "deploy/backup/systemd-change.path": {
+      "size": 303,
+      "sha256": "f345c1aed3c9f5cecce20514477bca1f5d89a214fabd6b2668b5ce1608a9c9de"
+    },
+    "deploy/backup/systemd-diff.service": {
+      "size": 1899,
+      "sha256": "f9168e9ea0b557825e1ca8832528c287c9f869f27aa83d12a95a5cc47abc3fa6"
+    },
+    "deploy/backup/systemd-diff.timer": {
+      "size": 396,
+      "sha256": "d642aa310f3298a1de64cc7eff13f619a2103cbb823c8986132135052bc570e9"
+    },
+    "deploy/backup/systemd-full.service": {
+      "size": 1899,
+      "sha256": "f9168e9ea0b557825e1ca8832528c287c9f869f27aa83d12a95a5cc47abc3fa6"
+    },
+    "deploy/backup/systemd-full.timer": {
+      "size": 396,
+      "sha256": "d1320aa8130250525df792c2294fbdf30d7668b7ce9a9a36a87f3e3b95c26ff5"
+    },
+    "deploy/backup/systemd-maint.service": {
+      "size": 192,
+      "sha256": "1a0ac4845f12e18c85694fd817afd2a9bacef7d0e9c23fa22e45972a8019a1a6"
+    },
+    "deploy/backup/systemd-maint.timer": {
+      "size": 231,
+      "sha256": "70045f46d535c863e5cf1e197aafa8ad52310fd3342a861d5cb7bb31cc6b6357"
+    },
+    "deploy/backup/telegram_backup_copy.sh": {
+      "size": 4343,
+      "sha256": "c5924d9869eaa4faad5b8c5e6620b2b8c193938a95e1c7e5337f67894b7e6ad8"
+    },
+    "deploy/capacity-thresholds.json": {
+      "size": 939,
+      "sha256": "b62175b6dc86a4d521712afe3bce00e147cefd67cf2fc2376b044872a2f2411d"
+    },
+    "deploy/compose.env.example": {
+      "size": 589,
+      "sha256": "907109cf2a9d015ad4c3743b59b58af799b6ac92c6a78a636233c1efcb5c96c4"
+    },
+    "deploy/db/Dockerfile": {
+      "size": 513,
+      "sha256": "27b38c57fe18c2fa5c9ad7423e6d8ad958a234f0532c8d09ef01d136f5dbf7c6"
+    },
+    "deploy/docker-compose.production.yml.example": {
+      "size": 5916,
+      "sha256": "472ea5e28d9b8856be64783c667520d066ef60616305aff633f5efc03383dfa9"
+    },
+    "deploy/Dockerfile": {
+      "size": 1397,
+      "sha256": "991fe5ef16ef212751cec29f8b676e1f6bba3fb0dee75e641db5a43b2c4f09dd"
+    },
+    "deploy/install-site.sh": {
+      "size": 42557,
+      "sha256": "0e818dfa59bfbd3eb705bf0efda490020bd5b403ae5d244d15293313af5bfd13"
+    },
+    "deploy/logrotate/authorization-platform.example": {
+      "size": 918,
+      "sha256": "4fcbacfe994d1b600ce821122790b16ede6ed9c2ef8ccf797d34889b300185ab"
+    },
+    "deploy/nginx/authorization-platform.conf.example": {
+      "size": 3092,
+      "sha256": "9e9776d0a2c79533a59f893eeec15d96541ccde4d8431357d9349849fdb54aea"
+    },
+    "deploy/object-store-init.env.example": {
+      "size": 297,
+      "sha256": "e2afcbed89d61bf04336069fe4f6ca6c5fb8f32765fed52f91c41c966f7fcfdd"
+    },
+    "deploy/object-store-policy.json": {
+      "size": 388,
+      "sha256": "6ef73d8e2230b52a9fe83ef6d3682111f32b7a8c8a0ccaa0b7f1c4a9ff1440cf"
+    },
+    "deploy/object-store-tls/README.md": {
+      "size": 831,
+      "sha256": "988ca0949dedf939c50b2c33133b2b99d837406b3c5dba2e5463ccb144893487"
+    },
+    "deploy/object-store.env.example": {
+      "size": 114,
+      "sha256": "754bb76f974a65da87fb975419c91c28ce3101d1f04b53641ab9075c49f6460b"
+    },
+    "deploy/postgres.env.example": {
+      "size": 123,
+      "sha256": "a63bcaba195e2620ee32520ee189ee2a542aebe7589fcb4f7be1158612e770a2"
+    },
+    "deploy/production.env.example": {
+      "size": 5156,
+      "sha256": "5ea957c560c0a9f7dc8808e6c51ce44b9d39d306eccfa06f11f9af09aa673909"
+    },
+    "deploy/README.md": {
+      "size": 1156,
+      "sha256": "b5a886f866fb6ef0338bcf6b2a47f1b577bc74b4a14587e92df820e365ebdc27"
+    },
+    "deploy/systemd/authorization-platform-backup-failure.service.example": {
+      "size": 1270,
+      "sha256": "985ac8e145882f0a16cd37fc0b16b130b7b925b1e06d02b7ab4a7371b691df11"
+    },
+    "deploy/systemd/authorization-platform-backup-full.service.example": {
+      "size": 2099,
+      "sha256": "16c46a487263a39abb91d0d657531e135a5861916c5c0441dab2c9da5dabe9a4"
+    },
+    "deploy/systemd/authorization-platform-backup-full.timer.example": {
+      "size": 442,
+      "sha256": "067e060e3c717fa5ee18295365320ef453d73eaed63f116b6e4319d31e682907"
+    },
+    "deploy/systemd/authorization-platform-backup-health.service.example": {
+      "size": 650,
+      "sha256": "1cb312bdd7060ea8f16e4ba576a0e45f92aed75f466140f2a4eca5c084272f3c"
+    },
+    "deploy/systemd/authorization-platform-backup-health.timer.example": {
+      "size": 229,
+      "sha256": "26198521c1a4739b7dd2013d8c59d03fe9c559e4abe3af5444697994feab3be8"
+    },
+    "deploy/systemd/authorization-platform-backup-schedule.service.example": {
+      "size": 511,
+      "sha256": "5e69b8c14f848f8811016d51362ddc181773e4a146e26a17a7e93001b99c480b"
+    },
+    "deploy/systemd/authorization-platform-backup-schedule.timer.example": {
+      "size": 391,
+      "sha256": "cd055f3afc4dac1f9a120d1722669ee25c3be2edbed8ca9657f10bc60a5dd123"
+    },
+    "deploy/systemd/authorization-platform-backup.service.example": {
+      "size": 2099,
+      "sha256": "16c46a487263a39abb91d0d657531e135a5861916c5c0441dab2c9da5dabe9a4"
+    },
+    "deploy/systemd/authorization-platform-backup.timer.example": {
+      "size": 450,
+      "sha256": "51b838f3a7cb1afc1521ba752c766d9ce0c10eda5abf38e456d410e137cdd6cd"
+    },
+    "deploy/systemd/authorization-platform-maintenance-failure.service.example": {
+      "size": 396,
+      "sha256": "ea02229c2b21b28eb3bdb82ddc3578bac5e2bf7bad180eabfc9c19da050c6eb5"
+    },
+    "deploy/systemd/authorization-platform-maintenance.service.example": {
+      "size": 890,
+      "sha256": "02afd79075f9d4a524d8069ea2f9903de8d34b0cb8536d2a2381780cd9dea1ce"
+    },
+    "deploy/systemd/authorization-platform-maintenance.timer.example": {
+      "size": 213,
+      "sha256": "163a3aaeb0f3235000b9012b09aef3decf808ac496c5e032b8902a90ea23b405"
+    },
+    "deploy/systemd/authorization-platform.service.example": {
+      "size": 760,
+      "sha256": "a1f2cf4891bae052a58dfdcd8768e759a31adf470973e060f95c45ace617be0c"
+    },
+    "docs/ACCEPTANCE-MATRIX.md": {
+      "size": 24907,
+      "sha256": "5a7d4a417a27b8824d2e76351a63c016de0a2100d4d5aeda1a916a62d6da04ac"
+    },
+    "docs/adr/0000-decision-template.md": {
+      "size": 480,
+      "sha256": "9da80bcc27fb15a62958438f449b9106afc7d30cb33885fa21eeac8d47f713b1"
+    },
+    "docs/adr/0001-monolith-online-first.md": {
+      "size": 636,
+      "sha256": "a1c1c4e9b5ce08f646ab1481d2d1351b908059f08cff7ee1cc5fa8b03da888db"
+    },
+    "docs/adr/0002-ledger-and-license-objects.md": {
+      "size": 552,
+      "sha256": "431615b19d1563477949d3dd1aacc0eac2e1c5b1355a69af7fc5f40e28a99eeb"
+    },
+    "docs/adr/0003-registry-ledger-ui.md": {
+      "size": 789,
+      "sha256": "5972bb73fc1f0cfae6e824700c15117b79440ae62a64d1c33f10a0599c4dcb23"
+    },
+    "docs/adr/0004-software-adapter-isolation.md": {
+      "size": 1885,
+      "sha256": "3b543688935452f9f7f31c0c942c6696104e291b7689698ec8fd27027e86207a"
+    },
+    "docs/adr/0005-zero-base-acceptance-and-operations.md": {
+      "size": 2072,
+      "sha256": "0efc92f00e3210401bccdc25593ffd8fd5efe5da7880c0260dba48deb378af55"
+    },
+    "docs/adr/0006-server-time-and-short-test-cards.md": {
+      "size": 2237,
+      "sha256": "9a3b24d673ec5efc1be73d65fb2effb03048e023ffc4f4d600188bca7cde85f0"
+    },
+    "docs/adr/0007-django-user-and-downstream-profile.md": {
+      "size": 1369,
+      "sha256": "ff3e6c5c18a859db9f5b364e15ac92c13d4d76efb385a2f0ba36210300f1e9da"
+    },
+    "docs/adr/0008-product-authorization-adapter-boundary.md": {
+      "size": 4840,
+      "sha256": "dfcce638f2313ad2e7db53877459ee3377ab1b8125a0b66f103106ed0c78337c"
+    },
+    "docs/adr/0009-online-authorization-instance-and-device-proof.md": {
+      "size": 3351,
+      "sha256": "334d09cb5ba1c8e60a752efb5d99597e0c161a94832c059571ccf116b0f2bc0c"
+    },
+    "docs/adr/0010-product-freeze-2026-08-20.md": {
+      "size": 2661,
+      "sha256": "4d3e507138592f7b41df8bf5a6aea9cb674a9b1ff416325c288613978d891592"
+    },
+    "docs/adr/0011-single-card-archive-revenue-and-links.md": {
+      "size": 3617,
+      "sha256": "0248d9322706246f7ce2a926b6aaeb07af139acd09fd49a321274ee732bc3b86"
+    },
+    "docs/adr/0012-static-page-entry-map-and-domain-routing.md": {
+      "size": 2345,
+      "sha256": "8b99535a38aeadc1a79bb32dadb5496e87b8d186f556f291189be24d5b8c9b9d"
+    },
+    "docs/adr/0013-frozen-8123-frontend-and-phased-backend.md": {
+      "size": 4245,
+      "sha256": "1ddd15d66dfd256ab24119def5dba5e9880921306424b3a520684ebf943e0b10"
+    },
+    "docs/adr/0014-backup-recovery-governance.md": {
+      "size": 2025,
+      "sha256": "eba59994e68c4c01573464c806dd5b0532a188a708f2a2fa8da3cfb37589279e"
+    },
+    "docs/adr/0015-single-platform-key-set.md": {
+      "size": 1427,
+      "sha256": "3c3351a20ecd6e28485f4fb0f68efd998db368a9efe0e0ecf515fdf91c1bb041"
+    },
+    "docs/adr/0016-license-renewal-and-release-housekeeping.md": {
+      "size": 6764,
+      "sha256": "ba9262303dfd620076a808e7255b1b138ad1d95ebf93444c90d3b6d056338e15"
+    },
+    "docs/adr/0017-anti-abuse-hardening-and-batch-operations.md": {
+      "size": 5245,
+      "sha256": "2b201ee0212b8e34d40041a6a8a532f8b39d52b5778b3e991b44d0456249fd0b"
+    },
+    "docs/adr/0018-launch-ticket.md": {
+      "size": 3068,
+      "sha256": "fea904333251d9487d0b6733a3553ebec4716cfff3ffa903fbc09b54b479b7d8"
+    },
+    "docs/adr/INDEX.md": {
+      "size": 2492,
+      "sha256": "a796e07b9e8a673d6a8a5001a8adcb427e16436517dae6382b2a469c0d93ff0c"
+    },
+    "docs/AI-ROLES.md": {
+      "size": 1356,
+      "sha256": "ed836ce537d05c06fe1436ca49872339db2ac87e22117f9e2a34e620802424a0"
+    },
+    "docs/API-CONTRACT.md": {
+      "size": 123546,
+      "sha256": "190c03c11c907058a01abf04134b209f4ab56758df059f06839a50ece6e9616f"
+    },
+    "docs/ARCHITECTURE.md": {
+      "size": 30345,
+      "sha256": "11471007f85970c43eb34c3a38125c09a1035802894d617664772b18366f0415"
+    },
+    "docs/CLIENT-INTEGRATION-HANDOFF.md": {
+      "size": 13971,
+      "sha256": "bae05dc7f26bca8e3e62cfd25e863ef5e65649588413697306e3e2c9969ce76d"
+    },
+    "docs/COMPETITOR-RESEARCH.md": {
+      "size": 4122,
+      "sha256": "a9e8f1598564583cc3e2941f32a4ad773ede666373816afcbb49d823b588d9ac"
+    },
+    "docs/DOMAIN-RULES.md": {
+      "size": 64791,
+      "sha256": "3b733d35b8cfa916c965a40e06a745962950c8f443b6198e74c087fa11c8c652"
+    },
+    "docs/FEATURES.md": {
+      "size": 52746,
+      "sha256": "ce621166edb98c0d5354f536299eb46317f5913ad71fe85d9311a2ba9716505c"
+    },
+    "docs/INDEX.md": {
+      "size": 1797,
+      "sha256": "431d5127de6a39eb61c2d7fbf5c9b768bc092e9ca01db2c29e467da168318a8e"
+    },
+    "docs/N7-lock-order-review.md": {
+      "size": 5918,
+      "sha256": "cebe9229c870694f1db0d6eafab4ab5faa63b58dcc8db6bc1b38ff48694c0514"
+    },
+    "docs/PR-DECISIONS.md": {
+      "size": 1142,
+      "sha256": "fd302780b04eec8a924e3a8104edfb721419dd25175fe2ba8a8a4bbeb2b525df"
+    },
+    "docs/PR-PLAN.md": {
+      "size": 2242,
+      "sha256": "6f29050a11cfe06878704195a49964ae84cc4e7e7a925bf66ed08b377d8c310c"
+    },
+    "docs/PROJECT.md": {
+      "size": 13543,
+      "sha256": "72f2e6bf030bf96c06b189838b5d6d177593ef4ce0182790ec6ce4ac52b6ef4e"
+    },
+    "docs/PUBLIC-RELEASE.md": {
+      "size": 3094,
+      "sha256": "0e0bfb3076f905c924fdcbbb3401e63682ab1b3b82e298885857260a0f0e5f61"
+    },
+    "docs/ROADMAP.md": {
+      "size": 927,
+      "sha256": "7745902ee6ae796068caccab98ed492d1cb51900a07bdcdfabefe207aeb7e61b"
+    },
+    "docs/RUNBOOK.md": {
+      "size": 16456,
+      "sha256": "33b59e7f01d4fc3905d7b379c274a7fbe993651c93a15d2fe9d3592755939c61"
+    },
+    "docs/SECURITY-BASELINE.md": {
+      "size": 29210,
+      "sha256": "dfabd4427ced2f35d5063a637627c6cbb1099a07b126340c9696119d77fbd5ac"
+    },
+    "docs/SOFTWARE-ADAPTERS.md": {
+      "size": 13980,
+      "sha256": "dc964f60b2e2e6d58ef81fa266f4084a86efb116bef6a3c19b26e3e858920207"
+    },
+    "docs/STATUS.md": {
+      "size": 16776,
+      "sha256": "9afe69d28b7bafa4d2722c2df58d46ed7ae7c6eedca9722dc6fb2b906016610b"
+    },
+    "docs/UI-DESIGN-SYSTEM.md": {
+      "size": 24116,
+      "sha256": "70367cd7712d2a9ba5e1e1949d9386f16504daa81063fda9bf9456d2f69d90b5"
+    },
+    "docs/ui-preview/404.html": {
+      "size": 1400,
+      "sha256": "564dee345c523715c2b434eaa073debe8638d18c4f56fd55d28d3517f8147310"
+    },
+    "docs/ui-preview/downstream-login.html": {
+      "size": 2359,
+      "sha256": "573844bbdaddce5e4823c04361fc692efabd59c2b1c367e99d9560958df1e8ae"
+    },
+    "docs/ui-preview/downstream-register.html": {
+      "size": 2769,
+      "sha256": "f91030b9c71fd7a952fea03b90dc889df33941697e4a7988b6900200abcd480c"
+    },
+    "docs/ui-preview/downstream.html": {
+      "size": 34662,
+      "sha256": "7deb1328e4c8da160dc878c80d1157d81b78f727559cd410ad1713e30b07f19d"
+    },
+    "docs/ui-preview/entry.html": {
+      "size": 1862,
+      "sha256": "56536dc399f10c7f27e4d43df70ec9f71801939f55c3c0852f24716fc741b67c"
+    },
+    "docs/ui-preview/favicon.svg": {
+      "size": 1367,
+      "sha256": "048c18524ab514b6ea1aad5665a6cc7b88bac0c0037e926a1899f1e37815785f"
+    },
+    "docs/ui-preview/manage-login.html": {
+      "size": 1910,
+      "sha256": "6c10b87ef8ef25374ac0bf7a557c9262b745ab1c594f50c5b493509a4efd79af"
+    },
+    "docs/ui-preview/manage.html": {
+      "size": 125266,
+      "sha256": "14935a1ee1a75f6539a5a27fe2ef090ae4270a947dadc553109eb87a6375b903"
+    },
+    "docs/ui-preview/preview.css": {
+      "size": 129946,
+      "sha256": "b5e630a11bfcda80ddcff728268416b094f895c64798195a6414fafa6db77cce"
+    },
+    "docs/ui-preview/preview.js": {
+      "size": 559604,
+      "sha256": "97828bce758dcc53cb2d468f8dedb91ed894ff115066121a56040e51b2decfe1"
+    },
+    "docs/UI-PREVIEW.md": {
+      "size": 18221,
+      "sha256": "d6391f84b31b4b15a3a8fc335ec19ce507a8e236213de3ad1a01fa1707ac557e"
+    },
+    "docs/UI-REFERENCE.md": {
+      "size": 7020,
+      "sha256": "41cb6a67169c47289496fa337c3dee2a7c9786aa9212cd2e317ea4b61664af71"
+    },
+    "manage.py": {
+      "size": 534,
+      "sha256": "3eb574cf000975eb4fec4731f15086c50fb1137378dbb0636c6d70dc26058e37"
+    },
+    "protocol/authorization-a-core.v1.schema.json": {
+      "size": 5462,
+      "sha256": "37463695840af0b670de8ed493b0b76462b770146b2a431651e789545155e01c"
+    },
+    "protocol/authorization.v1.schema.json": {
+      "size": 5268,
+      "sha256": "8006f9430479b8ef7d162c84b659159beb0d0e4ad805bf4c8cd506d319a9bc18"
+    },
+    "protocol/device-proof.v1.json": {
+      "size": 1476,
+      "sha256": "4e6e45cf37ef780da84aa3e26c3e28ed24ec4d173e2a714746bcb3480db5aeee"
+    },
+    "README.md": {
+      "size": 5423,
+      "sha256": "9de49a890f89d4b441485349fa6751c62e3b9d0435c441e9e4ca5226cffb20f3"
+    },
+    "requirements.lock": {
+      "size": 340,
+      "sha256": "e0fc53c8e9c3fb5cf43c1146026c62f730e367a9d343ceb319d92bfeaeb7cb23"
+    },
+    "requirements.txt": {
+      "size": 98,
+      "sha256": "b7ff331bcc9f85c1dd8b0ed23828f1091d88dd018284b469382febbd7c811b34"
+    },
+    "scripts/application_rollback.py": {
+      "size": 5375,
+      "sha256": "3293a2051bce1819a6315192d609a553dbc59b02288033ade7938652fa1b36d6"
+    },
+    "scripts/authorization_v1_vertical_acceptance.py": {
+      "size": 10968,
+      "sha256": "84a3335b47f5d9061596a57c966b1a090377dede23fe7182ae7acaf8b7e931df"
+    },
+    "scripts/backup_evidence_collector.py": {
+      "size": 10075,
+      "sha256": "5eec67b4541097807017e90a264e271616da84635e8e29ad77a66cae55240dcf"
+    },
+    "scripts/backup_failure_alert.py": {
+      "size": 3653,
+      "sha256": "bffc1fdf11817ac2876cb3020ee1670dd77b6f8b1f54ad60671cece7d643ed65"
+    },
+    "scripts/backup_health.py": {
+      "size": 7827,
+      "sha256": "ad968baa2c0d2247196d45925f5cd2bb81640056b3ec69c8f9d85734f4e3d817"
+    },
+    "scripts/backup_mark_success.py": {
+      "size": 2415,
+      "sha256": "19dfc4ae95f97512febf330752624add617f0fcb82e1adb68c85ec3e5e291111"
+    },
+    "scripts/backup_proof_generator.py": {
+      "size": 7896,
+      "sha256": "74e0ae59a5de60900d22e65b95f462cf56f4040272ec4905baba8c19f6ccbb64"
+    },
+    "scripts/bootstrap.ps1": {
+      "size": 604,
+      "sha256": "156180ec8a34dd4904b41754b86f205a253d6d0b41155b86344981d4eb60b7e6"
+    },
+    "scripts/browser-acceptance.ps1": {
+      "size": 7839,
+      "sha256": "e779f53dc02810ab83a841a6aafea4a71b334a08ea2595ddc77de3733fb62978"
+    },
+    "scripts/browser_acceptance.js": {
+      "size": 7602,
+      "sha256": "3aab604cd6d672fd11438d4b9d1924966aa64e89f1e008ac0a2889290f7d2e0b"
+    },
+    "scripts/build-client-handoff.py": {
+      "size": 31769,
+      "sha256": "1b76426c112d8fd3924794406259186cd2e9b648c9c6b4b9def299586c8050be"
+    },
+    "scripts/build-suite-release.py": {
+      "size": 4613,
+      "sha256": "fdf11e1eb560f1cdf26502c467729d395ac042d831bab6e8acfc04c37d711793"
+    },
+    "scripts/build_release_manifest.py": {
+      "size": 4997,
+      "sha256": "84ebbb86a8e09408e3fde2a98099c1a842ead3d2c4643f6477e8b6e6f43d8798"
+    },
+    "scripts/capacity_probe.py": {
+      "size": 6400,
+      "sha256": "10858f2ef555cde912d84d16ce1793cf1267bfa67fd63ea8fb35d8ec33c9b5de"
+    },
+    "scripts/capacity_threshold_acceptance.py": {
+      "size": 4766,
+      "sha256": "5e49a07daad242ede7a208cdb92354d75dbbea217fd99a6a246540d809278fcc"
+    },
+    "scripts/check-docs.ps1": {
+      "size": 3311,
+      "sha256": "9ffeffda85f9b039d4a0ea9eb1789bb51a707aefe4a4d5f7fd3c47e47e794fe7"
+    },
+    "scripts/check_ui_preview.py": {
+      "size": 23703,
+      "sha256": "c731a890eeb89fdbd0fe2ce0e64931c07bf93d8f4a59f7b963a84f55e7f98714"
+    },
+    "scripts/client-handoff/CURRENT-RUNTIME.md": {
+      "size": 8795,
+      "sha256": "5accea48f96de1e031f25ba3db202538f339b6624d3759019c69946b3e96f83b"
+    },
+    "scripts/client-handoff/prepare-config.py": {
+      "size": 11796,
+      "sha256": "e522a6bd9c632e2ad6c006d3a14086c46e25666cb8831a70f29feba7c37a1777"
+    },
+    "scripts/client-handoff/PRODUCT-BRANDING-CHECKLIST.md": {
+      "size": 2917,
+      "sha256": "86725d54890da3ed66321e2ab8065291a5d0a1933e05532dc822e36763af5c5e"
+    },
+    "scripts/client-handoff/test-shell.cjs": {
+      "size": 4655,
+      "sha256": "ad2510a70b74392315f1d235f2c111f7c956b4e49cd9c409b8b185024d4baa55"
+    },
+    "scripts/client-handoff/接口与能力说明.md": {
+      "size": 10329,
+      "sha256": "c49ccfec866b450ee836c241da633696136a7970040eb898f4c87b238f3af087"
+    },
+    "scripts/client-handoff/模板兼容差异.md": {
+      "size": 5976,
+      "sha256": "435872b3964149246945ec9753f36bfbc69f30bc93d2505c143fb72e7c9481d9"
+    },
+    "scripts/frozen-8123-acceptance.ps1": {
+      "size": 6782,
+      "sha256": "52e3eec45ec59211b1878c4fefeb450b400f580d3b7497ae90b7e8c2bf4be1ce"
+    },
+    "scripts/frozen_8123_acceptance.js": {
+      "size": 52740,
+      "sha256": "92750d67613f5ebc41f545f8eb5e8164051a4d42df6038ca323040df437caa1e"
+    },
+    "scripts/isolated-postgresql-backup-restore-acceptance.ps1": {
+      "size": 11497,
+      "sha256": "2d4f1d62fafec28f3a8afedec906e8204d3e7487ff6fcd7b5947eceb33b88394"
+    },
+    "scripts/local-capacity-acceptance.ps1": {
+      "size": 3272,
+      "sha256": "8e042a2a46266f5e2d187733e1e94c6efb62311674f5f5c94cb592d7cd57f701"
+    },
+    "scripts/migration_recovery.py": {
+      "size": 1921,
+      "sha256": "4c14a225464fb1fa71af6ce4ca534e386d0ba2a7c3c46c042fbe9b542e9bf245"
+    },
+    "scripts/platform-8123-acceptance.ps1": {
+      "size": 8842,
+      "sha256": "4ebb1594c7a81dbf3b4a3c880bd367f9ff57db7447c5703a03b444825328bf50"
+    },
+    "scripts/platform_8123_acceptance.js": {
+      "size": 19143,
+      "sha256": "f0662bc853639f407677eff33f085c99eee4f84484b048a9c368a1290d42d639"
+    },
+    "scripts/postgresql-backup-restore.ps1": {
+      "size": 12149,
+      "sha256": "6d791dc739384cf4d486db35bc7a649d777cdffb583480ff40dbd2b21183ffe5"
+    },
+    "scripts/postgresql-concurrency-acceptance.ps1": {
+      "size": 36586,
+      "sha256": "ac5208f0bfebbc2779c1c46c6c7fb532198d1895c2befa2943271b33ffdb438c"
+    },
+    "scripts/preflight-postgresql.ps1": {
+      "size": 3077,
+      "sha256": "fc482249ff30383f6cb7d3752158ea3f18457d04a4d3c17286be20d4fc91a25f"
+    },
+    "scripts/prepare_browser_acceptance.py": {
+      "size": 10113,
+      "sha256": "48c21d65199cc15ef2d7ae5f782ac0d8ec5693a70ce239d79811ad8cf4023c78"
+    },
+    "scripts/release_candidate_acceptance.py": {
+      "size": 167820,
+      "sha256": "34488496136454224a7f03bb4a87a8a94a5e967a1c507f541c7d1758df373d88"
+    },
+    "scripts/renewal-vertical-acceptance.py": {
+      "size": 15231,
+      "sha256": "4100fafa1e9f370c272ce868e26864d0f47261e96ac9a2aa7750da587b68315d"
+    },
+    "scripts/run-local.ps1": {
+      "size": 2007,
+      "sha256": "fdd73a57b9ea24f7941e13f3efad7e4cafe6948dcc3aee509c9a37242be9d560"
+    },
+    "scripts/shared_rate_limit_probe.py": {
+      "size": 9657,
+      "sha256": "5a1628573c0cfc388a81ae854b27bf85508dd0f1ddbe0868136dc6190949ef10"
+    },
+    "scripts/shared_worker_probe.py": {
+      "size": 4520,
+      "sha256": "a89671838434c9f8e45992f3443b76ac2bad754d7f16fce8bcb4c1430192497a"
+    },
+    "scripts/static_proxy.py": {
+      "size": 9252,
+      "sha256": "b53371749f5e93926360ab5269f9aa7c7b92bdfb33caa6ad4bed15419f2c2c91"
+    },
+    "scripts/stress_and_pentest_suite.py": {
+      "size": 23770,
+      "sha256": "fa81ee7dee80fab65a9eba9bb152eccb3a374041345935eb12fbc59682b0d5d8"
+    },
+    "scripts/test-site-batch-renewal-check.py": {
+      "size": 5307,
+      "sha256": "cec501bde39cea79680d8e8b18e129b55ff776832eee1290ec6882ff4aa0d05d"
+    },
+    "scripts/test-site-fuzz-check.py": {
+      "size": 4558,
+      "sha256": "02c29bda433942e50e67a61db0b959829d4025816e18ad04157c7b67712b8efb"
+    },
+    "scripts/test.ps1": {
+      "size": 526,
+      "sha256": "851929c485e8fe92b36a605e8a84fbe13afdc1444c3b6b9e454ff12a5d0274fc"
+    },
+    "scripts/test_record_selection_pagination.cjs": {
+      "size": 5569,
+      "sha256": "52cb790dcdff42fa2da3cfdfc4190de0f1eda3aaffe675c5a632dbd5d98563a7"
+    },
+    "scripts/test_release_resume_stage.cjs": {
+      "size": 1050,
+      "sha256": "bdda918986e735fde08e83fd6ec884091af83f5f543cbd024d1768873de01add"
+    },
+    "scripts/test_release_write_ui.cjs": {
+      "size": 4929,
+      "sha256": "f4bcd6f798eecf3466ac9a3f0e41a882d8b184ff69de85aa5d776663d10ee9c5"
+    },
+    "scripts/test_risk_controls_ui.cjs": {
+      "size": 4286,
+      "sha256": "ef5c15d90a5bee0a492ab63c4c362dbaebe8ea9b550fa66910ca53044a05553a"
+    },
+    "scripts/test_security_optimizations_ui.cjs": {
+      "size": 3980,
+      "sha256": "3debc49d905bf31c73d49089c34165e3f234f46981b9366ada7e4aa090f8ef08"
+    },
+    "scripts/test_selection_actions_ui.cjs": {
+      "size": 7145,
+      "sha256": "9dad597dccddd120928aab8660ea88985406e03fd71b081ac4c173a9fb2b3e93"
+    },
+    "scripts/ui-preview-acceptance.ps1": {
+      "size": 5536,
+      "sha256": "01cb7ca00b4e8133f0dd500b95bbe49e9038481255f42c7e8c4b8a268e668c81"
+    },
+    "scripts/ui_preview_acceptance.js": {
+      "size": 111156,
+      "sha256": "59e95c2f018003fd60a857e41dddeea900562cd2db7afaa5e4828b074ebc0542"
+    },
+    "src/.gitkeep": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/__init__.py": {
+      "size": 46,
+      "sha256": "112361f56934874e5a0cdeafa07604afa996c7dd20353b81df482eeb614a9df7"
+    },
+    "src/authorization_platform/accounts/__init__.py": {
+      "size": 56,
+      "sha256": "927e5d96e6fb99426860d53336b7813b72f4bb4bc4b731aaf4721598eb1de0cf"
+    },
+    "src/authorization_platform/accounts/api_views.py": {
+      "size": 51134,
+      "sha256": "6275607f20785249087e19bbf1071b0a04a3531fb934eb2b3306a63e3aefbe88"
+    },
+    "src/authorization_platform/accounts/apps.py": {
+      "size": 253,
+      "sha256": "be9ba8a01903b16baed2fc7b4bb68f9703c05ebba252ffc83d5fec31c64f3648"
+    },
+    "src/authorization_platform/accounts/context_processors.py": {
+      "size": 306,
+      "sha256": "4bc7d75bdbfa93489b306fb46eb44187afaff239185b2ec607c48a915e328602"
+    },
+    "src/authorization_platform/accounts/decorators.py": {
+      "size": 2467,
+      "sha256": "f3b67598b2296ffd59db1176d50bc143ba924bb0c825955dad5d70144c7b7f72"
+    },
+    "src/authorization_platform/accounts/forms.py": {
+      "size": 8197,
+      "sha256": "5ecf83c9aca56ce7b24d591bf63958fe0af371bea196bec945e821f7156b4c3e"
+    },
+    "src/authorization_platform/accounts/migrations/0001_initial.py": {
+      "size": 5714,
+      "sha256": "f008056e5ed16a62b34dcbef231cedb0f8e65fb71665d043cac8e6ba3c819573"
+    },
+    "src/authorization_platform/accounts/migrations/0002_invitationcode_public_id.py": {
+      "size": 1895,
+      "sha256": "a67f6fb43fd459fb8cdefb4045e551ec48a0ec560ce687549ed358754149c9eb"
+    },
+    "src/authorization_platform/accounts/migrations/0003_invitation_lifecycle_freeze.py": {
+      "size": 757,
+      "sha256": "0e86669217e06e8b9dc1849d42aed1758441687df7d8cc5e99fba57a6b1c5918"
+    },
+    "src/authorization_platform/accounts/migrations/0004_invitation_consumed_username.py": {
+      "size": 429,
+      "sha256": "fcc18d7ed94d3bff086e1fc9f8afef4665672c07d74ce2109383f180e9e085d5"
+    },
+    "src/authorization_platform/accounts/migrations/0005_invitationbatch_idempotency.py": {
+      "size": 907,
+      "sha256": "b5579169aba9709f3481f56517a4b67d509a834ea73034f2ec93300417afe6a2"
+    },
+    "src/authorization_platform/accounts/migrations/0006_passwordoperation.py": {
+      "size": 2813,
+      "sha256": "e5a8272436eb25e9c735cc454fa66c1ec09dae18d30171ddb821dfd5a9855d29"
+    },
+    "src/authorization_platform/accounts/migrations/0007_downstreamadminoperation.py": {
+      "size": 3020,
+      "sha256": "64bf8878eef627685f5a06d2ffb02933514bb02829816450837ed7f91a7050d0"
+    },
+    "src/authorization_platform/accounts/migrations/0008_downstreamadminoperation_actor_digest.py": {
+      "size": 401,
+      "sha256": "e2f0f64d1a757eb410504d4f8c4311d0ae09526ef1ff892ca9c649df7f18ff6d"
+    },
+    "src/authorization_platform/accounts/migrations/0009_invitationcode_archived_at_and_more.py": {
+      "size": 3356,
+      "sha256": "5b1fb403b2fd5671fae6b58d356dd8a486df5dde9e1af35774ff236879f76927"
+    },
+    "src/authorization_platform/accounts/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/accounts/models.py": {
+      "size": 16417,
+      "sha256": "28cab3e44a72fba1deb9b6f9b0ac549070f6147475da03c8e0a658e9717694f6"
+    },
+    "src/authorization_platform/accounts/rate_limit.py": {
+      "size": 10317,
+      "sha256": "601eac180a5195f08da674d76a52da23d8e4e1a58c84bd15ac5fe91da3338bb2"
+    },
+    "src/authorization_platform/accounts/roles.py": {
+      "size": 609,
+      "sha256": "72cca43fa44392f7e9c30eca6f5a67fdaa04a9d67fe6ed6d6937cf41baeae06f"
+    },
+    "src/authorization_platform/accounts/services.py": {
+      "size": 59702,
+      "sha256": "9bfef7cb7db24327ca62f4d3f8505e7ce5d9128380c4ec00d48b3fcae9d6fdf5"
+    },
+    "src/authorization_platform/accounts/templates/accounts/_login_form.html": {
+      "size": 471,
+      "sha256": "fa69c59ec2b51e9b7dd136f1f8ff43fdfad2140f193c80acf6123552582103b8"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_dashboard.html": {
+      "size": 2873,
+      "sha256": "50cc75b3287b7f5c872359d85cfa5706c61d5e6fda417da52728816d8ccd546b"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_detail.html": {
+      "size": 2277,
+      "sha256": "b73a8efab58e455a44fb2a32be28e9bd9f2169e1d6a47dd13535796123a03fd5"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_form.html": {
+      "size": 837,
+      "sha256": "819797cd18611704ac4fca013693e368543fb8fb53f094ba98977afdd63f6f75"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_list.html": {
+      "size": 1201,
+      "sha256": "2073a914bdb9280d400466d0d4e0dfaf912244ef56badd945dd0843c8ba23f78"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_login.html": {
+      "size": 712,
+      "sha256": "6a88690a4d2e9e5b612b81d031f909561e9fc87ec68c1de34df4cab5e482cf0d"
+    },
+    "src/authorization_platform/accounts/templates/accounts/downstream_profile.html": {
+      "size": 535,
+      "sha256": "c88b7f691a4c21ced4538d5dafa75f2002d1fa784ce70bbb08d1890f6e64c2e6"
+    },
+    "src/authorization_platform/accounts/templates/accounts/invitation_reveal.html": {
+      "size": 794,
+      "sha256": "c135e5ed7b6ed5a1ac401429086eafab15ad5f23aca439ae88e8c86936be24eb"
+    },
+    "src/authorization_platform/accounts/templates/accounts/invitations.html": {
+      "size": 3255,
+      "sha256": "07792289a783b2bb9d71bd3c0c3ea9484d3007f371fd0d2634ca141fd867cf34"
+    },
+    "src/authorization_platform/accounts/templates/accounts/login.html": {
+      "size": 1018,
+      "sha256": "ddb1d74a32d070bc26ce142f3c0f8f2f4b7d661093c596e2e2ac209f8d898dc2"
+    },
+    "src/authorization_platform/accounts/templates/accounts/manage_dashboard.html": {
+      "size": 3000,
+      "sha256": "b264fd03d775ce3aebba2cc98225db971be7dbadc7454f5b7f54211326d4e1d3"
+    },
+    "src/authorization_platform/accounts/templates/accounts/manage_login.html": {
+      "size": 591,
+      "sha256": "c565600206fa67d9c2661a219084f55e90b01be02fdc060b5fbbaa913285d295"
+    },
+    "src/authorization_platform/accounts/templates/accounts/register.html": {
+      "size": 1117,
+      "sha256": "ca6ef4d40fa95de3f3c6be71b88de6d924a9100fa7bc01a736168f531d2214d3"
+    },
+    "src/authorization_platform/accounts/urls.py": {
+      "size": 3658,
+      "sha256": "046c68fd2d4e2b66ccb5f9d5c5f366fbc38f022a94004b47fbba32abd39f4f45"
+    },
+    "src/authorization_platform/accounts/views.py": {
+      "size": 18795,
+      "sha256": "45af5a5e641025b83532bf991ca7067a85438c0710441d60e50a06af41b0cc1e"
+    },
+    "src/authorization_platform/analytics/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/analytics/api_views.py": {
+      "size": 3527,
+      "sha256": "8b3d863aa96fcdd0b5244f1aecb514a495c8c5041671361b4f975e5824e9daea"
+    },
+    "src/authorization_platform/analytics/apps.py": {
+      "size": 252,
+      "sha256": "daaeefcded0cb8dc6454f8622f550c3232499f2be57b0dff43eaf68684578b1d"
+    },
+    "src/authorization_platform/analytics/services.py": {
+      "size": 15827,
+      "sha256": "22abd37b6a3406eb92644705bbe41027405d75315fdc2aaf4cced435bb81a7c2"
+    },
+    "src/authorization_platform/analytics/urls.py": {
+      "size": 500,
+      "sha256": "11fd557192473ee7ccb7565b9034bdfe19fa730c9ede17fd6338748c71fdf5f3"
+    },
+    "src/authorization_platform/asgi.py": {
+      "size": 281,
+      "sha256": "7d33a856a6acda51e51260fdf2a66d0f0126403d34de82d2a63027407ef037ca"
+    },
+    "src/authorization_platform/audit/__init__.py": {
+      "size": 68,
+      "sha256": "b5f3be53491ce3b53a4c3709d71120e1fb1b5b2d0e1091d5fa915504ddb53d6e"
+    },
+    "src/authorization_platform/audit/api_views.py": {
+      "size": 10518,
+      "sha256": "47a9cc0b88f447985c12fa57de468ec462bd705e2225e1dcd1590752db5862ec"
+    },
+    "src/authorization_platform/audit/apps.py": {
+      "size": 238,
+      "sha256": "f15dfb0718edcd614386f75128dbba56b08accfd5d21a962be5e3ce358e2ced8"
+    },
+    "src/authorization_platform/audit/forms.py": {
+      "size": 1585,
+      "sha256": "230a67a3722408f79ad0acae6aa6b66b67aae4ee97a2fe2f59ab82372964ced6"
+    },
+    "src/authorization_platform/audit/migrations/0001_initial.py": {
+      "size": 1969,
+      "sha256": "97db656bb135e06c0d1929e83972a1122b82d524b2053691ae3a645905cbab6b"
+    },
+    "src/authorization_platform/audit/migrations/0002_expand_object_public_id.py": {
+      "size": 333,
+      "sha256": "5701812ba46e0e32379f73506a5e2c73584c51d642793ce08c4eabc6638620a6"
+    },
+    "src/authorization_platform/audit/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/audit/models.py": {
+      "size": 2625,
+      "sha256": "f09cce177fe7be58c29508a4841566ec900770c1ec142e2f7146b001f1e45ba9"
+    },
+    "src/authorization_platform/audit/queries.py": {
+      "size": 23909,
+      "sha256": "9c9a66efab23175ecbf9dc573d97c088f668cd85d03a30ae7640d8c4b6872310"
+    },
+    "src/authorization_platform/audit/services.py": {
+      "size": 1071,
+      "sha256": "ba658f0a2d9fedaba858a1389f212575c722a8f1fd700e98bf1d66f794740af0"
+    },
+    "src/authorization_platform/audit/templates/audit/events.html": {
+      "size": 4907,
+      "sha256": "c4d8203e96e94fb851e80f5e853495f51c2e94d3ae413045020e23afd530292a"
+    },
+    "src/authorization_platform/audit/urls.py": {
+      "size": 814,
+      "sha256": "2b6405eed98f7fb822534febcaa93367883806808c444101c63a7b1066f4ce27"
+    },
+    "src/authorization_platform/audit/views.py": {
+      "size": 4631,
+      "sha256": "7196259700f4025edb86875a6dda854047fa498395ea85bf1644f4304c8e151a"
+    },
+    "src/authorization_platform/backup_control/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/backup_control/apps.py": {
+      "size": 223,
+      "sha256": "35f0492389c5b1c457c87be44853c8394e4c7070c55f15123cf4a514d7d763b7"
+    },
+    "src/authorization_platform/backup_control/download_deletion.py": {
+      "size": 6036,
+      "sha256": "8db246e7654877b06b211066f235c179fa95b1d420367eb1b9eab230b90b0538"
+    },
+    "src/authorization_platform/backup_control/management/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/backup_control/management/commands/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/backup_control/management/commands/backup_policy.py": {
+      "size": 5218,
+      "sha256": "2871b46f68d641b11755f5136598e9a902a2bfb0fb65b445d8de925d2093b5a5"
+    },
+    "src/authorization_platform/backup_control/management/commands/backup_status_reconcile.py": {
+      "size": 4289,
+      "sha256": "c1c70af461043a5228c121300dac10ff849b953dc79e5b15f9f4599c25059bab"
+    },
+    "src/authorization_platform/backup_control/migrations/0001_initial.py": {
+      "size": 1457,
+      "sha256": "ba953eb16144cd9ff95f89c48a19ea2db439e2e62e03d81747e8a1e55ec533b0"
+    },
+    "src/authorization_platform/backup_control/migrations/0002_backup_schedule_netdisk_telegram.py": {
+      "size": 6056,
+      "sha256": "95f375007150d4c4237c42be549a1bf2c5bc27d407e403ebacb7ea9ff4d8e52d"
+    },
+    "src/authorization_platform/backup_control/migrations/0003_github_repo_restore_staging.py": {
+      "size": 2050,
+      "sha256": "6f6b845439c7588b541e5387313e547eb63c1d038e653b14f6f5820c0f3d18bf"
+    },
+    "src/authorization_platform/backup_control/migrations/0004_schedule_enabled.py": {
+      "size": 386,
+      "sha256": "cd010e853808f188d124bc34b780588083cb31ee56b439ffab759697b73e3d8e"
+    },
+    "src/authorization_platform/backup_control/migrations/0005_three_encrypted_copies.py": {
+      "size": 681,
+      "sha256": "8f34169e21d158d3a135eef6734587a05e496c8eee49b91740b14606004142a9"
+    },
+    "src/authorization_platform/backup_control/migrations/0006_master_switch_defaults_off.py": {
+      "size": 374,
+      "sha256": "b664ab60d4e416017184854f9a54b32bed460a81a34d4791e94c9cb7aaa2d09c"
+    },
+    "src/authorization_platform/backup_control/migrations/0007_backuprunrequest_scheduled_for.py": {
+      "size": 410,
+      "sha256": "9d18f74594e33ab1f9277a0b44a486b044633bc71d57944af7bf13a0e47c57ac"
+    },
+    "src/authorization_platform/backup_control/migrations/0008_backuprunrequest_attempt_token.py": {
+      "size": 411,
+      "sha256": "545b7c0d8cd6962b6e0ac76d549a357543dcae26b5dfd24dec1ad4691bdc328a"
+    },
+    "src/authorization_platform/backup_control/migrations/0009_remove_backuppolicy_telegram_fields.py": {
+      "size": 636,
+      "sha256": "ccd0dadd4dfe796b7b19755824a4241abe5ca46ebda897998986fa46a99f8b9b"
+    },
+    "src/authorization_platform/backup_control/migrations/0010_remove_backuppolicy_netdisk_fields.py": {
+      "size": 1268,
+      "sha256": "888d14986885df5047883d7b5d0b830ae39fbc331de5d89ca087de396d4dc074"
+    },
+    "src/authorization_platform/backup_control/migrations/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/backup_control/models.py": {
+      "size": 5323,
+      "sha256": "5b2d6d4e870d05f8d7c3ecdff0c27911e85ee57e6a24453dbf0de86900a30f6f"
+    },
+    "src/authorization_platform/backup_control/services.py": {
+      "size": 69969,
+      "sha256": "8a3f33cbd91ae006db5746be09850ed917192cab9b1b77344a3984e200a0a3d8"
+    },
+    "src/authorization_platform/backup_control/templates/backup_control/dashboard.html": {
+      "size": 6899,
+      "sha256": "9e11b84eb3281443a5de699d4511400120bd19eb62970dfe2e165fe53ee75116"
+    },
+    "src/authorization_platform/backup_control/urls.py": {
+      "size": 1081,
+      "sha256": "ecbb2e28768110cbcdad2b4299f2445ed5924afef94f372934b5cf483f1c2c85"
+    },
+    "src/authorization_platform/backup_control/views.py": {
+      "size": 18616,
+      "sha256": "d4f01e30087da19da06fdd30544a7f7d38f6d869e2f1aac6a7bda57c984719eb"
+    },
+    "src/authorization_platform/catalog/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/catalog/api_views.py": {
+      "size": 55576,
+      "sha256": "9647bf4b9e78cdce071ad2d494b0dbc7eacf9cbc6cf9834424a1ccae6373852c"
+    },
+    "src/authorization_platform/catalog/apps.py": {
+      "size": 248,
+      "sha256": "1c92e704837e5702be3dec5a76752e1b1a14e0a6903ea56003429bf9685b2b07"
+    },
+    "src/authorization_platform/catalog/configuration.py": {
+      "size": 12005,
+      "sha256": "ade29646c5bbbf90bc66f3e4f718cab6957e5b1852c922dda0883dc756c08b8a"
+    },
+    "src/authorization_platform/catalog/forms.py": {
+      "size": 9671,
+      "sha256": "393f9301303aaf3ab7e11d9cca76b4f0cbc35067caf040a887c364b18acf690a"
+    },
+    "src/authorization_platform/catalog/integration.py": {
+      "size": 6135,
+      "sha256": "b1f970a27cd5e6432f0e24c95624cc8c072c71e4b888559c4f856bd889ad8261"
+    },
+    "src/authorization_platform/catalog/migrations/0001_initial.py": {
+      "size": 12551,
+      "sha256": "26cbb5ba0d4384057d1da2f4d0d27056ee6fcda0825c37ceba84eb75cd2ce1d2"
+    },
+    "src/authorization_platform/catalog/migrations/0002_softwareprofile_config_version.py": {
+      "size": 426,
+      "sha256": "da328fb4cd84ebade5ee7442a9e0d862cd89af1b328da01df3cac41d3b53a4ed"
+    },
+    "src/authorization_platform/catalog/migrations/0003_configuration_fields.py": {
+      "size": 2697,
+      "sha256": "a2e553093d58f5b6a8aa6a6f4abac4dd818c93c155235d0ce8e0654f14509fcb"
+    },
+    "src/authorization_platform/catalog/migrations/0004_downstreamsoftware_config_version.py": {
+      "size": 436,
+      "sha256": "54bb93ca8cd67e1bc50dcb77a47376b5b623476e30603b30b8bf14abc5e531a0"
+    },
+    "src/authorization_platform/catalog/migrations/0005_plancreateoperation.py": {
+      "size": 1824,
+      "sha256": "0e5ba024c932269d7060f18b61588aa6cc9380f0d476200ae56e5cf03f400b54"
+    },
+    "src/authorization_platform/catalog/migrations/0006_planlifecycleoperation.py": {
+      "size": 2357,
+      "sha256": "58e8edb7a4952987df8ba6e2f8efc138c615399bf901538f8ffad9912437cb18"
+    },
+    "src/authorization_platform/catalog/migrations/0007_downstreamsoftwareoperation_planrevisionoperation.py": {
+      "size": 3215,
+      "sha256": "a1d39e97541e9d5663772cf0c335bd63eb233b2d2e992d9df625bbcfa2d9f038"
+    },
+    "src/authorization_platform/catalog/migrations/0008_policy_revision_operation.py": {
+      "size": 1916,
+      "sha256": "f64343f73e480f3aa982a80eefb9bf4b6604714967f996ea1774e36e49f55088"
+    },
+    "src/authorization_platform/catalog/migrations/0009_backfill_default_daily_device_switch.py": {
+      "size": 4132,
+      "sha256": "be0c4b40469d8530bf270773ccebb4cd3071aa71f51da384b74e0927ab5ed0c1"
+    },
+    "src/authorization_platform/catalog/migrations/0010_default_verify_interval_sixty.py": {
+      "size": 403,
+      "sha256": "fbe69c972b789f84b2735c310ed673caf8c38a74bf3201e8977aa8913915de99"
+    },
+    "src/authorization_platform/catalog/migrations/0011_alter_plan_status_add_deleted.py": {
+      "size": 552,
+      "sha256": "4410d52ef0647036ca49322e5d9508378ba917dda0fef79ef2c176269b6025ed"
+    },
+    "src/authorization_platform/catalog/migrations/0012_policyversion_launch_ticket_enabled_and_more.py": {
+      "size": 879,
+      "sha256": "83516efe835b8230a6a93f6fe4377443377a90d194b312b23a9050d69130d52e"
+    },
+    "src/authorization_platform/catalog/migrations/0013_configurationoperation.py": {
+      "size": 1329,
+      "sha256": "a352c1f76f0c567df6283899a3dd3e8c5349431930d9f555e154d15f5d75c422"
+    },
+    "src/authorization_platform/catalog/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/catalog/models.py": {
+      "size": 25802,
+      "sha256": "7187d2e9206b087219ccfb36a4a30621386e12609fb1c465c36eae2f3ed47245"
+    },
+    "src/authorization_platform/catalog/services.py": {
+      "size": 45688,
+      "sha256": "a4de27f1767b43b55896f308da23950f69c9b8a6fc1c60d8d6023a2971e7d357"
+    },
+    "src/authorization_platform/catalog/templates/catalog/configuration_form.html": {
+      "size": 2013,
+      "sha256": "5f10399dfba99822614172534f5170c32b5dffc3cc75dfb073af0d34866a78d0"
+    },
+    "src/authorization_platform/catalog/templates/catalog/downstream_software.html": {
+      "size": 1336,
+      "sha256": "04dc930ee441cadbf0bc295ed31f2af7403c791aa8e0eedde68dd4e0248b58b4"
+    },
+    "src/authorization_platform/catalog/templates/catalog/form.html": {
+      "size": 1119,
+      "sha256": "7e1769c579275903a1d1d53f0ac8b9c520d3c58fcf2e7831b6f8dcd4e5ccf552"
+    },
+    "src/authorization_platform/catalog/templates/catalog/software_access.html": {
+      "size": 2165,
+      "sha256": "a9afd04ba3d77c3dbccb2d9c2fccb02d27750b194dde60a4a968297ad382152c"
+    },
+    "src/authorization_platform/catalog/templates/catalog/software_detail.html": {
+      "size": 5113,
+      "sha256": "e69732bd71c4bcb3a27b6e558213ef6fdc52dc341497edf8cd92ed6987df1cc5"
+    },
+    "src/authorization_platform/catalog/templates/catalog/software_list.html": {
+      "size": 1218,
+      "sha256": "a4ec17e1c01597e9755affd98ddc6831b48cb35f722531faf1206b7914dd5c7d"
+    },
+    "src/authorization_platform/catalog/urls.py": {
+      "size": 3559,
+      "sha256": "a6d24aca993fb451afe847749592d98e3afdb6b83ec8d720ae29fd23f6e7a4d5"
+    },
+    "src/authorization_platform/catalog/views.py": {
+      "size": 18059,
+      "sha256": "796ae214b4e56ab8a6dcea3fa919847591e0c5482f6b8106e553793653e35d1a"
+    },
+    "src/authorization_platform/core/__init__.py": {
+      "size": 80,
+      "sha256": "6566ef3b19d370d70ca103e4cebc66ca7ae1c40d9c1e49e6a056076285b95825"
+    },
+    "src/authorization_platform/core/apps.py": {
+      "size": 242,
+      "sha256": "e9d863f074115df6a7c080ef29e45fe80a656af8d013634aeccd80d060cd4ad0"
+    },
+    "src/authorization_platform/core/backup_governance.py": {
+      "size": 24068,
+      "sha256": "5b0be0645bbaba589d19ce8605ac5b5ce7c10233fadd208107f105417a19e2a4"
+    },
+    "src/authorization_platform/core/backup_markers.py": {
+      "size": 1885,
+      "sha256": "9d418338af951c0d05d43e566f737d3931bfd3280ab7c96df7a1be8cb13f73cf"
+    },
+    "src/authorization_platform/core/csv_utils.py": {
+      "size": 501,
+      "sha256": "339deef93b8339cee726a5ec97768ff71c21fe8911e066f5279248ceb4f7885e"
+    },
+    "src/authorization_platform/core/legacy_html.py": {
+      "size": 875,
+      "sha256": "ebcae1b1288cb15e3650e6589d331223454c8416f8209572ae3d925d108c8d09"
+    },
+    "src/authorization_platform/core/management/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/core/management/commands/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/core/management/commands/prune_authorization_records.py": {
+      "size": 3167,
+      "sha256": "c27c759fc370ecc9d4fc8abfbf7a07fbaec22d6b45ae6a6646aa9ba2b2a8b98b"
+    },
+    "src/authorization_platform/core/management/commands/recovery_inventory.py": {
+      "size": 3967,
+      "sha256": "604fee4a6aaf563046251d5419c7bffd28d3900bd93e091e3300d78d9ce35b20"
+    },
+    "src/authorization_platform/core/management/commands/seed_demo.py": {
+      "size": 5257,
+      "sha256": "42853210463a1b6b31a2f597b86ddf2fd64f430c2528fb991158be5df98936fa"
+    },
+    "src/authorization_platform/core/management/commands/seed_recovery_fixture.py": {
+      "size": 12966,
+      "sha256": "b0f663e76d540f67a46fe0e324375df8cb24a1d63282fb9530acd40f1a52543a"
+    },
+    "src/authorization_platform/core/middleware.py": {
+      "size": 2487,
+      "sha256": "36b3a888bb8c1811534e4ca098410936d81787e1b6a3daaa428188045ae1ac96"
+    },
+    "src/authorization_platform/core/object_storage.py": {
+      "size": 19951,
+      "sha256": "b5778110302c97084a1274c7fe1e8ffdbf00dd5be7fe15a00a397071da67fce3"
+    },
+    "src/authorization_platform/core/recovery_inventory.py": {
+      "size": 45021,
+      "sha256": "520e93f9c0c5f76f033378ca8fffeaacec00ad296d671ab0f33a6ea870fecd03"
+    },
+    "src/authorization_platform/core/static/core/app.css": {
+      "size": 13757,
+      "sha256": "73f7bd9c7e322edb5d2f3a0a9408ec1c939196a6034348a1999ac077f9fd45df"
+    },
+    "src/authorization_platform/core/static/core/favicon.svg": {
+      "size": 1367,
+      "sha256": "048c18524ab514b6ea1aad5665a6cc7b88bac0c0037e926a1899f1e37815785f"
+    },
+    "src/authorization_platform/core/templates/core/403.html": {
+      "size": 1004,
+      "sha256": "c45095e70ae3075c7820179e09d0fd417e8069d2dbca4fe80f3291c2f88a804f"
+    },
+    "src/authorization_platform/core/templates/core/base.html": {
+      "size": 3229,
+      "sha256": "7ca57c264e82ad2f079d678cd90c3a303570a5877106d392b725aa2f5992954c"
+    },
+    "src/authorization_platform/core/templates/core/home.html": {
+      "size": 2942,
+      "sha256": "26781439362f733bce5987be1e348ccd33fe565b6d1687bd3075fec3c1a8fcfa"
+    },
+    "src/authorization_platform/core/time.py": {
+      "size": 2819,
+      "sha256": "a60cdcd64d8d082790239eba32702ed040f15ef376fb1d6ef78f2dd5cbd126a8"
+    },
+    "src/authorization_platform/core/urls.py": {
+      "size": 230,
+      "sha256": "0fddf8057111c9d0251d69853cb332b1286bb8e3c4d27363e52ede3790f9e3cc"
+    },
+    "src/authorization_platform/core/views.py": {
+      "size": 5683,
+      "sha256": "37ac3adbc63255ee72ad12acfc224a0076fe9ee92e9cd26c78cd5f9589bb636a"
+    },
+    "src/authorization_platform/credits/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/credits/api_views.py": {
+      "size": 33221,
+      "sha256": "6a3c73a860e0d1d25ccb812304ecaaa19d1b3f97c3271e182834967536a49d3a"
+    },
+    "src/authorization_platform/credits/apps.py": {
+      "size": 248,
+      "sha256": "3608c8fcde5af5504da1b692801d3a36f384c0ca50bbf0714bd11cc67bf1e06d"
+    },
+    "src/authorization_platform/credits/forms.py": {
+      "size": 2141,
+      "sha256": "d42f85cd1b6c9ac904614b3ce737e096b21711cefd9bfea3a8a5e94a37a0990a"
+    },
+    "src/authorization_platform/credits/management/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/credits/management/commands/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/credits/management/commands/rotate_quota_card_keys.py": {
+      "size": 1966,
+      "sha256": "d5eb78d0b5cb126d97cd3bb3782026b13b5cfd130197d47be64bbc4bfb984138"
+    },
+    "src/authorization_platform/credits/migrations/0001_initial.py": {
+      "size": 8494,
+      "sha256": "4ee15a299b0ed885001221c21bc2b7a53772819601ab87e79285de558f18e8a6"
+    },
+    "src/authorization_platform/credits/migrations/0002_generic_quota_cards_and_settings.py": {
+      "size": 2071,
+      "sha256": "2aba17c72e48e65790e9b3872d27b65bf7de26c91b2589c5ac97e43204fb4939"
+    },
+    "src/authorization_platform/credits/migrations/0003_quota_purchase_url_operations.py": {
+      "size": 2029,
+      "sha256": "94ca25f1d66d3386dca0c62439c8c285d98437c560cae4a86714f443a5e43f2c"
+    },
+    "src/authorization_platform/credits/migrations/0004_quota_card_current_key_version.py": {
+      "size": 395,
+      "sha256": "7391f65010f294648c92461556da1f7e14668acf991b22034df78371cac4a9c8"
+    },
+    "src/authorization_platform/credits/migrations/0005_quotacard_archived_at_quotacard_status_reason_and_more.py": {
+      "size": 3453,
+      "sha256": "2674fa5a5e9661a05f8cc7e03ce8633dcdceab2f258ef5788fe6c15cb1f6644e"
+    },
+    "src/authorization_platform/credits/migrations/0006_alter_quotacardbatch_idempotency_key_and_more.py": {
+      "size": 857,
+      "sha256": "aab16ed35f02987fb36b3f7918d0cc9e297a600ef6821ed7b70b7d8165f35a00"
+    },
+    "src/authorization_platform/credits/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/credits/models.py": {
+      "size": 16938,
+      "sha256": "18048620c8b1d091d5dcb2726182674256874ef00943baa52af566979a5ac503"
+    },
+    "src/authorization_platform/credits/services.py": {
+      "size": 53930,
+      "sha256": "6676d4d1241a6f0100f8196fe5d28818b5f90cd299c775fc7f659116f961899d"
+    },
+    "src/authorization_platform/credits/templates/credits/admin_dashboard.html": {
+      "size": 6954,
+      "sha256": "5a86eb967fb5fb45eb981ef9175deb459483e6682ba24df9183a40d48de48fd9"
+    },
+    "src/authorization_platform/credits/templates/credits/downstream_ledger.html": {
+      "size": 3543,
+      "sha256": "951dc2babcbbc160aaf3baf2558052043f5949b43700a77c9860463e0c532b8d"
+    },
+    "src/authorization_platform/credits/templates/credits/quota_card_reveal.html": {
+      "size": 802,
+      "sha256": "2ea340619e9cbe3b50be7224b889db60ce9ff5fd491504c2579fa4bc6e7b3284"
+    },
+    "src/authorization_platform/credits/urls.py": {
+      "size": 2328,
+      "sha256": "84754e4f1c46bcd3fcab16aae26957a830c9c35079d9b7f0453f72c62bb7c853"
+    },
+    "src/authorization_platform/credits/views.py": {
+      "size": 11293,
+      "sha256": "5ec9464934461eb8a48caf7451cee79706bce74ad55684fbb1deb97ab299a5e9"
+    },
+    "src/authorization_platform/licensing/__init__.py": {
+      "size": 29,
+      "sha256": "f338212ca9988cd5afa0bf2b48c409377c3a3fe2ee2209764faa4d5656a66ea9"
+    },
+    "src/authorization_platform/licensing/admin.py": {
+      "size": 59628,
+      "sha256": "7873e72f7b2a4389e2ee7eb0d4bf311d0f9afdbdbec136947ec73f1c25e6f651"
+    },
+    "src/authorization_platform/licensing/api.py": {
+      "size": 16828,
+      "sha256": "9e7fb324d7301ff6ad2d47a83e3102e63dfca5f56a7d1a80abe515da396102bb"
+    },
+    "src/authorization_platform/licensing/api_views.py": {
+      "size": 131018,
+      "sha256": "88ba4c7d4e11f53ef50103713f2fa27cf2822e7092e1b8ab67af8d8a89eaf6db"
+    },
+    "src/authorization_platform/licensing/apps.py": {
+      "size": 179,
+      "sha256": "27c84d99c70ee977d61438f09761828d8205ec5973eb04169f725d4d9c2ce5ce"
+    },
+    "src/authorization_platform/licensing/authorization.py": {
+      "size": 115869,
+      "sha256": "ba582ef5e65d2b68bb40e0fb8a311d8049d66754a6ed586a0429274510c15ed5"
+    },
+    "src/authorization_platform/licensing/device_codes.py": {
+      "size": 1374,
+      "sha256": "5be2ad7e2b22fa83864d5a449187f7c5e4d8ffb245096f5ce235324dd1fafccb"
+    },
+    "src/authorization_platform/licensing/forms.py": {
+      "size": 2735,
+      "sha256": "945440a25cce161111df4eb9f6f8411fc7dc5c37e63f226abfa8a605ed289f51"
+    },
+    "src/authorization_platform/licensing/migrations/0001_initial.py": {
+      "size": 7021,
+      "sha256": "ffdf3bb65a86802ca9c419a40d9f23de265ff8004870ab5607d31d3c86799269"
+    },
+    "src/authorization_platform/licensing/migrations/0002_authorizationrequestrecord_device_authorizationnonce_and_more.py": {
+      "size": 11082,
+      "sha256": "d3078e1f0b776b6feac45b0a7d21d11af50c9f022b3eed29fd111b898c4459f0"
+    },
+    "src/authorization_platform/licensing/migrations/0003_licenseinstance_configuration_override.py": {
+      "size": 478,
+      "sha256": "b1e8df884e74da1d0a9f7a2cdb81768ca98436236a053c472580372c1ca97209"
+    },
+    "src/authorization_platform/licensing/migrations/0004_licensereclaimoperation.py": {
+      "size": 1949,
+      "sha256": "6694eb09532a6736536c6240f66b67149d930747ae965f194127c04bdb7c4f20"
+    },
+    "src/authorization_platform/licensing/migrations/0005_authorizationadminoperation.py": {
+      "size": 2123,
+      "sha256": "a0b53298c5f9bc4a1eaeaea1f0e99e3ea232686d2ee4f083a5f6b66cb41553bf"
+    },
+    "src/authorization_platform/licensing/migrations/0006_licensecard_archived_at_alter_licensecard_status_and_more.py": {
+      "size": 3583,
+      "sha256": "769ea22bbfcace1d731c6d1b4ce2cea7e2d67548d62341b2315b5b611ecb6de7"
+    },
+    "src/authorization_platform/licensing/migrations/0007_alter_licensecard_status.py": {
+      "size": 717,
+      "sha256": "bac9fcfdc1b2994428d280519bc697350ff75dbd3722828b655e634d6dd42f80"
+    },
+    "src/authorization_platform/licensing/migrations/0008_licensecard_archived_from_status.py": {
+      "size": 442,
+      "sha256": "d825dcc5db5efb591c8cf2788272dc05bb01515f6f9bc50972e4a1436ecef4e7"
+    },
+    "src/authorization_platform/licensing/migrations/0009_downstream_device_operation.py": {
+      "size": 1838,
+      "sha256": "2977659785267331851ccad4503a1c963322c4edfd066a3471e06a2dc27c753c"
+    },
+    "src/authorization_platform/licensing/migrations/0010_licenseinstance_device_switch_day.py": {
+      "size": 390,
+      "sha256": "e08e635ae8c38579283dc42136b6deafcb470d481369d9ea162a974587c7beb9"
+    },
+    "src/authorization_platform/licensing/migrations/0011_device_installation_id.py": {
+      "size": 416,
+      "sha256": "301d1348e33d8957702cc42a5013eed83156dd3a61b60420212e5504d76405a8"
+    },
+    "src/authorization_platform/licensing/migrations/0012_launchticket.py": {
+      "size": 2316,
+      "sha256": "e41f0322a2eb7cef7de799c665fb2c80bcf2365b01ad772763051cdaaa7f484a"
+    },
+    "src/authorization_platform/licensing/migrations/0013_devicebinding_binding_order.py": {
+      "size": 1013,
+      "sha256": "c56849df77c2ff27cc6c5a26e6874014ac05b0e4aaf9c8b3c6cc8f09b5e32521"
+    },
+    "src/authorization_platform/licensing/migrations/0014_device_code.py": {
+      "size": 1621,
+      "sha256": "105739575370a0007b6fda8fe46a810bb5d32821518353437d6315f2c4aade15"
+    },
+    "src/authorization_platform/licensing/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/authorization_platform/licensing/models.py": {
+      "size": 35907,
+      "sha256": "9d2e5f7e36775d505ae29a8c94685f0924711cabdcb3c5e0ec5eaa4d0deec976"
+    },
+    "src/authorization_platform/licensing/services.py": {
+      "size": 55738,
+      "sha256": "0fd7bc5a863358929c2ad8d0406ceb5f4c3e5177ecabf8af81180c47a35b058b"
+    },
+    "src/authorization_platform/licensing/templates/licensing/authorization_admin.html": {
+      "size": 6923,
+      "sha256": "2220572c72d16904290ff5aec2ce2d105db112ea13fe7d7050420bd53c86eabe"
+    },
+    "src/authorization_platform/licensing/templates/licensing/batch_list.html": {
+      "size": 5770,
+      "sha256": "abad08b39e1f55917a67cbdf45b1f1c51594a56356ea40167ed90f2a4d5962be"
+    },
+    "src/authorization_platform/licensing/templates/licensing/card_reveal.html": {
+      "size": 847,
+      "sha256": "76f2345125ffc154e2d01b65f7719f26c60bda7666edd0812c94e0e47d939fe6"
+    },
+    "src/authorization_platform/licensing/urls.py": {
+      "size": 6418,
+      "sha256": "c5029720536d874caec4dfc3f1726b78eb5aec6355ec3258e34bcf9f78801757"
+    },
+    "src/authorization_platform/licensing/views.py": {
+      "size": 14346,
+      "sha256": "1d5a6eb76327fb1e458b078588cc0076bcab90de3e537867e12e313ccaa0ad22"
+    },
+    "src/authorization_platform/releases/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/releases/api_views.py": {
+      "size": 20267,
+      "sha256": "68278f582565182150e71866ca71dd985ae3074d64ae1fcbe627aeb35f699466"
+    },
+    "src/authorization_platform/releases/apps.py": {
+      "size": 250,
+      "sha256": "db067648a7f6de4bbf5fc7cf54eb0f1b1a13cdb11c51ad73a2d0220e7730e3fa"
+    },
+    "src/authorization_platform/releases/migrations/0001_initial.py": {
+      "size": 5531,
+      "sha256": "7b3c188c5db754d6baac78da333049155aabba754368586d8e561c0679a29a20"
+    },
+    "src/authorization_platform/releases/migrations/0002_discard_draft_releases.py": {
+      "size": 1405,
+      "sha256": "752c588bc04d6156d3d458091d5210ce1d80556ff0b3d78645a41277667cb68d"
+    },
+    "src/authorization_platform/releases/migrations/0003_alter_releaseoperation_action.py": {
+      "size": 561,
+      "sha256": "ade8bf4444509dcf7725988f91360c3f936f8d7be87573c43c2abe46a8757bb0"
+    },
+    "src/authorization_platform/releases/migrations/0004_external_download_url.py": {
+      "size": 1307,
+      "sha256": "16cedade7c607474d56972c03fb1d43f8408caf63da88626da1c3ca9f61d1748"
+    },
+    "src/authorization_platform/releases/migrations/0005_alter_releaseoperation_action.py": {
+      "size": 804,
+      "sha256": "a8e8797f46ba8a6e58882e0e47899f1e7d6dd47bc2801261970928a483c84ee2"
+    },
+    "src/authorization_platform/releases/migrations/0006_release_archive_and_version_rename.py": {
+      "size": 1577,
+      "sha256": "f91a2e21e8a6561cee90c68c70232154b7e2046d47734c2a3e46bffc8b83498a"
+    },
+    "src/authorization_platform/releases/migrations/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/releases/models.py": {
+      "size": 6042,
+      "sha256": "f8ecbdb3c113a41fbec8e8782cef87961d667186238157459f2176e4046798b5"
+    },
+    "src/authorization_platform/releases/services.py": {
+      "size": 65303,
+      "sha256": "d2af44536f4ad7d1cbf4d6e7d34db83d521a4ed5e48b5160696690ecbabe10ed"
+    },
+    "src/authorization_platform/releases/templates/releases/manage.html": {
+      "size": 3809,
+      "sha256": "3c73a8521e1881a482d790e09a6a5f07f9a8894ad0dfc030b05720d640d54031"
+    },
+    "src/authorization_platform/releases/urls.py": {
+      "size": 1625,
+      "sha256": "c399f64d365060b615a3ef39ec5ff8b86edc8d68498d64a16d7bb8c2fb24c6dd"
+    },
+    "src/authorization_platform/releases/views.py": {
+      "size": 3343,
+      "sha256": "208d3cb53e39a0d9d29caf3337eef365a3c6adea1639ed21edf767b403a50acc"
+    },
+    "src/authorization_platform/settings.py": {
+      "size": 34242,
+      "sha256": "c74aa92de1d20496834df861a9164eec43fbd537e2ed725c481e321a11fe2257"
+    },
+    "src/authorization_platform/storage_cleanup/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/storage_cleanup/api_views.py": {
+      "size": 1319,
+      "sha256": "434e164d4852f1f6962710725a2f61290465ebcae7c12c62911a1cbe7b5a1eec"
+    },
+    "src/authorization_platform/storage_cleanup/apps.py": {
+      "size": 263,
+      "sha256": "d88d478bccae2648dc774fdaa6135f14d40a4beb7e350e0dbb6fea69bf6cb793"
+    },
+    "src/authorization_platform/storage_cleanup/migrations/0001_initial.py": {
+      "size": 1635,
+      "sha256": "99018033bd452e0da21ea698576a0d641cd2838d46ac21cebd43c62f9381a6df"
+    },
+    "src/authorization_platform/storage_cleanup/migrations/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "src/authorization_platform/storage_cleanup/models.py": {
+      "size": 1802,
+      "sha256": "f0637c77eec529c0a3cb73894fb483f9bd4576ae2414e2bec8c20e7e33921d25"
+    },
+    "src/authorization_platform/storage_cleanup/services.py": {
+      "size": 14260,
+      "sha256": "ef769c5f73e05784526e7a379ab9993a0fed4218249e7b38e05d50f824287b6a"
+    },
+    "src/authorization_platform/storage_cleanup/urls.py": {
+      "size": 257,
+      "sha256": "1193402bca04dd0c63d9af2d6da822f4a318cbb0a1f43f59da43cab95670ff8a"
+    },
+    "src/authorization_platform/urls.py": {
+      "size": 819,
+      "sha256": "da3bb8f98562a74da9d3c165e52c2da2e6c022ce84a4f804963f74f8b5b5be87"
+    },
+    "src/authorization_platform/wsgi.py": {
+      "size": 281,
+      "sha256": "c4ef58ed70e19dd0bb9774679c283bc295b346f0fee25ce7f7ce07191f6eede3"
+    },
+    "storage/queue/need-run": {
+      "size": 1,
+      "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+    },
+    "tests/.gitkeep": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/fixtures/authorization_a_core_v1/active.json": {
+      "size": 1301,
+      "sha256": "9473f9daec96e848a92cddbcd07ae462f31ab0dc7eb7a987925bc741d8290eb0"
+    },
+    "tests/fixtures/authorization_a_core_v1/cross-scope.json": {
+      "size": 188,
+      "sha256": "68c5b6e53f24471b314676d46eca02f953d1a3ddc77b5031b7c5d1e6f33d0173"
+    },
+    "tests/fixtures/authorization_a_core_v1/expired.json": {
+      "size": 1186,
+      "sha256": "776ea90682dce951aa78ea4dcddbe14a59ee7ae025131c424ec204fe5a02c1f3"
+    },
+    "tests/fixtures/authorization_a_core_v1/signature-invalid.json": {
+      "size": 190,
+      "sha256": "0ae4ade437182f9b5e6135714e6328d9caad7229f672135498c860e44b211fe2"
+    },
+    "tests/fixtures/authorization_v1/active.json": {
+      "size": 1023,
+      "sha256": "ba09447d1d3bd54c6ee97a33b03168c7081a4ef1d9f3013ddfe2cdd5ceec5add"
+    },
+    "tests/fixtures/authorization_v1/blocked.json": {
+      "size": 1102,
+      "sha256": "797a9b3e8564a85a5fa4fe315269cac85d7d616facec657eb45f5a6f1b6bad7b"
+    },
+    "tests/fixtures/authorization_v1/cross-scope.json": {
+      "size": 157,
+      "sha256": "750e825c0fc51bd2f0a4619ccc4056ef61bfa027c23706fc413140bf2d2800b2"
+    },
+    "tests/fixtures/authorization_v1/device_scope-shapes.json": {
+      "size": 910,
+      "sha256": "e246278aec26ebf472ac564db3f4876e9fb8379c3c970eebc0cd09c174c28d22"
+    },
+    "tests/fixtures/authorization_v1/expired.json": {
+      "size": 1008,
+      "sha256": "c6ab3d12363ab0708d2df96c60add7739adb375d4e2faada6ffa569d2ef9602a"
+    },
+    "tests/fixtures/authorization_v1/grace.json": {
+      "size": 1000,
+      "sha256": "4216262bc3235ced87fa69681d0bca04a7c258b035bce0ec67f9c1867aefd55a"
+    },
+    "tests/fixtures/authorization_v1/missing-required-field.json": {
+      "size": 142,
+      "sha256": "acfdedf0737f01f7f183d4e9afea32e2e0a92960063171ce54849c64760fb892"
+    },
+    "tests/fixtures/authorization_v1/not_modified.json": {
+      "size": 1016,
+      "sha256": "2d4cff3938cc9c659893507ff17cd3770a3421f45b0fad5fe6ea02fd384cb4cb"
+    },
+    "tests/fixtures/authorization_v1/old-contract.json": {
+      "size": 168,
+      "sha256": "f878a5fa94b934fcba0a54bb9c65efadc78b10943b7fe0270e116be3e3ca155f"
+    },
+    "tests/fixtures/authorization_v1/response-schema-invalid.json": {
+      "size": 210,
+      "sha256": "d456a2d4268e10d78b8ba5e643f5eec15887f77f6d8d27d23aa5b94bd0e9b5ba"
+    },
+    "tests/fixtures/authorization_v1/revoked.json": {
+      "size": 1008,
+      "sha256": "366c39f07a76b150c5380476838bdf212e44b1ecd2512d212e8b1d7c3f02791b"
+    },
+    "tests/fixtures/authorization_v1/risk-blocked-error.json": {
+      "size": 277,
+      "sha256": "e925b5971be98d442960b048f31084c8e97c4c9b4e6c829c7dd1f26f4888394a"
+    },
+    "tests/fixtures/authorization_v1/signature-invalid.json": {
+      "size": 156,
+      "sha256": "4621a6a464326169de6e35230227e2a454b89094da463c9ce0cb98563f921525"
+    },
+    "tests/fixtures/authorization_v1/time-rollback.json": {
+      "size": 184,
+      "sha256": "d5442e75ec6d44e752ffb5b4c6cc2edcc574cc23a64afa9f386dd127d004d385"
+    },
+    "tests/fixtures/authorization_v1/unbound.json": {
+      "size": 1373,
+      "sha256": "6c231bc6d23ca8c7d5382921565c01143a6d68073981eea0b9b5cdf7ee22e504"
+    },
+    "tests/fixtures/authorization_v1/unknown-key.json": {
+      "size": 141,
+      "sha256": "3f7ccd937b133ed363c10777d40daf4e1a1f05f74dbd0f3b9f8454042e73b535"
+    },
+    "tests/fixtures/device_proof_v1/activate.json": {
+      "size": 965,
+      "sha256": "1e9c421bab2d1ab56cc122f7cb8c144b9adcd84960557e672e86360de85858d8"
+    },
+    "tests/test_accounts.py": {
+      "size": 31896,
+      "sha256": "a500160163a5a9a5234bcd1e11b01d2f92204212aac68d361f5038f0f4eb9a1f"
+    },
+    "tests/test_accounts_api.py": {
+      "size": 58585,
+      "sha256": "b9101d8a56005a75eaf2a1c938f789e2a7f64a21b65274b44b6450f1d4dd744d"
+    },
+    "tests/test_analytics.py": {
+      "size": 29885,
+      "sha256": "36c1bf60af0bbaac64d13f66777cd87196993fe890af42821d29e6adaed84121"
+    },
+    "tests/test_app_guard.py": {
+      "size": 9207,
+      "sha256": "79b97d070e97409d90055df7bac691cf2291155176c3cc2c42a976f52dd0b5da"
+    },
+    "tests/test_audit.py": {
+      "size": 17077,
+      "sha256": "ad29e22d0e87a7096b890ded469dd755ac2ba87b2a6a3e149bae42da61a508ae"
+    },
+    "tests/test_audit_api.py": {
+      "size": 18602,
+      "sha256": "b59e93113f63871626840ee602454c7d1334a57c6fe39cd4e4c23a8eca8053c0"
+    },
+    "tests/test_authorization.py": {
+      "size": 269162,
+      "sha256": "2791676ec281b09aca57feee0f05fbad6e7b4ac1b6e3cc7c7e72473da1353a6d"
+    },
+    "tests/test_authorization_retention.py": {
+      "size": 8892,
+      "sha256": "02512319c34281a8e88e7e863248364b19cd709699c7f20b34eb647002143c09"
+    },
+    "tests/test_backup_control.py": {
+      "size": 77065,
+      "sha256": "b2bf065066e29ace7b73147ea9cde1c7b3912fa085c6fb72f0ca0557d2e66592"
+    },
+    "tests/test_backup_honesty.py": {
+      "size": 18946,
+      "sha256": "7cd738446ac0ccc455fc891079915d16fbf01d28d843e4c4f2fd2cd1f75d3670"
+    },
+    "tests/test_backup_status_reconcile.py": {
+      "size": 7420,
+      "sha256": "32d975b33871d16881f355ec81664339b4ee06eafb487b8b8c682f65b01aec2a"
+    },
+    "tests/test_catalog.py": {
+      "size": 75129,
+      "sha256": "406adc9b563aa486928a1e906cf565daccab5c1f528e11c47ddd6789c961753c"
+    },
+    "tests/test_catalog_profile_configuration.py": {
+      "size": 6760,
+      "sha256": "6a84158aeadd564c0253b46362eb94f3e7ac336433c6d9c4054990338c96221d"
+    },
+    "tests/test_catalog_support_api.py": {
+      "size": 8113,
+      "sha256": "6d84569add3a51d36cf4e12782621a6fa56b06232a4b5036f3e963826ce2cd19"
+    },
+    "tests/test_client_handoff.py": {
+      "size": 25115,
+      "sha256": "53b503c6a2fa06031a54abeee611f6ed042ada5f1e9867113213cf1a5ce02570"
+    },
+    "tests/test_contract_fixtures.py": {
+      "size": 15610,
+      "sha256": "4b490951db60435aa86503bf4f389623239df4fa45404473fce3b9ad390158ef"
+    },
+    "tests/test_credits.py": {
+      "size": 44241,
+      "sha256": "9e838338d363b5690bbfccde9d48197479fa8df8228a7077904156cdbe0851cd"
+    },
+    "tests/test_credits_api.py": {
+      "size": 32556,
+      "sha256": "93e8b73e56c152c064e6344c19fb817725bf4aa1a463ebba800082b6206ebc90"
+    },
+    "tests/test_csv_utils.py": {
+      "size": 589,
+      "sha256": "08c932cc776abc651a7d98bdeeb8dfc45ad9f066de2dfc296a3c9a2fbab02097"
+    },
+    "tests/test_deploy_config_contracts.py": {
+      "size": 8984,
+      "sha256": "fecc52dbf0be28e4a32ebb7f2f4b28a01b1b8ce03440675e25eeb82c05f2c174"
+    },
+    "tests/test_device_codes.py": {
+      "size": 978,
+      "sha256": "438d5590a4e3e32590287e9fb7c511139dd7a2e0275a0742daee4bd3c7151f91"
+    },
+    "tests/test_final_authorization.py": {
+      "size": 28259,
+      "sha256": "61b92bd7e232bddc4b73343a16529ba14e38701eb57c76dd0194e9223b82434a"
+    },
+    "tests/test_final_business.py": {
+      "size": 30570,
+      "sha256": "fced74738df855e9ea01c8472277314326abcd57e8ad8c917629e6f2865fe066"
+    },
+    "tests/test_final_client_runtime.py": {
+      "size": 21495,
+      "sha256": "bc56433ddd00b20bb9978fa2bc9b2e4858a82e72f4e98af92cf51690ea9eed39"
+    },
+    "tests/test_final_operations.py": {
+      "size": 18064,
+      "sha256": "da8e959df9e17b7215e4dfee28e9d913ae5100d29844b14e43630835f99ab9ba"
+    },
+    "tests/test_invitation_lifecycle.py": {
+      "size": 11984,
+      "sha256": "a72849c3d15baf443f6fce206327fe4ebf215c14a689fbf7c6c97b215e5bc0f3"
+    },
+    "tests/test_launch_ticket.py": {
+      "size": 21171,
+      "sha256": "ebbb0176a5cff19a2936a4ebed383e3c9a5f4ee8e6a946c383ef0f0ee2a3b4ea"
+    },
+    "tests/test_legacy_html_closed.py": {
+      "size": 6910,
+      "sha256": "cf44ad6afcc5a241b75139c2b1c3814baaef11903a3afe9b8785a86e33b64e8b"
+    },
+    "tests/test_license_lifecycle.py": {
+      "size": 23685,
+      "sha256": "c80ec412e65aa0979b9a6166eaf081c2e3d5695f7c02ac9a52ef7f26e6758576"
+    },
+    "tests/test_licensing.py": {
+      "size": 36687,
+      "sha256": "b09ebd9fa78c33c9e839fc1dcde416b5879278531b66c7eae0b05fdd3ad838cf"
+    },
+    "tests/test_licensing_api.py": {
+      "size": 64383,
+      "sha256": "2677cfd34e2549027c4735be01862dd223d67a7db0df21666f44e92a20b0caee"
+    },
+    "tests/test_object_storage.py": {
+      "size": 7448,
+      "sha256": "bba2747a46af9e3426a2fb5a24065d51a9a7117c0a490a83012c5221b5325b2f"
+    },
+    "tests/test_postgresql_runner.py": {
+      "size": 17692,
+      "sha256": "415738cb125d10b600d542f0a2d23a6d6ba73f7f8fb25566a2e1ac3296a5f52c"
+    },
+    "tests/test_quota_card_lifecycle.py": {
+      "size": 13014,
+      "sha256": "5105a8ef2a5ef219fae2de415d2b50305939b1b478251878f2964c95c60dbdbd"
+    },
+    "tests/test_rate_limit_window.py": {
+      "size": 7062,
+      "sha256": "6389bc5869045cdeb73131c044f3da691d49d1615c1ff27d3eda389abad757dd"
+    },
+    "tests/test_release_candidate.py": {
+      "size": 318005,
+      "sha256": "9b2b94569a4d4a94b0e25b1c638dc695a880ef1aa30a9c468fb7077256b11cfb"
+    },
+    "tests/test_releases.py": {
+      "size": 85547,
+      "sha256": "5fe45db7bb7a5d6111410eca06a38871276a9dea0d2231e1ad276d9ea5a5fcdc"
+    },
+    "tests/test_round2_business.py": {
+      "size": 21257,
+      "sha256": "0d1dc82eaf9efd4735891909e88da8e57cd131ca291388ac301b413a7693218d"
+    },
+    "tests/test_round2_client_runtime.py": {
+      "size": 37010,
+      "sha256": "b6129939872afbb28d72fae8f1aa60846b9053686a1d2203ad55bbba82c0714b"
+    },
+    "tests/test_security_optimizations.py": {
+      "size": 14037,
+      "sha256": "0f161f206f64eeb8758fc056ea25dfa8074c27f4cc7b7405f083ede0b2c3f7ab"
+    },
+    "tests/test_seed_demo.py": {
+      "size": 8009,
+      "sha256": "247cdad651f76c81e0a1d521c2d345425ec5326f322ecc9e2bab7d74053a4dc3"
+    },
+    "tests/test_settings.py": {
+      "size": 12248,
+      "sha256": "5b704a25500bc7732036ae973be802f7fce0cb8d8d77bb04bd2c1ce2560c039c"
+    },
+    "tests/test_shared_rate_limit_probe.py": {
+      "size": 3054,
+      "sha256": "2ca789e500644d92a1e51bd3a32e276d6f38b86ef7d2f89fa4e8266d29a86e26"
+    },
+    "tests/test_software_integration.py": {
+      "size": 12931,
+      "sha256": "29aaeab0bc15a4a04cc493e9cd5add6b1379bdaec4c23f1e87a221c4b22386ff"
+    },
+    "tests/test_static_proxy.py": {
+      "size": 6850,
+      "sha256": "51f5b897e1825236fbe03695a62ac3d2d584142419eb1b577d88bd723d7f0f40"
+    },
+    "tests/test_storage_cleanup.py": {
+      "size": 10327,
+      "sha256": "bf9e4cf79b2d343f52fce356883a98c47b1bc71ec238514ff636d34ed567ea4f"
+    },
+    "tests/test_suite_closeout.py": {
+      "size": 11354,
+      "sha256": "74980bbfbfece4f04dc6e2805bfb219f0d5c1ebd8622ecd81f1abcb4c5cc88a7"
+    },
+    "tests/test_telegram_backup_copy.py": {
+      "size": 10428,
+      "sha256": "4b14f832058666019ffc5dd712034b57f3e71c910cc880c2acd231b6292fa0d1"
+    },
+    "tests/test_time.py": {
+      "size": 1898,
+      "sha256": "d9ff561190b366a35a2f59755e72ffaa315804947dde298c14c9598a60441101"
+    },
+    "tests/test_web.py": {
+      "size": 4935,
+      "sha256": "47ed95d268aac6791db769d7d200699027c7b0ed56d8c7dc34b653b7031ca157"
+    },
+    "WORK-HANDOFF.md": {
+      "size": 2229,
+      "sha256": "96fbd16c714f5bdb6e6adabb1ddabe86cd717a23252e6852d4e1e3b922687057"
+    },
+    "历史参考/.gitattributes": {
+      "size": 111,
+      "sha256": "5954ffcf77870881a74a838b778e3818769ab59385f134eaa781da29e9f560e6"
+    },
+    "历史参考/00-历史资料说明.md": {
+      "size": 935,
+      "sha256": "34ea4770fc7225c0e0cf28a767d5912bb7c55b7920972f30ce091b59252364af"
+    },
+    "历史参考/软件展示站预览/assets/catalog-font-0.ttf": {
+      "size": 100812,
+      "sha256": "215dd957a088d84011d4e810b5aa2e364c62d0710c0be3f6f7215234c37be1ca"
+    },
+    "历史参考/软件展示站预览/assets/catalog-font-1.ttf": {
+      "size": 100788,
+      "sha256": "d4a3e3aacc4331767b959c2680088972ae2e2552da05448149728dd92c7b94e1"
+    },
+    "历史参考/软件展示站预览/assets/catalog-font-2.ttf": {
+      "size": 100784,
+      "sha256": "1f75653e3187367e81cfd7b5fdc97809ffcd471e004c765415490642de9f143f"
+    },
+    "历史参考/软件展示站预览/assets/catalog-font-3.ttf": {
+      "size": 100828,
+      "sha256": "97db619bc97862485ee63663dae9d7793476b04eae92c4478463c356f42cd109"
+    },
+    "历史参考/软件展示站预览/assets/OFL.txt": {
+      "size": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    "历史参考/软件展示站预览/DESIGN.md": {
+      "size": 16655,
+      "sha256": "87f048de9f3163fa8400ce3249fe88dd257ca9075db17ee19469983769fdab32"
+    },
+    "历史参考/软件展示站预览/index.html": {
+      "size": 582378,
+      "sha256": "e07b906eb45b8040b21f3e968de726d0da50f5e4708005005a49070301cd8b3a"
+    },
+    "历史参考/软件展示站预览/original.html": {
+      "size": 34884,
+      "sha256": "ab1db6b548c4fd45d68595d2595a2fdb5c3855615e0033b01a5933dea428dcd2"
+    },
+    "历史参考/软件展示站预览/PRODUCT.md": {
+      "size": 2464,
+      "sha256": "532dfbae31f38e006df6561a4b763de60f06e2f6eb27d19fc9fcc0cc7fcac7de"
+    },
+    "历史参考/软件展示站预览/redesign.html": {
+      "size": 587280,
+      "sha256": "6bc0815a822b2b58367ffe0a991079407d248536e15a5e6b8b5d829950839c8e"
+    },
+    "展示网站/.dockerignore": {
+      "size": 152,
+      "sha256": "677f6df4f08440360d1b4d04ec523519ca509869124dcb6b7c33adc37f39a6aa"
+    },
+    "展示网站/.env.example": {
+      "size": 276,
+      "sha256": "87f3d49cc34991e1cc823f1d2b9b438638e18245621cc32a6e6733f3a00f54cb"
+    },
+    "展示网站/.gitignore": {
+      "size": 71,
+      "sha256": "c0a8763c57ee85986e46308377ec6dea0d60c328dd6ec72644b0efb20e554a97"
+    },
+    "展示网站/ARCHITECTURE.md": {
+      "size": 2629,
+      "sha256": "766325dbcfa22088dc9727fc024b9c881d6d8a794ab71e76a818d538e48dabb1"
+    },
+    "展示网站/catalog/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "展示网站/catalog/context.py": {
+      "size": 111,
+      "sha256": "d51be6ee1dec02c7130debccf86d36666f40e7ef80a28467c5e5c602d8f75d9c"
+    },
+    "展示网站/catalog/forms.py": {
+      "size": 6816,
+      "sha256": "c29dc74cc014e13cc813f2207b2554d56bf1fafbcc978cbb9c546a2102e81736"
+    },
+    "展示网站/catalog/management/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "展示网站/catalog/management/commands/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "展示网站/catalog/management/commands/backup_site.py": {
+      "size": 1837,
+      "sha256": "8b63132ac1487d17d132a332fab01397dd307d279de776ec1d3b5578f97e73e3"
+    },
+    "展示网站/catalog/management/commands/seed_demo.py": {
+      "size": 5222,
+      "sha256": "c89b14668551ec0cb8e438f6165f1109da2e1f24c5f0553943e749e01010323c"
+    },
+    "展示网站/catalog/migrations/0001_initial.py": {
+      "size": 7159,
+      "sha256": "afdda1e140d055e5eb5d8e4665351c1e4779e5eb5ffb282c13cbc99d172b6a82"
+    },
+    "展示网站/catalog/migrations/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "展示网站/catalog/models.py": {
+      "size": 2783,
+      "sha256": "bff33ebbfda782cc186aff422c2aa737f60faddd68345dedad560abd9b022716"
+    },
+    "展示网站/catalog/test_closeout.py": {
+      "size": 3539,
+      "sha256": "0593d65fe72a55fc00d37213a3b7624221cedc9c4ef19ceb94c02bace9cd4c67"
+    },
+    "展示网站/catalog/tests.py": {
+      "size": 13482,
+      "sha256": "404c60edea52635eb59baff21f996c87acdd73d777650697208d737a73fc6f3a"
+    },
+    "展示网站/catalog/urls.py": {
+      "size": 1279,
+      "sha256": "476b1a3fe81c2596a00232b93746b8b693afda6ab0c9509e553bd25db1f61f9a"
+    },
+    "展示网站/catalog/views.py": {
+      "size": 15999,
+      "sha256": "2b99b552ac9bec3e3db82bddec632cc99e57db6e0f3bc2ecb0eaf7b3e7c58901"
+    },
+    "展示网站/compose.yaml": {
+      "size": 1152,
+      "sha256": "606338aa3e510794560cdd480ea025da290ce9b338f7262d51a0ebf4a28a5db4"
+    },
+    "展示网站/deploy/Dockerfile": {
+      "size": 599,
+      "sha256": "7b3a42e03db91678d4c3971901e2f870bf35e740e2da358767721abdf99782c7"
+    },
+    "展示网站/deploy/host-nginx.conf.example": {
+      "size": 651,
+      "sha256": "043588f7d5044ac3437fc095c1a717a44e69cbe99d5676f2bbb0c68249cbd745"
+    },
+    "展示网站/deploy/install-site.sh": {
+      "size": 1568,
+      "sha256": "ee801aacd4e6bc5c23a5a0583698acd9f574b8f1a3bba8a6d940278a6cde8884"
+    },
+    "展示网站/deploy/internal-nginx.conf": {
+      "size": 500,
+      "sha256": "ccee8b5df5e90472478159cc0c224cd0441073e5530640c8bb8d51a3b00452d7"
+    },
+    "展示网站/deploy/pre-update-backup.py": {
+      "size": 782,
+      "sha256": "a66efaf7e1da293f5696710d877ced67d26f774da41d67b743f55da60ea49bd7"
+    },
+    "展示网站/deploy/preflight.py": {
+      "size": 2243,
+      "sha256": "be2fe6bf46d45b2a9d8289c4c362d594f9e81bd5aa9f538cdfe0fa25c7286ae5"
+    },
+    "展示网站/DESIGN.md": {
+      "size": 6749,
+      "sha256": "77bbf1a0d2b8c584d4a157bbfaed9d075c0c0a77117614d22a9686d5b3f9ba02"
+    },
+    "展示网站/manage.py": {
+      "size": 230,
+      "sha256": "86efa00313fc712b7edc8445f151d2eaf7eb4ad903e3442bd56fbe2b31d88794"
+    },
+    "展示网站/PRODUCT.md": {
+      "size": 2608,
+      "sha256": "2e26fba70e8d438c0cea0b90fb7bb28d105351bb7bfc135480c64740919bf66f"
+    },
+    "展示网站/README.md": {
+      "size": 1560,
+      "sha256": "e66b8f93773aa7abd2d99da1bcb711aac31d377e99b371a9a57e2a7f1aa41da9"
+    },
+    "展示网站/requirements.txt": {
+      "size": 100,
+      "sha256": "a538ee5e77478169c337a4522ecc04a3c20c1734248f4faf52efe6b46263ea2a"
+    },
+    "展示网站/restore-backup.py": {
+      "size": 2981,
+      "sha256": "1a539d04f03e9da1a2d76f2b660c17c4a9701f7c2240595af49b56ed69d7063c"
+    },
+    "展示网站/scripts/browser-acceptance.cjs": {
+      "size": 12510,
+      "sha256": "2a1007f920eec379abaa78339dadb98e4386eabcc477ececf4600ad872c66f2f"
+    },
+    "展示网站/scripts/setup-acceptance.py": {
+      "size": 1139,
+      "sha256": "6fab88be0d9b65f192977b899354789dd1ddcb3463fc91a51f6c2acc7994ec46"
+    },
+    "展示网站/showcase/__init__.py": {
+      "size": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "展示网站/showcase/settings.py": {
+      "size": 4051,
+      "sha256": "bb95896eb77a499671edcc6f0a55fb35c95bf70cd1d9e4f6eb0f667eaa465b53"
+    },
+    "展示网站/showcase/urls.py": {
+      "size": 175,
+      "sha256": "c8982c7f9159f3d03b0190e4ac32e5a033639949396e5b8ad75eb35dadb9fbb6"
+    },
+    "展示网站/showcase/wsgi.py": {
+      "size": 170,
+      "sha256": "0c7ad2de220a1050e7aa987621e59faa5866946d8e54ebe1d7f6435f3ff8fa86"
+    },
+    "展示网站/start-local.py": {
+      "size": 1036,
+      "sha256": "4dec083aedce2234abe1b7373addd1292397b2e6f9c6b33864fb2c90ad2f1131"
+    },
+    "展示网站/static/editor.js": {
+      "size": 5489,
+      "sha256": "a6e6fdc3fceb3c8e305dca4bf29a6843b6067d1ecfde5be6a64e889bcdaf4d7e"
+    },
+    "展示网站/static/fonts/catalog-400.ttf": {
+      "size": 100812,
+      "sha256": "215dd957a088d84011d4e810b5aa2e364c62d0710c0be3f6f7215234c37be1ca"
+    },
+    "展示网站/static/fonts/catalog-500.ttf": {
+      "size": 100788,
+      "sha256": "d4a3e3aacc4331767b959c2680088972ae2e2552da05448149728dd92c7b94e1"
+    },
+    "展示网站/static/fonts/catalog-600.ttf": {
+      "size": 100784,
+      "sha256": "1f75653e3187367e81cfd7b5fdc97809ffcd471e004c765415490642de9f143f"
+    },
+    "展示网站/static/fonts/catalog-700.ttf": {
+      "size": 100828,
+      "sha256": "97db619bc97862485ee63663dae9d7793476b04eae92c4478463c356f42cd109"
+    },
+    "展示网站/static/fonts/OFL.txt": {
+      "size": 4481,
+      "sha256": "e35ffdebb2225b49814c31889cbb3ce69cb3509e6a9f431edaba5e1a6de8cd15"
+    },
+    "展示网站/static/mark.svg": {
+      "size": 226,
+      "sha256": "c4f74783ffb16f0e9c4493c03bafa084b1c624e2e5201291a070f40d17e3d5c3"
+    },
+    "展示网站/static/public-catalog.css": {
+      "size": 13535,
+      "sha256": "4aa71b3de0df046dde4974fd16c39544c6c46319d1bddab3efe938d70c049d38"
+    },
+    "展示网站/static/site.css": {
+      "size": 21390,
+      "sha256": "5ca7dda5e1c034872e51fe16ead2db3280faa49ed73076d11e721b2495d2614f"
+    },
+    "展示网站/static/site.js": {
+      "size": 7123,
+      "sha256": "75bc95938be0487b2763ac37a6cd4963d88c804e6a354265e27052ac89724f4c"
+    },
+    "展示网站/STATUS.md": {
+      "size": 6765,
+      "sha256": "03d41ccaee21abbf8913fd0be1d1b569b30c796a717bf985b906c55293301d37"
+    },
+    "展示网站/templates/admin_base.html": {
+      "size": 1284,
+      "sha256": "1feedc51b7dd903432ce6d98c5563598ca99c1444726a587e55e033bc1d2cf37"
+    },
+    "展示网站/templates/base.html": {
+      "size": 711,
+      "sha256": "c9e5e158048a46fe1d58e938b1e3c309684d32bf35bde5105e1495ef1730cf10"
+    },
+    "展示网站/templates/cards.html": {
+      "size": 2495,
+      "sha256": "a45d206cb8ab1ee58e1a72e8be6e1bfeec3e222a1d58d19d0c843f77a5e77fe8"
+    },
+    "展示网站/templates/catalog.html": {
+      "size": 2903,
+      "sha256": "a00af9186bf4b1b62773ed1b794fb10d678c94a25e8d24f23cf9d140a4e96826"
+    },
+    "展示网站/templates/categories.html": {
+      "size": 979,
+      "sha256": "a6d6e0a6acaa0f4bc3c8691852f31d1de69711d9e22e0cba9e2acbea776c9aab"
+    },
+    "展示网站/templates/category_delete.html": {
+      "size": 1144,
+      "sha256": "cc693e7121c97e6bf27ddc223b2176e057d8739a977f5528d6dce4fa12ea1bf9"
+    },
+    "展示网站/templates/category_edit.html": {
+      "size": 525,
+      "sha256": "ee2de3f8221f3121eba8281861173b9bea41f157c1ced49f443c97f2e3d8f1b5"
+    },
+    "展示网站/templates/error.html": {
+      "size": 272,
+      "sha256": "a4c172aa9c479531ce913d39b4ed12354ff756864f7a00f2b4e4dc1048af6145"
+    },
+    "展示网站/templates/fields.html": {
+      "size": 566,
+      "sha256": "20342d628c220acaff22cc31dbaf976b45b7fdd252e6b6f82b1bb57abe8dd9e8"
+    },
+    "展示网站/templates/icons/category.html": {
+      "size": 114,
+      "sha256": "cb203b01a7d9e8d0758b25db9b8767ab7ca467d22638f9a680b0fc2b5c4a4d3b"
+    },
+    "展示网站/templates/icons/close.html": {
+      "size": 160,
+      "sha256": "681a7d97ea735550c2a177d9d83f1e34924942a1b86d8266193f4622c148e74e"
+    },
+    "展示网站/templates/icons/download.html": {
+      "size": 198,
+      "sha256": "c196151e7dc8995dde9011d08d260e923e5f35fb92d749a02dad61667164692e"
+    },
+    "展示网站/templates/icons/expand.html": {
+      "size": 99,
+      "sha256": "3971e6e9a96d10ccd9fc1845388ef4456ea728ca0fc9cf1c10616323c3589477"
+    },
+    "展示网站/templates/icons/external.html": {
+      "size": 241,
+      "sha256": "f82292c8340d1acccd0ed5ef9425639304048c4d1dcda681b1134ed17c999c9a"
+    },
+    "展示网站/templates/icons/left.html": {
+      "size": 177,
+      "sha256": "36afb6f165bf763976be65069711bade14ce3afacaec58376a6c01165517d923"
+    },
+    "展示网站/templates/icons/plus.html": {
+      "size": 156,
+      "sha256": "ae50d450a82da5aff0d0becf284f0d574a474a0ab4eb590e62a01fb61023e46d"
+    },
+    "展示网站/templates/icons/right.html": {
+      "size": 177,
+      "sha256": "1c0d72e9365f47668885c433f9556632abc37b22aafc5f9c55fa502e1ecf6593"
+    },
+    "展示网站/templates/icons/search.html": {
+      "size": 181,
+      "sha256": "470a8c05f21d22b076fe708d95959149ffb2a0409fe9694a185693a57e701dce"
+    },
+    "展示网站/templates/lightbox.html": {
+      "size": 700,
+      "sha256": "d8e6de49d03f1f81da06632a9bc84ce29a95e49d0a1886b73a75165c45d6fa75"
+    },
+    "展示网站/templates/login.html": {
+      "size": 491,
+      "sha256": "e53dcdb0e30f2acd144ded432435e462356823ab55d7875cb6ea5734b796844e"
+    },
+    "展示网站/templates/pagination.html": {
+      "size": 731,
+      "sha256": "3cd2861f068f6fe01e9592631710f9832fe448eb5b1b12f131982e9e2775732b"
+    },
+    "展示网站/templates/password.html": {
+      "size": 308,
+      "sha256": "3c8957714371d5fa033edab9ab968a21c34f37bdd17f55e11f57ba277bdc8cee"
+    },
+    "展示网站/templates/preview.html": {
+      "size": 547,
+      "sha256": "7004b0d823bb45dd8f772b0ecc25dcd2514b3d94cbbca04f8443b11abc622d59"
+    },
+    "展示网站/templates/product_edit.html": {
+      "size": 4048,
+      "sha256": "dae6267ef29b6da464d4e54fbd658fce872f6abb3c1199a31b039c9de890a1b6"
+    },
+    "展示网站/templates/products.html": {
+      "size": 3111,
+      "sha256": "93fc2c95cb45c70ef6c02a775ddb1efb4207fa2d15ed6928520dbb230d1c2232"
+    },
+    "展示网站/templates/public-pagination.html": {
+      "size": 1147,
+      "sha256": "3a79ea3658951632710c6514cf6ed6b5cc68fd79224c32f315b3fcb837150300"
+    },
+    "展示网站/templates/settings.html": {
+      "size": 324,
+      "sha256": "5771f4aa9fdce19a6f4ca10836daea76989c39b0699e9b7420c72b10c4b0c733"
+    },
+    "展示网站/创建管理员.cmd": {
+      "size": 71,
+      "sha256": "d3eccdcbdc73420b95c5468a78046e0f9e73027d74156cb9db1dd6a0608b3774"
+    },
+    "展示网站/启动本地网站.cmd": {
+      "size": 56,
+      "sha256": "18b8416ce6e9d8e62c2f0e283d89005d015f692155538954c1901ed2abf80f66"
+    },
+    "展示网站/文档/00-开始使用.md": {
+      "size": 1658,
+      "sha256": "6efe7304f1e47b0bed12330f70b8fd73361d28a3431fb4eff1de482d9f5814c1"
+    },
+    "展示网站/文档/01-后台操作.md": {
+      "size": 2700,
+      "sha256": "7d5334c3f508ecc800c137d9e6cfd06bad7b208e34d09e9cca1bc95c3f17049e"
+    },
+    "展示网站/文档/02-部署交接.md": {
+      "size": 4212,
+      "sha256": "8fe79c4732bbcf859d8f9f2b4f00f889afe14335f12a6a8b39668021ba2e5861"
+    },
+    "展示网站/文档/03-备份与维护.md": {
+      "size": 2809,
+      "sha256": "fe6472c9ae169856621b1dced4b63b2c863f1b601c0a87cff64cedb5d6737c0f"
+    },
+    "展示网站/文档/04-验收清单.md": {
+      "size": 1814,
+      "sha256": "cf3706bda31f551593c0213f1b0a8868261582829a588ec8e729d5cf3429d486"
+    },
+    "展示网站/界面预览/catalog.css": {
+      "size": 12837,
+      "sha256": "b6467eb6afecfb45c0ff7c4bb2da483831396e9362db49573014288c10b1b70d"
+    },
+    "展示网站/界面预览/catalog.js": {
+      "size": 10826,
+      "sha256": "6aa0ea94f3ef602177b13d4f7395ff4beb729dc5c0fb7293462b78fa7be9bd65"
+    },
+    "展示网站/界面预览/index.html": {
+      "size": 3269,
+      "sha256": "09a9e00731f249d65fa86cf29c4b90f5a54e6bfa380888ea012ac194edd1c93e"
+    },
+    "展示网站/界面预览/README.md": {
+      "size": 2888,
+      "sha256": "8f4c790dff74b23c6ac9164f483f038fc1bace115892de03c5238a4e4300fb5b"
+    },
+    "展示网站/界面预览/start-preview.py": {
+      "size": 1690,
+      "sha256": "dc35bb90640be26460a64da9c7afcd44e65e8e7122645dd726308770323be962"
+    },
+    "接入说明/00-先读我.md": {
+      "size": 6908,
+      "sha256": "2f0da6761b271e503bd49194dddb64f74f0a1fceb48ae34ab4b67ce17d5e6bec"
+    },
+    "接入说明/01-平台是干什么的.md": {
+      "size": 2725,
+      "sha256": "da0b82bda01db24405bdcf97b3e518da16b0d618f08b878d081f77c5368cf4d2"
+    },
+    "接入说明/02-三层怎么接.md": {
+      "size": 2563,
+      "sha256": "e9a201b0fe9ae35d3fa72516ef2e7ee9d6fd367f7d9293b7eb44d934840ddb70"
+    },
+    "接入说明/03-授权A做什么.md": {
+      "size": 8058,
+      "sha256": "fa70117703eb1a4d9d88261b9560e1c6c825cbba0dff4be2d628c9bc07c4a8f7"
+    },
+    "接入说明/04-核心EXE做什么.md": {
+      "size": 2731,
+      "sha256": "b886fbb18ee35bc1a8c355942e1120b5d75481350f12d1bc8a4e3bba729db1cb"
+    },
+    "接入说明/05-每个软件自己要填的.md": {
+      "size": 2365,
+      "sha256": "9bc841ca3df401fbd6dde23ba0bb37ac190886649515887549ee7b5facd48694"
+    },
+    "接入说明/06-禁止事项.md": {
+      "size": 4367,
+      "sha256": "ea9d31bf33a4c13e413ec3c38dc557a4a85abf9871ab8fed7a3ffce741b2b477"
+    },
+    "接入说明/07-细节去哪查.md": {
+      "size": 2164,
+      "sha256": "54ab0fa3fe3b02f04599945097febebba6a6e835b04752941db68573702fdeee"
+    },
+    "接入说明/08-测试站和正式站.md": {
+      "size": 1465,
+      "sha256": "7f7a541fb36441bf9116cf9798e3096297b2119842013392a1d2aaef5f2bd9d9"
+    },
+    "接入说明/09-给软件项目AI的接入指令.md": {
+      "size": 7491,
+      "sha256": "6d07f8e4b914d7badb8fbe37fae9aeab0d1a6bae4f2f68ae65998a0e6583ec72"
+    },
+    "独立直链站/.env.example": {
+      "size": 263,
+      "sha256": "0cb3f19c053e04ce8696867b2eaec53a674c7f86384d530a7e8f88918b85c7f0"
+    },
+    "独立直链站/.gitignore": {
+      "size": 81,
+      "sha256": "62ee755e3d16d10cd0384370e570ebd8f2dca4e4c50ecb4e012558a92ffb408e"
+    },
+    "独立直链站/00-先读我.md": {
+      "size": 2264,
+      "sha256": "5b2ef2a6e9001e531d7e65ddf102d6b265a9426829da231c5d66bbc6fe6ddbbd"
+    },
+    "独立直链站/01-页面与流程方案.md": {
+      "size": 13194,
+      "sha256": "3bab1eeef4168ad7f40e417c3b8faff881febc23ea09d9941595cd0b8de0b6e1"
+    },
+    "独立直链站/ARCHITECTURE.md": {
+      "size": 2573,
+      "sha256": "2add7d39b135d7de33cc0c33241f127c74170d85164b19379505484ac5c7dd13"
+    },
+    "独立直链站/deploy/direct-link-maintain.service.example": {
+      "size": 396,
+      "sha256": "e77a9ac7b262fb28b409297f3c31b07f9dbee2c0d36d3b3ed79fe1e75618d4e9"
+    },
+    "独立直链站/deploy/direct-link-maintain.timer.example": {
+      "size": 138,
+      "sha256": "6fcdc5414585f7004c1de279788114b911d6dba43cd5071a5d8034e82419f5ce"
+    },
+    "独立直链站/deploy/direct-link-site.service.example": {
+      "size": 578,
+      "sha256": "e8a444dcc8fad6147362ea5def3137bbb34b41d6870bae93d20fcaa962b711f9"
+    },
+    "独立直链站/deploy/install-site.sh": {
+      "size": 3070,
+      "sha256": "283ba56b968c47ab1df24e65d6e76796201a6360204aa47ac4ce2df55530701e"
+    },
+    "独立直链站/deploy/nginx.conf.example": {
+      "size": 1594,
+      "sha256": "497bb45405322badb4531c96bd9c1d526dbb4f13f33a61ec082143b2f5f3d2a4"
+    },
+    "独立直链站/deploy/verify-site.py": {
+      "size": 2369,
+      "sha256": "3041278e43b56155937a54613c7e5e6715c9590372407cbd1d5880d7553d5cfa"
+    },
+    "独立直链站/DESIGN.md": {
+      "size": 1534,
+      "sha256": "a1eef0e28d74e34c12d44f4797d9fc493dc126ab731ec962f5794ce0babcd009"
+    },
+    "独立直链站/directsite/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "独立直链站/directsite/settings.py": {
+      "size": 4009,
+      "sha256": "ab702fa02cd1033112562c23f92d814cf9309f51fda79ec67d0dc703744b53bf"
+    },
+    "独立直链站/directsite/urls.py": {
+      "size": 982,
+      "sha256": "8fe1ddc52aca0c3c5272b51b837acfbe1bcfd7eb8a84ca11774d1710551ff20d"
+    },
+    "独立直链站/directsite/wsgi.py": {
+      "size": 174,
+      "sha256": "e5fa58e625a088204ba96e1f88813c875219bbfe48f2d3b87d1140256cf4b7ee"
+    },
+    "独立直链站/files/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "独立直链站/files/deployment.py": {
+      "size": 1039,
+      "sha256": "fb00781e13a616a38f1bc06de0e8d17b632e7afb6e1e1c0dd79b1940782d2f69"
+    },
+    "独立直链站/files/management/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "独立直链站/files/management/commands/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "独立直链站/files/management/commands/backup_site.py": {
+      "size": 2771,
+      "sha256": "04048f9ac8c5b73a74ae33769f19f5712cd03226b0730d9b63ff434cc5612416"
+    },
+    "独立直链站/files/management/commands/maintain_files.py": {
+      "size": 395,
+      "sha256": "75c8203789fbf5cc4e1d5790d6918e746fdf711e4c8e453edba3f4bce3bf3411"
+    },
+    "独立直链站/files/middleware.py": {
+      "size": 574,
+      "sha256": "ab3c8447f7a8ee8ee4d132902238d9fe3f611cd8d864c20166254cd7f8225038"
+    },
+    "独立直链站/files/migrations/0001_initial.py": {
+      "size": 6684,
+      "sha256": "4c8058fa5ea5a41e60f3c0bf8eed07a966abc7618c1f8a8cc66315b2ef812e16"
+    },
+    "独立直链站/files/migrations/__init__.py": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "独立直链站/files/models.py": {
+      "size": 2930,
+      "sha256": "3bbeb34d48be3b047c705ee599ed39d7f4b9e996e14e1587c91b542060d36bb6"
+    },
+    "独立直链站/files/services.py": {
+      "size": 14391,
+      "sha256": "2c527485fcb65982fca583493de1860ec3292dc543c47d6ea9418a77d088e807"
+    },
+    "独立直链站/files/storage.py": {
+      "size": 2999,
+      "sha256": "79321911b74cae0bea3391a966389234b88e3fabd6c2ac3f9f62a54fcc346fba"
+    },
+    "独立直链站/files/test_closeout.py": {
+      "size": 4399,
+      "sha256": "58e0036fe06ac30c59fc10bd3a8a8fc98c35f08b52fabd6bdba21b46191a06bb"
+    },
+    "独立直链站/files/test_review_fixes.py": {
+      "size": 5142,
+      "sha256": "baa01aaac215405854c720b2a82feab4b53e7fdca694609bd46e71ccc41f0b46"
+    },
+    "独立直链站/files/tests.py": {
+      "size": 15774,
+      "sha256": "2c4f8dc4e458bf51d37baec3ddde27de5a4616bdccdbf7f0fa042cdaa1f83feb"
+    },
+    "独立直链站/files/views.py": {
+      "size": 12765,
+      "sha256": "abfa77b4f3c01d48b6591dd0bd8949e22dc5cf4ae41e9f81e6f7e3b9ea14d1e2"
+    },
+    "独立直链站/manage.py": {
+      "size": 198,
+      "sha256": "0137db63f08fd04f750f1f20de31f31ffc95430b484f36ff7b748cdc37a9295e"
+    },
+    "独立直链站/PRODUCT.md": {
+      "size": 1073,
+      "sha256": "3783df995130d5956cbdd371b0f6933c9a8e0b6d8fcea1c0d18a290c71620f51"
+    },
+    "独立直链站/README.md": {
+      "size": 6613,
+      "sha256": "889a2f7b108fc418bbcb1b35a980129376bf22988f2f057ed396b2065ec4fdd8"
+    },
+    "独立直链站/requirements.txt": {
+      "size": 34,
+      "sha256": "415b8dbea0498f8611dd85ba2914bab0bfffe0f25f966796e7e41aba488ac7e0"
+    },
+    "独立直链站/restore-backup.py": {
+      "size": 5035,
+      "sha256": "22df597192ba5febecea89f1b620d3a4ae7d8d73b30e89d44f5fc3c6ce73b2d4"
+    },
+    "独立直链站/scripts/browser_test.cjs": {
+      "size": 5667,
+      "sha256": "d25fd5f0132cb1edac90e38725adea9c822550c91fec1028254d4b9cfb17924b"
+    },
+    "独立直链站/scripts/live_transfer_test.py": {
+      "size": 4835,
+      "sha256": "d7c35a811fde23c4dfec59ef04dc7113554506bcd925e16f6425908edce89ace"
+    },
+    "独立直链站/scripts/lock_download_test.py": {
+      "size": 1634,
+      "sha256": "e51d00f6e61e8eff66979848ca427dbc0ef0852cd5a287579923f6efd2b58b9b"
+    },
+    "独立直链站/scripts/prepare_acceptance.py": {
+      "size": 2225,
+      "sha256": "9480ed63564ffb448f619c057e07a281317797379433d230aa995545ae98612b"
+    },
+    "独立直链站/scripts/review_upload_test.cjs": {
+      "size": 3015,
+      "sha256": "fe34a8c7d66a4b5b6033a51abdd16cdb15f89a2968913c00dae574bf233a214e"
+    },
+    "独立直链站/scripts/test_upload_isolation.cjs": {
+      "size": 3597,
+      "sha256": "fbd4bdb9100e935dab5979649098b39ab80c388f202375bd1ba5c23c9dc0681d"
+    },
+    "独立直链站/scripts/test_upload_network.cjs": {
+      "size": 11409,
+      "sha256": "5d6dadc36914015a809c05bb8d548a8eb9b027681939d2544c89c7f2065eddfe"
+    },
+    "独立直链站/start-local.py": {
+      "size": 737,
+      "sha256": "9aca192d9912fda78cc4d9123e136155c9ae3f423b92d6feee3778dd26b7257a"
+    },
+    "独立直链站/static/site.css": {
+      "size": 11621,
+      "sha256": "71f20bef5179711ec1372932065e12ec3a4e308cbc7d96f471c2ab75d8b87598"
+    },
+    "独立直链站/static/site.js": {
+      "size": 23550,
+      "sha256": "8396b3acb4b1e08523fc71493b6bfdbb9336ce443561c893e9ead33a79f16703"
+    },
+    "独立直链站/STATUS.md": {
+      "size": 7803,
+      "sha256": "2a9f44c9d65f9f15056851f34f89f26e104546eeeed28c653fd58350d8d3e7c5"
+    },
+    "独立直链站/templates/base.html": {
+      "size": 1367,
+      "sha256": "21b355995d30e4b7cf43e52b31a46b46b0d67e4c24f3b4788928982f18fada37"
+    },
+    "独立直链站/templates/error.html": {
+      "size": 284,
+      "sha256": "51b225d462cfe69211ade9c849f91c2bcad1e0dadf42316cbbd76638207a58ab"
+    },
+    "独立直链站/templates/files.html": {
+      "size": 7806,
+      "sha256": "d269295c7f4453cdacaa463be3dff6c5b3c9bac6f18a2719a3ad09411374ae64"
+    },
+    "独立直链站/templates/login.html": {
+      "size": 762,
+      "sha256": "3adf6dedec893daf9968417bad7372123c2782f1e888e10fd2cd8b62bf7fd94b"
+    },
+    "独立直链站/templates/settings.html": {
+      "size": 1183,
+      "sha256": "1bf816a2eedc80b0d9e875cebd4278f8d6233c63ac9b197ba81949559b5f7fe6"
+    },
+    "独立直链站/创建管理员.cmd": {
+      "size": 241,
+      "sha256": "de8bd07bb0e43bd3b2f4508706070cb148e111176d97d80c9e77b1c8b733051c"
+    },
+    "独立直链站/启动本地网站.cmd": {
+      "size": 226,
+      "sha256": "ddd75d9d73b22ed2e39b0bb098545a8510427538bef396a47985ecfcf9208ad5"
+    },
+    "软件授权接入包/.gitattributes": {
+      "size": 186,
+      "sha256": "000328253ec925b9a72c0eeb2ee2d565e88cf26a1403a80be9598de0950f369f"
+    },
+    "软件授权接入包/00-先读我.md": {
+      "size": 3376,
+      "sha256": "2900b008de0afd4cfb8ab104d0ada0e366968ed93d6ae14bfbc9121a816ddc4a"
+    },
+    "软件授权接入包/01-给软件AI的提示词.txt": {
+      "size": 463,
+      "sha256": "0cc043cd1b065a4c8a134844eedb9e1f088bfbbccad762d67a63dc465398be4a"
+    },
+    "软件授权接入包/AGENTS.md": {
+      "size": 289,
+      "sha256": "5fe26884c0031fefc474fbbc1abc53e6a608dc34cd20d47476b45d697b1d9217"
+    },
+    "软件授权接入包/交付清单.json": {
+      "size": 49441,
+      "sha256": "db775fd7b7e65bf72bfacb1c571a1fade4a4776d2fb05f909f885f2605b18a39"
+    },
+    "软件授权接入包/产品品牌适配清单.md": {
+      "size": 2885,
+      "sha256": "b10a34fa49f67239e8cff48969b9963c7df4b819333b2cf0b622b701e3826725"
+    },
+    "软件授权接入包/工具/prepare-config.py": {
+      "size": 11796,
+      "sha256": "e522a6bd9c632e2ad6c006d3a14086c46e25666cb8831a70f29feba7c37a1777"
+    },
+    "软件授权接入包/平台公开资料/09-给软件项目AI的接入指令.md": {
+      "size": 7491,
+      "sha256": "6d07f8e4b914d7badb8fbe37fae9aeab0d1a6bae4f2f68ae65998a0e6583ec72"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_a_core_v1/active.json": {
+      "size": 1264,
+      "sha256": "7e53bcb7d8e2ee34ebd32bef4675ca527442cf5b694a807c66ad5f28d7c1c189"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_a_core_v1/cross-scope.json": {
+      "size": 180,
+      "sha256": "f972c0786f7ce0473e6c652cd39be2a669d33d4126debbffd5978d2ff268c372"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_a_core_v1/expired.json": {
+      "size": 1151,
+      "sha256": "6ce7c4e39d37a698455bbb64af9b561b3c32418bae36b42b29b4478ddeee8bfd"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_a_core_v1/signature-invalid.json": {
+      "size": 182,
+      "sha256": "38d9d74dddc81f6b5210013908de209a99c27d48d7329547579b99deb935daa4"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/active.json": {
+      "size": 995,
+      "sha256": "0173ee1b122ecd3df8cfa612d6036b33c6352a6d512cfa9853571bd39b2391d3"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/blocked.json": {
+      "size": 1074,
+      "sha256": "cdcff6793e9d738d791c5ae8a554402d20667249a16a69c717aaebf2a00143d8"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/cross-scope.json": {
+      "size": 154,
+      "sha256": "8fd73c0aa3bd4aa2d2ca5742d900f0de234955227a132f8fb3f8fc9eb850ad34"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/device_scope-shapes.json": {
+      "size": 877,
+      "sha256": "f71220bf053b8a06b1cda2a1f0ac7f0f2c4b5464a901fd1a6fa7f6e06fb3eef8"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/expired.json": {
+      "size": 981,
+      "sha256": "1d3d9ab656cc528106fac0a8e878637d59d441edbd5fe7abbba88f6f10cde0ea"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/grace.json": {
+      "size": 973,
+      "sha256": "78b27e5231c554897478414f5a4b16859dcd08eefb2fdd3984c49bafd2201fa5"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/missing-required-field.json": {
+      "size": 139,
+      "sha256": "3f91ecbdbc9d95df47901f345ed7c4141812a0473d8e172ced4f6a2e8709a167"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/not_modified.json": {
+      "size": 989,
+      "sha256": "3c49e9c11cac0731dcbfc8573884839fcbe37921cb29d5e9544bc975f1050967"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/old-contract.json": {
+      "size": 165,
+      "sha256": "3776bedb72d43679631ebf60a04cb12937041219db5755d7709e75a883b7c42f"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/response-schema-invalid.json": {
+      "size": 202,
+      "sha256": "02afd97fc81e8f9c69137acdc279150af978bf0a55f27146d0cad99889fcb5b5"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/revoked.json": {
+      "size": 981,
+      "sha256": "653de82753bc41dd724d0ffd5132ad6775292a8fad266a1799bfea393b5b1cb2"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/risk-blocked-error.json": {
+      "size": 264,
+      "sha256": "60899df55c467200971a103b06077da2c88dfe1fc3785e912c06b317e428fbcf"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/signature-invalid.json": {
+      "size": 153,
+      "sha256": "fc96606deeb5d1c2caf6bcdd27c9bb7292cae6d65051205d58f8c4db3630529e"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/time-rollback.json": {
+      "size": 181,
+      "sha256": "d7b39f4d2319c6f9c14553e59a5792862efb5286d06004af7980832568fecf21"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/unbound.json": {
+      "size": 1324,
+      "sha256": "97ba67f290fb1b7448aeb79b8249bf85a1b365d0f43584ed8a5e830fe701f2fd"
+    },
+    "软件授权接入包/平台公开资料/fixtures/authorization_v1/unknown-key.json": {
+      "size": 138,
+      "sha256": "c1a3695c91b90d111d45238f0d7988af4449847bf1f607dcab6a2481c43df149"
+    },
+    "软件授权接入包/平台公开资料/fixtures/README.md": {
+      "size": 676,
+      "sha256": "592f8a0e56489efeae4b37f566cf125fb17d867f3c0125a3378b86e658f71d8a"
+    },
+    "软件授权接入包/平台公开资料/protocol/authorization-a-core.v1.schema.json": {
+      "size": 5339,
+      "sha256": "a86c135593f704068ccd6174ca728973fe61930fda760eec2b9673c79fd9ffd6"
+    },
+    "软件授权接入包/平台公开资料/protocol/authorization.v1.schema.json": {
+      "size": 5151,
+      "sha256": "1abfa47df9ebbfec26c2fc063a4f139a221e93efc3b3da5ee59ec26136318e06"
+    },
+    "软件授权接入包/平台公开资料/protocol/device-proof.v1.json": {
+      "size": 1476,
+      "sha256": "4e6e45cf37ef780da84aa3e26c3e28ed24ec4d173e2a714746bcb3480db5aeee"
+    },
+    "软件授权接入包/平台公开资料/客户端API合同.md": {
+      "size": 51235,
+      "sha256": "96412f882efa36adda23a9063705962ec7196800ddb831ac5a1d9e1233566005"
+    },
+    "软件授权接入包/平台公开资料/客户端接入合同.md": {
+      "size": 9806,
+      "sha256": "831ce2c0ccd7d20f88b405c0552877637c11cbbede747ca52a860d8f8e5db82a"
+    },
+    "软件授权接入包/平台公开资料/接口与能力说明.md": {
+      "size": 10252,
+      "sha256": "43d6786c938eea88b1700ea0a49c48bcbf426381cb14c1b6928e4574ca860188"
+    },
+    "软件授权接入包/平台公开资料/接口字段索引.json": {
+      "size": 36723,
+      "sha256": "f9b114492a383f4c3d6fa863de65568c3abf464f9c08dc6dd84601c116177522"
+    },
+    "软件授权接入包/平台公开资料/模板兼容差异.md": {
+      "size": 5976,
+      "sha256": "435872b3964149246945ec9753f36bfbc69f30bc93d2505c143fb72e7c9481d9"
+    },
+    "软件授权接入包/授权启动器模板/.gitignore": {
+      "size": 1071,
+      "sha256": "d52fe089fcfb09edc8a99f30cae4c64ea93f2de92c4501239ff4d1f00ade7e2c"
+    },
+    "软件授权接入包/授权启动器模板/AGENTS.md": {
+      "size": 318,
+      "sha256": "88a87eb2f281c6c81b6719830b947581ed0a8e4ba47c1aac8013030d172bac8e"
+    },
+    "软件授权接入包/授权启动器模板/AI-HANDOFF.md": {
+      "size": 5468,
+      "sha256": "6bb52c9a58fccb67dbcf187ec71fed773a0fd5eeb0a4aee67babd0119e410933"
+    },
+    "软件授权接入包/授权启动器模板/Cargo.lock": {
+      "size": 82731,
+      "sha256": "fdfb590a2a2a0ca02e51c6f700eb49b7f21ebe1f72d85573dfa2e8b93f16f475"
+    },
+    "软件授权接入包/授权启动器模板/Cargo.toml": {
+      "size": 1227,
+      "sha256": "5884fd1b765bdabc4f0d50d96ca830f7b5d6a0a45f1db98e1f02c7433c07ace1"
+    },
+    "软件授权接入包/授权启动器模板/docs/ARCHITECTURE.md": {
+      "size": 268,
+      "sha256": "b657ea9653356b6db00a2da7868edd6512a5ea4ee1bab9473194280433add937"
+    },
+    "软件授权接入包/授权启动器模板/docs/COPY-SYNC.md": {
+      "size": 229,
+      "sha256": "3475ad475b833a7586b27ace21f70a9f56a229162ce9f2bae854babc9c83ede8"
+    },
+    "软件授权接入包/授权启动器模板/docs/CURRENT-RUNTIME.md": {
+      "size": 8795,
+      "sha256": "5accea48f96de1e031f25ba3db202538f339b6624d3759019c69946b3e96f83b"
+    },
+    "软件授权接入包/授权启动器模板/docs/FEATURES.md": {
+      "size": 361,
+      "sha256": "7273d1f91f832aa45ce44f74a99191049c02110f30169bf10bf3f91181c80d23"
+    },
+    "软件授权接入包/授权启动器模板/docs/PLATFORM-INTEGRATION-HANDOFF.md": {
+      "size": 301,
+      "sha256": "9554798e93e66dc873da6ef815caddee6214e8ea1bf4666614d77d6a427cd7b3"
+    },
+    "软件授权接入包/授权启动器模板/docs/PROJECT.md": {
+      "size": 231,
+      "sha256": "c9c2c0938c60091bde9f40916c13a57493170d31638506294fa709f2ee3694b2"
+    },
+    "软件授权接入包/授权启动器模板/docs/STATUS.md": {
+      "size": 343,
+      "sha256": "873f40f06fae925ffa85d752ec345132bdf6fc2a00fab2f3f3fa0ee81a10e6a9"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/active.authorization-a-core.v1.json": {
+      "size": 1199,
+      "sha256": "841af3d2d314a3654f44142e06976d7ac20db505209957cf154086386b95be89"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/auth-invalid.authorization-a-core.v1.error.json": {
+      "size": 762,
+      "sha256": "661d7a7274aa67decfad9fc561fb19255868ac2794dac29969f06cd1998569dd"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/invalid.rollback.authorization-a-core.v1.json": {
+      "size": 1220,
+      "sha256": "fe05a790de5e2931d9352cb8eb2590756ac306433bb6df95af0b9fde16262aa1"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/invalid.unconfirmed-device-scope.authorization.v1.json": {
+      "size": 1206,
+      "sha256": "0dbec2fbd06d299e236f5ba4a36aea9df952b6cef019840b1b2fdc949113786a"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/platform-request.authorization.v1.json": {
+      "size": 867,
+      "sha256": "71b06f16f8d5e505143320fd6c5e32142df09985a2b3ce6495034facad2b3d6d"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/structured.active.authorization.v1.json": {
+      "size": 1259,
+      "sha256": "285502908c4840286f43434893f4a38f6379ddaa4087e91f257642ec0a0d16e3"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization/unbound.deactivate.authorization.v1.json": {
+      "size": 1263,
+      "sha256": "f3d2df6b115227f6ab142f690aed29b2993e4199338d6fed472886fd51d94e7e"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_a_core_v1/active.json": {
+      "size": 1264,
+      "sha256": "7e53bcb7d8e2ee34ebd32bef4675ca527442cf5b694a807c66ad5f28d7c1c189"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_a_core_v1/cross-scope.json": {
+      "size": 180,
+      "sha256": "f972c0786f7ce0473e6c652cd39be2a669d33d4126debbffd5978d2ff268c372"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_a_core_v1/expired.json": {
+      "size": 1151,
+      "sha256": "6ce7c4e39d37a698455bbb64af9b561b3c32418bae36b42b29b4478ddeee8bfd"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_a_core_v1/signature-invalid.json": {
+      "size": 182,
+      "sha256": "38d9d74dddc81f6b5210013908de209a99c27d48d7329547579b99deb935daa4"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/active.json": {
+      "size": 995,
+      "sha256": "0173ee1b122ecd3df8cfa612d6036b33c6352a6d512cfa9853571bd39b2391d3"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/blocked.json": {
+      "size": 1074,
+      "sha256": "cdcff6793e9d738d791c5ae8a554402d20667249a16a69c717aaebf2a00143d8"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/cross-scope.json": {
+      "size": 154,
+      "sha256": "8fd73c0aa3bd4aa2d2ca5742d900f0de234955227a132f8fb3f8fc9eb850ad34"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/device_scope-shapes.json": {
+      "size": 877,
+      "sha256": "f71220bf053b8a06b1cda2a1f0ac7f0f2c4b5464a901fd1a6fa7f6e06fb3eef8"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/expired.json": {
+      "size": 981,
+      "sha256": "1d3d9ab656cc528106fac0a8e878637d59d441edbd5fe7abbba88f6f10cde0ea"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/grace.json": {
+      "size": 973,
+      "sha256": "78b27e5231c554897478414f5a4b16859dcd08eefb2fdd3984c49bafd2201fa5"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/missing-required-field.json": {
+      "size": 139,
+      "sha256": "3f91ecbdbc9d95df47901f345ed7c4141812a0473d8e172ced4f6a2e8709a167"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/not_modified.json": {
+      "size": 989,
+      "sha256": "3c49e9c11cac0731dcbfc8573884839fcbe37921cb29d5e9544bc975f1050967"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/old-contract.json": {
+      "size": 165,
+      "sha256": "3776bedb72d43679631ebf60a04cb12937041219db5755d7709e75a883b7c42f"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/response-schema-invalid.json": {
+      "size": 202,
+      "sha256": "02afd97fc81e8f9c69137acdc279150af978bf0a55f27146d0cad99889fcb5b5"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/revoked.json": {
+      "size": 981,
+      "sha256": "653de82753bc41dd724d0ffd5132ad6775292a8fad266a1799bfea393b5b1cb2"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/risk-blocked-error.json": {
+      "size": 264,
+      "sha256": "60899df55c467200971a103b06077da2c88dfe1fc3785e912c06b317e428fbcf"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/signature-invalid.json": {
+      "size": 153,
+      "sha256": "fc96606deeb5d1c2caf6bcdd27c9bb7292cae6d65051205d58f8c4db3630529e"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/time-rollback.json": {
+      "size": 181,
+      "sha256": "d7b39f4d2319c6f9c14553e59a5792862efb5286d06004af7980832568fecf21"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/unbound.json": {
+      "size": 1324,
+      "sha256": "97ba67f290fb1b7448aeb79b8249bf85a1b365d0f43584ed8a5e830fe701f2fd"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/authorization_v1/unknown-key.json": {
+      "size": 138,
+      "sha256": "c1a3695c91b90d111d45238f0d7988af4449847bf1f607dcab6a2481c43df149"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/profiles/malformed.json": {
+      "size": 79,
+      "sha256": "4d2e0170a34c7a892126c2c9bb0454ff1536c73858ce6e40bcadd538867a50b5"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/profiles/sample-product-a.json": {
+      "size": 745,
+      "sha256": "cf5f7bdbf708eea7112a9b3a8d5fa2353a548638000b1290dc60ec9ad13106fe"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/profiles/sample-product-b.json": {
+      "size": 741,
+      "sha256": "2e3a381a2c029192e9597c0ef8b9c947093b6ee4761a49380c5fe73c0d422c7a"
+    },
+    "软件授权接入包/授权启动器模板/fixtures/ui/neutral.authorization-a-ui.v1.json": {
+      "size": 1093,
+      "sha256": "cfe9681310b2d1b9874cec00286ec87bb7fe8c2c30a791bd57be6ac67edf8581"
+    },
+    "软件授权接入包/授权启动器模板/HANDOFF-COPY.json": {
+      "size": 150,
+      "sha256": "db8d6ede628f428d1b09b070692b77b125cb8b04e70e7d0659e2ead75fc3c017"
+    },
+    "软件授权接入包/授权启动器模板/OWNER-SPEECH.md": {
+      "size": 269,
+      "sha256": "1c6a62a50d151396f0d020296607cec98c4fac16b7642a6fe10c9dd5b5083580"
+    },
+    "软件授权接入包/授权启动器模板/protocol/a-core.v1.frame.schema.json": {
+      "size": 1277,
+      "sha256": "97166eb29e0a6c26d8ae38546d6a742c513f01379a764dd0bc47411c0b4f7cc8"
+    },
+    "软件授权接入包/授权启动器模板/protocol/a-core.v1.schema.json": {
+      "size": 2474,
+      "sha256": "dc4f85d1fea884f68e8e05fad9773611eda48bd06ba61f59c67066d4be057983"
+    },
+    "软件授权接入包/授权启动器模板/protocol/authorization-a-core.v1.error.schema.json": {
+      "size": 2906,
+      "sha256": "247c7d6c3bb0113f758ad7ddf0156ef285134eca686cdde34b7176d6fdc4f478"
+    },
+    "软件授权接入包/授权启动器模板/protocol/authorization-a-core.v1.frame.schema.json": {
+      "size": 931,
+      "sha256": "0af94877a213ba9e0dd763a95d59f7245008786051cb56807a2865d35b553842"
+    },
+    "软件授权接入包/授权启动器模板/protocol/authorization-a-core.v1.schema.json": {
+      "size": 5339,
+      "sha256": "a86c135593f704068ccd6174ca728973fe61930fda760eec2b9673c79fd9ffd6"
+    },
+    "软件授权接入包/授权启动器模板/protocol/authorization-a-ui.v1.schema.json": {
+      "size": 3225,
+      "sha256": "2b10bcceea4ec8827985201ce7e01bb1b9a3f7b5c973a81a1d7a0f4088713c6f"
+    },
+    "软件授权接入包/授权启动器模板/protocol/authorization.v1.schema.json": {
+      "size": 5151,
+      "sha256": "1abfa47df9ebbfec26c2fc063a4f139a221e93efc3b3da5ee59ec26136318e06"
+    },
+    "软件授权接入包/授权启动器模板/protocol/device-proof.v1.json": {
+      "size": 1476,
+      "sha256": "4e6e45cf37ef780da84aa3e26c3e28ed24ec4d173e2a714746bcb3480db5aeee"
+    },
+    "软件授权接入包/授权启动器模板/protocol/launch-ticket.v1.md": {
+      "size": 6080,
+      "sha256": "6b0942c2df2031995995e5e69f797d84e4ef17982d8ea8d6275c3cce25aab14c"
+    },
+    "软件授权接入包/授权启动器模板/protocol/product-manifest.v1.schema.json": {
+      "size": 2906,
+      "sha256": "e5d9f94b5ea082dec21671e4fca468d3b3c87e27e3a11c4d9a52e492db9bf51c"
+    },
+    "软件授权接入包/授权启动器模板/protocol/SYNC-20251001.md": {
+      "size": 1499,
+      "sha256": "4d070098c40ae43fa1f4100e823f16ec4ff42a2d3b6a912fd072039d2fe101b5"
+    },
+    "软件授权接入包/授权启动器模板/README.md": {
+      "size": 269,
+      "sha256": "1c6a62a50d151396f0d020296607cec98c4fac16b7642a6fe10c9dd5b5083580"
+    },
+    "软件授权接入包/授权启动器模板/scripts/check-template-init.ps1": {
+      "size": 5066,
+      "sha256": "6e99522a841da0f520a1a751a77cf9cf890a765b0f445319cd4f013afc48f1d5"
+    },
+    "软件授权接入包/授权启动器模板/scripts/check-windows-renderer-accessibility.ps1": {
+      "size": 27458,
+      "sha256": "dafb0be1a8bb0ed819a86f7fb5984bd760d179ac648188adc47c1d0e1caef54e"
+    },
+    "软件授权接入包/授权启动器模板/scripts/check-windows-renderer-gui.ps1": {
+      "size": 1129,
+      "sha256": "2aac55bebb1753bbb926a5fbad0d7e7dd82b3704ebf09689d2a769fd0122c24d"
+    },
+    "软件授权接入包/授权启动器模板/scripts/init-product.ps1": {
+      "size": 14070,
+      "sha256": "509e69f7a4c3b7c980ec0727bb26467b70acf52104f4ece8aec250dd5458150a"
+    },
+    "软件授权接入包/授权启动器模板/scripts/start-here.ps1": {
+      "size": 2190,
+      "sha256": "a25976049d2c0162188035f1ccd77b28ba2fe836b96e2f94c794eb6c2e2cffbb"
+    },
+    "软件授权接入包/授权启动器模板/SOURCE-COMMIT.txt": {
+      "size": 41,
+      "sha256": "4da00709f835cda03c3c3072c8d777b8924293199cc22e31cb16bb1ae8b4b1fa"
+    },
+    "软件授权接入包/授权启动器模板/src/.gitkeep": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "软件授权接入包/授权启动器模板/src/authorization.rs": {
+      "size": 145274,
+      "sha256": "739747b74b768fe93c3d876653c90d4a430ebd4be70f53fc08674b49051f4487"
+    },
+    "软件授权接入包/授权启动器模板/src/bin/a-template-core-conformance.rs": {
+      "size": 6718,
+      "sha256": "859ec3556d54a79093aa32467c3c075fb7414f2d695839bb638a048c45590763"
+    },
+    "软件授权接入包/授权启动器模板/src/bin/a-template-demo.rs": {
+      "size": 4239,
+      "sha256": "ced258fa38e2cc8dd3956aeba908d64f6ed40a57f2e3637147c6b9b6cc3afab2"
+    },
+    "软件授权接入包/授权启动器模板/src/bin/a-template-simulation.rs": {
+      "size": 2676,
+      "sha256": "dd30dc4938cd247b3c50d014a92a1526f0353b62a8d46dd007c2cbe8079153ea"
+    },
+    "软件授权接入包/授权启动器模板/src/bin/a-template-webview-ui.rs": {
+      "size": 6340,
+      "sha256": "04d0d0a966d5f8aa5e3209de3a046f04e180c9276c9f87257042db79717fe745"
+    },
+    "软件授权接入包/授权启动器模板/src/bin/a-template-windows-renderer.rs": {
+      "size": 2196,
+      "sha256": "a6554315f42943392e6e87da39da9610c13032b6f512453b34ed50a5d160e461"
+    },
+    "软件授权接入包/授权启动器模板/src/codec.rs": {
+      "size": 12243,
+      "sha256": "e65ccf2151fc05e90ea5251970a524e0d38ba8e517f36b3ef354ba1dc300d26a"
+    },
+    "软件授权接入包/授权启动器模板/src/contract.rs": {
+      "size": 19902,
+      "sha256": "5670852d169f6a701b7e7c995aa6569dc3e76f1ecac058947ec4db6a39a18a82"
+    },
+    "软件授权接入包/授权启动器模板/src/credential_vault.rs": {
+      "size": 52510,
+      "sha256": "a937f43588a4e43e8303bc145c678beb54fdd64d91a38b02fc480d853c92a7f5"
+    },
+    "软件授权接入包/授权启动器模板/src/current_contracts/authorization-a-core.v1.schema.json": {
+      "size": 5462,
+      "sha256": "37463695840af0b670de8ed493b0b76462b770146b2a431651e789545155e01c"
+    },
+    "软件授权接入包/授权启动器模板/src/current_contracts/authorization.v1.schema.json": {
+      "size": 5268,
+      "sha256": "8006f9430479b8ef7d162c84b659159beb0d0e4ad805bf4c8cd506d319a9bc18"
+    },
+    "软件授权接入包/授权启动器模板/src/current_contracts/device-proof.v1.json": {
+      "size": 1516,
+      "sha256": "a8b4dc08b1f464d786c19b75c66f7cf00705ab0e412cc61fa65afb044e515b38"
+    },
+    "软件授权接入包/授权启动器模板/src/current_runtime.rs": {
+      "size": 44579,
+      "sha256": "1fe85826b93210c03c3b55e233167e4cba2a7948cc703e7805e4448adb57e5fc"
+    },
+    "软件授权接入包/授权启动器模板/src/device_code.rs": {
+      "size": 3146,
+      "sha256": "f59b295d4072533c62c3620d08b942d89ae18271fe054ea915adb098cef55494"
+    },
+    "软件授权接入包/授权启动器模板/src/legacy.rs": {
+      "size": 5800,
+      "sha256": "145864ca8e87b2c7576a2b1df3a317da1a9f41c392db23e887f3c12f421e3253"
+    },
+    "软件授权接入包/授权启动器模板/src/lib.rs": {
+      "size": 1058,
+      "sha256": "1d8c1ba23900d66eab30478e4ecb041eb3e7b76c0519c60326d47f9df5614166"
+    },
+    "软件授权接入包/授权启动器模板/src/lifecycle.rs": {
+      "size": 24793,
+      "sha256": "58a69f2375f195311b07ec6fe217c537c13eddfe02f3ba9312fb98bcde391bfa"
+    },
+    "软件授权接入包/授权启动器模板/src/platform.rs": {
+      "size": 39864,
+      "sha256": "1ef93c6390d5a76cff6ac8a8054b7558129721ef364fabad677285e200df013c"
+    },
+    "软件授权接入包/授权启动器模板/src/profile.rs": {
+      "size": 19938,
+      "sha256": "c63abcb45222c482ec743f8008b1ec0256012fab008943ae26422c2c4dee1203"
+    },
+    "软件授权接入包/授权启动器模板/src/runtime.rs": {
+      "size": 14654,
+      "sha256": "2dcfdbd866b94bc53bf2800049c1331c82d49d619b2c8554036423e5005a5e9c"
+    },
+    "软件授权接入包/授权启动器模板/src/runtime_state.rs": {
+      "size": 54052,
+      "sha256": "8f1ccf167448d4c468a9acd755be6fd97219dec72d856df9be25192c0eb023db"
+    },
+    "软件授权接入包/授权启动器模板/src/session.rs": {
+      "size": 30772,
+      "sha256": "7f293e7488c023420bd15fd79615bdd1a3d971013a2b2c80bf91098778543db5"
+    },
+    "软件授权接入包/授权启动器模板/src/simulation.rs": {
+      "size": 11028,
+      "sha256": "d12351e84a618d726d9eeac036d6a4c6efb89cc86961ed8d03af9ced9933670f"
+    },
+    "软件授权接入包/授权启动器模板/src/transport.rs": {
+      "size": 22050,
+      "sha256": "46bc963636433f47d1c3c296fd7e4ff2c181bd01c6235727d78e520ebb1c8415"
+    },
+    "软件授权接入包/授权启动器模板/src/ui.rs": {
+      "size": 41956,
+      "sha256": "cf76a330423a8498d7343419039b1615f942c6a5bb6b8c928c9c9ec643833c94"
+    },
+    "软件授权接入包/授权启动器模板/src/webview_renderer.rs": {
+      "size": 35329,
+      "sha256": "3378eb1df6dd50911074f59718d88f31ac88cea3591242b113111d5038a6816c"
+    },
+    "软件授权接入包/授权启动器模板/src/windows_renderer.rs": {
+      "size": 101502,
+      "sha256": "f5f5a04ffb4799bff60c7f1b9526704c30499ec18d9952c7a433e5ab5d566674"
+    },
+    "软件授权接入包/授权启动器模板/tests/.gitkeep": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "软件授权接入包/授权启动器模板/tests/authorization_conformance.rs": {
+      "size": 7216,
+      "sha256": "b1e22828d8d4c8c1da5ee249bdc401ae03cbcb9db513793688bacf77886f52d0"
+    },
+    "软件授权接入包/授权启动器模板/tests/authorization_contract.rs": {
+      "size": 33109,
+      "sha256": "553f84c9905ac1001ec9760eaf5d6f2b4edb5a8d9ef997aa731aff2f7d56d2d8"
+    },
+    "软件授权接入包/授权启动器模板/tests/authorization_interop.rs": {
+      "size": 19013,
+      "sha256": "66ea96128b212d3269ee1e99a1ed74e2d69e4b6db05bae8dd67c8e9c36320550"
+    },
+    "软件授权接入包/授权启动器模板/tests/credential_vault.rs": {
+      "size": 15642,
+      "sha256": "f46ccfffe7da47b6342b1bfa727f4e9b16160dc1ecca61413557878fde16376c"
+    },
+    "软件授权接入包/授权启动器模板/tests/final_runtime.rs": {
+      "size": 12652,
+      "sha256": "6cb81430d2214c1f9004b51392d334d5c5f87c1bab2fe0fcf3cab6a3c52fdc5a"
+    },
+    "软件授权接入包/授权启动器模板/tests/legacy_adapter.rs": {
+      "size": 3209,
+      "sha256": "607d1a18c33ff0e63d003009519a4fbfe35eb3bcfdc06b0684b650ca031dd661"
+    },
+    "软件授权接入包/授权启动器模板/tests/lifecycle.rs": {
+      "size": 11299,
+      "sha256": "de3bd0b0bd9a6c5928f58cefe30483f001ac4bd42e808b7b166d51b81092ab9e"
+    },
+    "软件授权接入包/授权启动器模板/tests/manifest_profiles.rs": {
+      "size": 6685,
+      "sha256": "399abf3017f34ebdddfe677a3ef64ebf99f49a078670d82e168d5f654879b19a"
+    },
+    "软件授权接入包/授权启动器模板/tests/platform.rs": {
+      "size": 15121,
+      "sha256": "fbe2b7f593da25166f94fa7a73e51a781c347ddf4e4638e1576db61013788844"
+    },
+    "软件授权接入包/授权启动器模板/tests/runtime.rs": {
+      "size": 6389,
+      "sha256": "d995bcac08c87e3a006a2e82b0dfc189ffe885605ae8c0a8f8f417291df7e864"
+    },
+    "软件授权接入包/授权启动器模板/tests/runtime_state.rs": {
+      "size": 14814,
+      "sha256": "bd2bb6055f54a432060f4804edd41d6431ac02cfd2474a59227d2ceb5a83308f"
+    },
+    "软件授权接入包/授权启动器模板/tests/session.rs": {
+      "size": 13783,
+      "sha256": "b00182832d87fbace96b836ca5185ff76978632f0afbfa0e408ba372e5c04f54"
+    },
+    "软件授权接入包/授权启动器模板/tests/simulation.rs": {
+      "size": 2932,
+      "sha256": "c99bd369e6452ff5deec21189866e5a4bc57686f24f99df6c037d7961e13b6cc"
+    },
+    "软件授权接入包/授权启动器模板/tests/transport.rs": {
+      "size": 8081,
+      "sha256": "9a7913c9b89bcf11e7741adfe2c5403be4e5c6e363b49ee85e6ad749cc69396b"
+    },
+    "软件授权接入包/授权启动器模板/tests/ui.rs": {
+      "size": 17227,
+      "sha256": "e5c5d9fc9a8fbec5b2abb77ea32c0cab841ea124e3d2eb0f3324dc56812b1f83"
+    },
+    "软件授权接入包/授权启动器模板/tests/windows_renderer.rs": {
+      "size": 11335,
+      "sha256": "8d3e4fdfcf937f8e5c4721e0cc2de221c1aa1d4674e45e558fa25ea9e9d80ae9"
+    },
+    "软件授权接入包/授权启动器模板/ui/app-icon-32.rgba": {
+      "size": 4096,
+      "sha256": "55bfcf843eec0b9e0c9318a45add04c41837684d0f3c3cef13e24628c0fe5d42"
+    },
+    "软件授权接入包/授权启动器模板/ui/app-mark.png": {
+      "size": 25549,
+      "sha256": "61e653f6f3faed6d73bdabee367093547a5b2874d2c5a80e6c8bc7d6d4e9317a"
+    },
+    "软件授权接入包/授权启动器模板/ui/authorization-a-shell.css": {
+      "size": 11778,
+      "sha256": "9aa680b2ba0db528449cfb5854e9fb5f00c2ab907d85d003b1b8f204f65d0ee0"
+    },
+    "软件授权接入包/授权启动器模板/ui/authorization-a-shell.html": {
+      "size": 4037,
+      "sha256": "e57c2a0913763dbf229964500ae250f5c646211882e97447a907af36d2906fa1"
+    },
+    "软件授权接入包/授权启动器模板/ui/authorization-a-shell.js": {
+      "size": 17688,
+      "sha256": "75bce95a91622a58b56775cf8d33b431cf4586d37329a33349f32e7fe1aebad3"
+    },
+    "软件授权接入包/授权启动器模板/ui/README.md": {
+      "size": 2578,
+      "sha256": "fc98c8a9e95d0d1f7429c2ce2254d5d3e7472fb4b5a99826d80f2c3bab1c2b38"
+    },
+    "软件授权接入包/授权启动器模板/WORK-HANDOFF.md": {
+      "size": 269,
+      "sha256": "1c6a62a50d151396f0d020296607cec98c4fac16b7642a6fe10c9dd5b5083580"
+    },
+    "软件授权接入包/授权启动器模板/接入一步走.md": {
+      "size": 269,
+      "sha256": "1c6a62a50d151396f0d020296607cec98c4fac16b7642a6fe10c9dd5b5083580"
+    },
+    "软件授权接入包/放后台下载的JSON这里/README.md": {
+      "size": 230,
+      "sha256": "c8981a21ee48149034b6dce3bbe232142fd4c767a5241abde512f5090578de3d"
+    },
+    "部署与恢复/00-先读我.md": {
+      "size": 2390,
+      "sha256": "67aa6738db484be237c843b96aa5d4fa6c61432d54a93a76ff602ff9d2ba280a"
+    },
+    "部署与恢复/01-换机时密钥怎么用.md": {
+      "size": 1003,
+      "sha256": "70e1fa1dfdfb5390e4ada9112cdf8e9f62ef826e584f1a4bca9987a4f25f46f5"
+    },
+    "部署与恢复/02-域名证书和端口转发.md": {
+      "size": 1885,
+      "sha256": "d6ccb1cb84f7ae2047800b551dbfda894d4a7311fadac16b8952bd933bf2755a"
+    },
+    "部署与恢复/03-新VPS怎么装怎么导备份.md": {
+      "size": 2579,
+      "sha256": "7ceeea6410c99013b9a048f6b4d95ce051ace64f2f0a12c1097346921956206f"
+    },
+    "部署与恢复/04-审查后仍未闭环.md": {
+      "size": 1337,
+      "sha256": "c521c878be3b463d703b98437e9841dfad719a434930f0690e3fdaae9b261df7"
+    },
+    "部署与恢复/05-密钥永远一套.md": {
+      "size": 2167,
+      "sha256": "c2224cdc77d3f3ba160141ce9098713731135ef189c8893480f2b19b744bbbaa"
+    },
+    "部署与恢复/06-密钥在哪.md": {
+      "size": 854,
+      "sha256": "955a1ff12dca5514ae344ff34b8f666d52ba523a1b135c45f88b60981e267d9c"
+    },
+    "部署与恢复/07-只有这个文件夹够不够.md": {
+      "size": 1159,
+      "sha256": "42231eb102eac7dc1cdab4a1a263993d01ddec5228a95840d45006a91096b076"
+    },
+    "部署与恢复/08-完整部署SOP.md": {
+      "size": 16407,
+      "sha256": "b21713a565ead3cd81899f4e03b1e0990df2f488d41fd53a5bd392c3fbf2c6ed"
+    },
+    "部署与恢复/09-两台VPS.md": {
+      "size": 2011,
+      "sha256": "0e5fcf565844e917e9a2b4976894e5642ced77a3accf740c2f080c95b94ea7b6"
+    },
+    "部署与恢复/09-正式站上线与回退手册.md": {
+      "size": 22773,
+      "sha256": "a1f5b9d74e2412bb4694f21d18b87bf35cb9ca4cf6946373a3e6fc51f58b357d"
+    },
+    "部署与恢复/10-GitHub备份库.md": {
+      "size": 1902,
+      "sha256": "107e2a8711d0a91c6522d35ef1b3105a472ccbb7759502b2c6ffb46e68f47887"
+    },
+    "部署与恢复/nginx/authorization-platform-retired.example.com.conf": {
+      "size": 3193,
+      "sha256": "0a68e73541766e7c0548405d688de3481be46601a8b3c55e8c76b48d582a9734"
+    },
+    "部署与恢复/开启Telegram告警.ps1": {
+      "size": 3507,
+      "sha256": "424f440b24680c37ddb1b1f60e4cac61b2c437a3d17c2e8f3546fb4720e1d395"
+    },
+    "部署与恢复/开启Telegram备份.ps1": {
+      "size": 3821,
+      "sha256": "ee39286da7ddf1bbd8d822a434b4e6c40261461225ac8feb1393770c9a96d631"
+    },
+    "配套项目导航.md": {
+      "size": 6243,
+      "sha256": "2f51f27357095ec2dbabca507235f69db4ba1549452930382ca1594efb041e39"
+    }
+  },
+  "excluded_private_tests": [
+    "tests/test_backup_governance.py",
+    "tests/test_public_release.py"
+  ]
+}

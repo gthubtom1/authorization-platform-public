@@ -1,0 +1,13 @@
+{
+  "error": {
+    "code": "RISK_BLOCKED",
+    "message": "当前设备已被阻断。",
+    "request_id": "fixture-risk-blocked",
+    "retryable": false
+  },
+  "transport": {
+    "http_status": 403,
+    "cache_control": "no-store",
+    "pragma": "no-cache"
+  }
+}

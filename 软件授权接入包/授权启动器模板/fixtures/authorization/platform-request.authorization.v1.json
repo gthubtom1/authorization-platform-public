@@ -1,0 +1,25 @@
+{
+  "protocol": "authorization.v1",
+  "schema_version": "authorization.v1",
+  "contract_version": "authorization.v1",
+  "request_id": "fixture-request-platform-1",
+  "operation": "activate",
+  "product_id": "sample-product",
+  "identity": {
+    "software_id": "software-generic",
+    "profile_id": "profile-default",
+    "client_id": "fixture-client-1",
+    "device_scope": "current_device",
+    "device_id": "123e4567-e89b-12d3-a456-426614174000"
+  },
+  "target": "windows",
+  "arch": "x86_64",
+  "channel": "stable",
+  "config_version": "config-7",
+  "known_authorization_revision": null,
+  "device_public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "device_proof": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "installation_id": "installation-1",
+  "client_version": "1.0.0",
+  "nonce": "nonce-12345678"
+}

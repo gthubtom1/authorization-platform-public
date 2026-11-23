@@ -1,0 +1,21 @@
+[Unit]
+Description=Authorization Platform session and temporary storage maintenance
+After=authorization-platform.service
+OnFailure=authorization-platform-maintenance-failure.service
+
+[Service]
+Type=oneshot
+User=authorization-platform
+Group=authorization-platform
+WorkingDirectory=/srv/authorization-platform
+EnvironmentFile=/etc/authorization-platform/production.env
+ExecStart=/srv/authorization-platform/.venv/bin/python /srv/authorization-platform/manage.py clearsessions
+# Backup health runs independently as postgres. Do not make this service read
+# the postgres-owned marker or turn a Session cleanup failure into a backup
+# failure. File logs are bounded by logrotate; application temp/export cleanup
+# remains the separately audited storage-cleanup action.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/authorization-platform/storage

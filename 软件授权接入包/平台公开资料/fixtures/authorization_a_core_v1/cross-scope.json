@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "DEVICE_SCOPE_MISMATCH",
+    "message": "设备范围与授权不匹配。",
+    "request_id": "fixture-local-cross-scope",
+    "retryable": false
+  }
+}

@@ -1,0 +1,23 @@
+# Local review template only. Apply through an approved deployment process.
+[Unit]
+Description=Authorization Platform WSGI application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+User=authorization-platform
+Group=authorization-platform
+WorkingDirectory=/srv/authorization-platform
+EnvironmentFile=/etc/authorization-platform/production.env
+ExecStart=/srv/authorization-platform/.venv/bin/gunicorn authorization_platform.wsgi:application --bind 127.0.0.1:8000 --workers 2 --timeout 60 --max-requests 1000 --max-requests-jitter 100
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/authorization-platform/storage
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,95 @@
+{% extends "core/base.html" %}
+{% block title %}授权风险控制 · 授权平台{% endblock %}
+{% block heading %}授权风险控制{% endblock %}
+{% block content %}
+<section class="hero-panel compact-hero">
+  <div>
+    <p class="eyebrow">AUTHORIZATION RISK CONTROL</p>
+    <h2>撤销授权，阻断风险设备。</h2>
+    <p class="hero-copy">所有动作都通过服务端锁定、更新版本号并写入审计。历史绑定不会被删除，解除设备阻断也不会自动复活旧绑定。</p>
+  </div>
+  <div class="hero-stamp"><span class="stamp-label">PR-08</span><strong>CONTROL</strong><span>撤销 / 设备风险</span></div>
+</section>
+
+<section class="metric-grid">
+  <article class="metric-card"><span class="metric-label">授权实例</span><strong class="metric-value">{{ authorizations|length }}</strong><span class="metric-note">最近 100 条</span></article>
+  <article class="metric-card"><span class="metric-label">设备记录</span><strong class="metric-value">{{ devices|length }}</strong><span class="metric-note">按软件 / Profile 隔离</span></article>
+  <article class="metric-card"><span class="metric-label">待复核信号</span><strong class="metric-value">{{ risk_signals|length }}</strong><span class="metric-note">最近 50 条高信号失败</span></article>
+  <article class="metric-card"><span class="metric-label">操作原则</span><strong class="metric-value accent">FAIL CLOSED</strong><span class="metric-note">撤销优先于缓存宽限</span></article>
+</section>
+
+<section class="panel table-panel result-panel">
+  <div class="panel-heading"><h3>授权实例</h3><span class="tag tag-warm">管理员专属</span></div>
+  <p class="section-copy">撤销会同步把卡密置为 revoked，并阻断该授权的当前绑定；不会删除授权、设备或审计历史。</p>
+  <table class="data-table">
+    <thead><tr><th>授权身份</th><th>软件 / Profile</th><th>状态</th><th>版本</th><th>到期</th><th>操作</th></tr></thead>
+    <tbody>
+      {% for authorization in authorizations %}
+      <tr>
+        <td><code>{{ authorization.authorization_id }}</code><br><span class="muted-text">卡密 {{ authorization.license_card.status }}</span></td>
+        <td><strong>{{ authorization.software.name }}</strong><br><span class="muted-text">{{ authorization.profile.profile_id }} · {{ authorization.client_id }}</span></td>
+        <td><span class="tag {% if authorization.state == 'revoked' or authorization.state == 'blocked' %}tag-warm{% endif %}">{{ authorization.state }}</span></td>
+        <td>revision {{ authorization.authorization_revision }}</td>
+        <td>{{ authorization.expires_at|date:'Y-m-d H:i:s' }}</td>
+        <td>
+          <a class="text-link" href="{% url 'licensing:admin_authorization_configuration' authorization_id=authorization.authorization_id %}">客户配置</a>
+          {% if authorization.state != 'revoked' %}
+          <form method="post" action="{% url 'licensing:admin_revoke_authorization' authorization_id=authorization.authorization_id %}" onsubmit="return confirm('撤销后授权不能通过重试恢复。确认继续吗？');">
+            {% csrf_token %}<input class="compact-input" type="text" name="reason" minlength="2" maxlength="255" required placeholder="撤销原因" aria-label="撤销原因"><button class="text-button danger-text" type="submit">撤销授权</button>
+          </form>
+          {% else %}<span class="muted-text">已撤销</span>{% endif %}
+        </td>
+      </tr>
+      {% empty %}<tr><td colspan="6" class="empty-cell">还没有授权实例。客户通过授权 A 首次激活后，这里才会出现服务端授权事实。</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel table-panel result-panel">
+  <div class="panel-heading"><h3>设备风险</h3><span class="tag">不暴露设备密钥</span></div>
+  <p class="section-copy">阻断会立即拒绝该设备后续验证，并让现有绑定失效；解除标记后需要重新激活，不会恢复旧绑定历史。</p>
+  <table class="data-table">
+    <thead><tr><th>设备</th><th>软件 / Profile</th><th>风险状态</th><th>最近访问</th><th>绑定历史</th><th>操作</th></tr></thead>
+    <tbody>
+      {% for device in devices %}
+      <tr>
+        <td><code>{{ device.public_id }}</code></td>
+        <td>{{ device.software.name }}<br><span class="muted-text">{{ device.profile.profile_id }}</span></td>
+        <td><span class="tag {% if device.risk_state == 'blocked' %}tag-warm{% endif %}">{{ device.risk_state }}</span></td>
+        <td>{{ device.last_seen_at|date:'Y-m-d H:i:s' }}</td>
+        <td>{{ device.authorization_bindings.all|length }}</td>
+        <td>
+          {% if device.risk_state == 'blocked' %}
+          <form method="post" action="{% url 'licensing:admin_unblock_device' device_id=device.public_id %}">
+            {% csrf_token %}<input class="compact-input" type="text" name="reason" minlength="2" maxlength="255" required placeholder="解除原因" aria-label="解除设备阻断原因"><button class="text-button" type="submit">解除阻断</button>
+          </form>
+          {% else %}
+          <form method="post" action="{% url 'licensing:admin_block_device' device_id=device.public_id %}" onsubmit="return confirm('阻断后该设备不能继续验证。确认继续吗？');">
+            {% csrf_token %}<input class="compact-input" type="text" name="reason" minlength="2" maxlength="255" required placeholder="阻断原因" aria-label="阻断设备原因"><button class="text-button danger-text" type="submit">阻断设备</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% empty %}<tr><td colspan="6" class="empty-cell">还没有设备记录。</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel table-panel result-panel">
+  <div class="panel-heading"><h3>待复核异常信号</h3><span class="tag tag-warm">只提示，不自动封禁</span></div>
+  <p class="section-copy">高信号的设备证明、身份、重放和时间回退失败会进入这里。重放、时间回退和已阻断设备仍由授权服务即时拒绝；普通失败不会因为一次出现就自动封禁。</p>
+  <table class="data-table">
+    <thead><tr><th>时间</th><th>动作</th><th>原因</th><th>请求 ID</th></tr></thead>
+    <tbody>
+      {% for signal in risk_signals %}
+      <tr>
+        <td>{{ signal.occurred_at|date:'Y-m-d H:i:s' }}</td>
+        <td>{{ signal.action }}</td>
+        <td><span class="tag tag-warm">{{ signal.reason_code }}</span></td>
+        <td><code>{{ signal.request_id }}</code></td>
+      </tr>
+      {% empty %}<tr><td colspan="4" class="empty-cell">当前没有待复核的高信号失败。</td></tr>{% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

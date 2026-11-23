@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}
+{% block title %}我的账号 · 授权平台{% endblock %}
+{% block heading %}我的账号{% endblock %}
+{% block content %}
+<section class="panel"><div class="panel-heading"><h3>{{ profile.user.username }}</h3><span class="status-tag status-{{ profile.status }}">{{ profile.get_status_display }}</span></div><p class="section-copy">服务端从当前登录会话推导下游身份，不接受 URL 或表单中的其他下游 ID。</p><code>{{ profile.public_id }}</code></section>
+{% endblock %}

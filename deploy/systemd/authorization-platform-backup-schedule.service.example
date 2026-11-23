@@ -1,0 +1,15 @@
+# Review template only. install-site.sh installs the same service on the host.
+# It only evaluates the saved page policy and queues work; it does not dump data.
+# The wrapper executes: manage.py backup_policy --schedule
+[Unit]
+Description=Schedule Authorization Platform backups from the saved policy
+Wants=network-online.target docker.service
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+TimeoutStartSec=300
+ExecStart=/usr/local/sbin/ap-backup-schedule.sh

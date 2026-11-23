@@ -1,0 +1,21 @@
+[Unit]
+Description=Record Authorization Platform backup failure for external alerting
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+EnvironmentFile=/etc/authorization-platform/production.env
+Environment=BACKUP_KEYS_DIR=/var/lib/authorization-platform-backup/keys
+Environment=BACKUP_STATUS_FILE=/var/lib/authorization-platform-backup/backup-status.json
+ExecStart=/srv/authorization-platform/.venv/bin/python /srv/authorization-platform/scripts/backup_health.py record-failure --status-file /var/lib/authorization-platform-backup/backup-status.json --reason-code backup_service_failed
+ExecStartPost=/srv/authorization-platform/.venv/bin/python /srv/authorization-platform/scripts/backup_failure_alert.py --status-file /var/lib/authorization-platform-backup/backup-status.json --handler /usr/local/sbin/authorization-platform-backup-alert --reason-code backup_service_failed
+# Replace the handler with an approved local bridge. It receives only the
+# stable error code and redacted marker timestamps; never pass raw stderr,
+# database passwords, card plaintext, encryption keys, or tokens.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=false
+ReadWritePaths=/var/lib/authorization-platform-backup /var/lib/postgresql/authorization-platform

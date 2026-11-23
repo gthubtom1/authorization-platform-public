@@ -1,0 +1,10 @@
+# Retired compatibility file. The policy poller is the only allowed periodic
+# backup timer. This unit can never be enabled or manually started.
+[Unit]
+Description=Retired Authorization Platform diff backup timer
+ConditionPathExists=/run/authorization-platform-enable-retired-backup-timer
+RefuseManualStart=true
+
+[Timer]
+OnBootSec=1s
+Unit=authorization-platform-backup-schedule.service

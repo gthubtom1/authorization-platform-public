@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "bucket": "authorization-platform-backup-primary",
+  "application_identity_can_access": false,
+  "backup_identity_permissions": [
+    "s3:ListBucket",
+    "s3:GetObject",
+    "s3:PutObject",
+    "s3:ListBucketMultipartUploads",
+    "s3:ListMultipartUploadParts",
+    "s3:AbortMultipartUpload"
+  ],
+  "backup_identity_forbidden_permissions": ["s3:DeleteObject", "s3:PutBucketPolicy", "s3:DeleteBucket"],
+  "object_lock_or_versioning_required": true,
+  "tls_required": true,
+  "secret_values_exposed": false
+}

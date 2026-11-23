@@ -1,0 +1,11 @@
+[Unit]
+Description=Check Authorization Platform backup freshness every five minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=authorization-platform-backup-health.service
+
+[Install]
+WantedBy=timers.target

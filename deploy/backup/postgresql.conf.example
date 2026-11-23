@@ -1,0 +1,8 @@
+# Apply through the reviewed PostgreSQL image/cluster configuration only.
+# archive_mode requires a PostgreSQL restart; never paste this into an
+# unknown or production cluster without an approved migration window.
+wal_level=replica
+archive_mode=on
+archive_timeout=60s
+archive_command='pgbackrest --stanza=authorization-platform archive-push %p'
+max_wal_senders=3

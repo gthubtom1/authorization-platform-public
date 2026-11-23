@@ -1,0 +1,14 @@
+[Unit]
+Description=Record Authorization Platform maintenance failure
+
+[Service]
+Type=oneshot
+User=authorization-platform
+Group=authorization-platform
+WorkingDirectory=/srv/authorization-platform
+EnvironmentFile=/etc/authorization-platform/production.env
+ExecStart=/usr/local/sbin/authorization-platform-maintenance-alert
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true

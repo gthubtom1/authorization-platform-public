@@ -1,0 +1,11 @@
+# Retired template. Do not install or enable this timer. The only periodic
+# backup timer is authorization-platform-backup-schedule.timer, which evaluates
+# the saved page policy before queueing work.
+[Unit]
+Description=Retired Authorization Platform differential backup timer
+ConditionPathExists=/run/authorization-platform-enable-retired-backup-timer
+RefuseManualStart=true
+
+[Timer]
+OnBootSec=1s
+Unit=authorization-platform-backup-schedule.service

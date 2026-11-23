@@ -1,0 +1,1 @@
+{% extends 'admin_base.html' %}{% block content %}<div class="page-heading"><h1>网站设置</h1></div><form method="post" class="compact-form" data-dirty-form>{% csrf_token %}{% include 'fields.html' %}<div class="form-actions"><button class="button primary" type="submit">保存设置</button></div></form>{% endblock %}

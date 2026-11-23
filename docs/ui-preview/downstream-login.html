@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg?v=20260910-favicon-1" type="image/svg+xml" />
+    <title>下游端登录 · 授权平台</title>
+    <link rel="stylesheet" href="preview.css?v=20261117-suite-1" />
+  </head>
+  <body class="preview-index access-preview">
+    <header class="preview-bar">
+      <span class="preview-brand"
+        ><span class="brand-mark">AUTH</span><span>授权平台</span></span
+      ><span class="preview-state"><i></i> 下游端独立入口</span>
+    </header>
+    <main class="access-shell">
+      <section class="access-context">
+        <h1>下游端</h1>
+      </section>
+      <section class="access-panel" aria-labelledby="downstreamLoginTitle">
+        <h2 id="downstreamLoginTitle">登录渠道工作台</h2>
+        <form method="post" action="#" data-preview-destination="downstream.html" novalidate>
+          <p class="form-hint" data-register-success hidden>账号已创建，请使用刚才的用户名登录。</p>
+          <p class="form-hint" data-session-switch-hint hidden></p>
+          <label class="form-label"
+            >下游用户名<input
+              name="username"
+              type="text"
+              autocomplete="username"
+              required /></label
+          ><label class="form-label"
+            >密码<input
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+          /></label>
+          <p class="form-error" data-form-error role="alert"></p>
+          <button class="button button-primary access-submit" type="submit">
+            登录下游端
+          </button>
+        </form>
+        <a class="quota-purchase-link" data-quota-purchase-link href="#" hidden>购买额度卡</a>
+        <p class="form-hint">付款不会自动到账。请把兑换码贴到额度页。</p>
+        <div class="access-links">
+          <a href="downstream-register.html">使用邀请码注册</a>
+        </div>
+      </section>
+    </main>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="preview.js?v=20261117-suite-1"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "candidate-policy",
+  "provider": "pgbackrest",
+  "stanza": "authorization-platform",
+  "repositories": [
+    {
+      "name": "primary",
+      "location": "s3://authorization-platform-backup-primary/authorization-platform",
+      "failure_domain": "primary-backup-provider",
+      "delete_permission": false
+    },
+    {
+      "name": "secondary",
+      "location": "s3://authorization-platform-backup-secondary/authorization-platform",
+      "failure_domain": "secondary-backup-provider",
+      "delete_permission": false
+    }
+  ],
+  "encryption": {
+    "cipher_type": "aes-256-cbc",
+    "password_source": "external-secret-store",
+    "transport_tls_required": true
+  },
+  "postgresql": {
+    "wal_archiving": true,
+    "archive_timeout_seconds": 60,
+    "pitr_required": true
+  },
+  "schedule": {
+    "full_backup": "daily 03:15 Asia/Shanghai",
+    "differential_backup": "every 6 hours",
+    "health_check": "every 5 minutes",
+    "session_cleanup": "hourly"
+  },
+  "retention": {
+    "full_backups": 7,
+    "differential_backups": 14,
+    "wal_archive_days": 14,
+    "logs_days": 14
+  },
+  "target": {
+    "rpo_minutes": 15,
+    "rto_minutes": 60,
+    "warn_free_percent": 25,
+    "critical_free_percent": 15
+  },
+  "github_private_repository": {
+    "allowed_content": ["encrypted-manifest", "encrypted-restore-index", "runbook-pointer"],
+    "forbidden_content": ["plaintext-dump", "env-file", "database-password", "card-key", "backup-cipher-password"],
+    "is_sole_database_backup": false
+  },
+  "secret_values_exposed": false
+}

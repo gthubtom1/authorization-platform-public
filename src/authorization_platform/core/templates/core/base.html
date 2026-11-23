@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}授权控制台{% endblock %}</title>
+  <link rel="icon" href="{% static 'core/favicon.svg' %}?v=20260910-favicon-1" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'core/app.css' %}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand-mark">授权<span>平台</span></div>
+      <p class="eyebrow">REGISTRY / LEDGER</p>
+      <nav>
+        <a class="nav-link is-active" href="/">总览</a>
+        {% if is_platform_admin_user %}
+          <a class="nav-link" href="{% url 'accounts:manage_dashboard' %}">管理控制台</a>
+          <a class="nav-link" href="{% url 'catalog:software_list' %}">软件与套餐</a>
+          <a class="nav-link" href="{% url 'credits:admin_dashboard' %}">额度中心</a>
+          <a class="nav-link" href="{% url 'licensing:authorization_admin' %}">授权风险</a>
+          <a class="nav-link" href="{% url 'audit:admin_log' %}">审计日志</a>
+          <a class="nav-link" href="{% url 'backup_control:dashboard' %}">备份中心</a>
+          <a class="nav-link" href="{% url 'releases:manage_page' %}">版本管理</a>
+          <a class="nav-link" href="{% url 'accounts:downstream_list' %}">下游账号</a>
+          <a class="nav-link" href="{% url 'accounts:invitations' %}">邀请码</a>
+        {% elif is_active_downstream_user %}
+          <a class="nav-link" href="{% url 'accounts:downstream_dashboard' %}">下游工作台</a>
+          <a class="nav-link" href="{% url 'catalog:downstream_software' %}">可用软件</a>
+          <a class="nav-link" href="{% url 'licensing:batch_list' %}">授权卡密</a>
+          <a class="nav-link" href="{% url 'credits:downstream_ledger' %}">额度账本</a>
+          <a class="nav-link" href="{% url 'audit:downstream_log' %}">我的审计记录</a>
+        {% endif %}
+      </nav>
+      <div class="sidebar-note">授权与不可变流水平台<br>服务端只读控制台</div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PLATFORM STATUS</p>
+          <h1>{% block heading %}授权平台总览{% endblock %}</h1>
+        </div>
+        <div class="topbar-meta">
+          {% if user.is_authenticated %}
+            {{ user.username }}
+            <form class="inline-form" method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button class="text-button" type="submit">退出</button></form>
+          {% else %}
+            <a class="text-link" href="{% url 'accounts:login' %}">选择入口</a>
+          {% endif %}
+          <span class="status-dot"></span>
+        </div>
+      </header>
+      {% if messages %}
+        <div class="message-stack" aria-live="polite">
+          {% for message in messages %}<div class="message message-{{ message.tags|default:'info' }}">{{ message }}</div>{% endfor %}
+        </div>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

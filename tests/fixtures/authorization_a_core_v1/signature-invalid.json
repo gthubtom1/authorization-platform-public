@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "SIGNATURE_INVALID",
+    "message": "本地授权信封签名无效。",
+    "request_id": "fixture-local-signature-invalid",
+    "retryable": false
+  }
+}

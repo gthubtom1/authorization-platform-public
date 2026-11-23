@@ -1,0 +1,15 @@
+[Unit]
+Description=Maintain direct link expired uploads
+[Service]
+Type=oneshot
+User=directlink
+Group=directlink
+WorkingDirectory=/opt/direct-link-site
+EnvironmentFile=/opt/direct-link-site/.env
+ExecStart=/opt/direct-link-site/.venv/bin/python manage.py maintain_files
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/direct-link-site/data

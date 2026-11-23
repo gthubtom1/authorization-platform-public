@@ -1,0 +1,14 @@
+*.sh text eol=lf
+# Deploy-time config templates are installed verbatim onto the VPS.  A CRLF
+# copy of the logrotate stanza made logrotate fail every night, and the install
+# verify only grepped for a filename so it still reported "logrotate: ok".
+*.example text eol=lf
+# Keep the exported intake tool identical to its source on every host.
+/scripts/client-handoff/*.py text eol=lf
+/.codex export-ignore
+/.codex/** export-ignore
+/.护栏-* export-ignore
+/archive-*.tar.gz export-ignore
+/output export-ignore
+/output/** export-ignore
+/docs/旧流程-已放弃-* export-ignore

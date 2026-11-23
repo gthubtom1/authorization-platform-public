@@ -1,0 +1,14 @@
+[Unit]
+Description=Check Authorization Platform backup freshness and disk headroom
+OnFailure=authorization-platform-backup-failure.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+ExecStart=/srv/authorization-platform/.venv/bin/python /srv/authorization-platform/scripts/backup_health.py check --status-file /var/lib/authorization-platform-backup/backup-status.json --disk-path /srv/authorization-platform --rpo-minutes 15 --warn-free-percent 25 --critical-free-percent 15
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=false
+ReadWritePaths=/var/lib/postgresql/authorization-platform /var/lib/authorization-platform-backup

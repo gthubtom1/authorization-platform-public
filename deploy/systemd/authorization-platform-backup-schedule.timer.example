@@ -1,0 +1,13 @@
+# Review template only. This policy poller is the allowed periodic backup timer.
+# The legacy full/diff calendar timers remain disabled.
+[Unit]
+Description=Poll Authorization Platform backup schedule every fifteen minutes
+
+[Timer]
+OnCalendar=*-*-* *:0/15:00 Asia/Shanghai
+AccuracySec=1min
+Persistent=true
+Unit=authorization-platform-backup-schedule.service
+
+[Install]
+WantedBy=timers.target

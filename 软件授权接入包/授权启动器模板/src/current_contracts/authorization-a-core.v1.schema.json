@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "authorization-a-core.v1",
+  "title": "Product-neutral Authorization A to core envelope",
+  "type": "object",
+  "required": [
+    "schema_version", "local_contract_version", "request_id", "software_id", "profile_id",
+    "client_id", "contract_version", "target", "arch", "channel", "authorization_id",
+    "authorization_revision", "device_scope", "decision", "state_code", "issued_at",
+    "expires_at", "server_time", "cache_until", "next_verify_at", "grace_until",
+    "config_version", "support", "announcement", "modules", "integrity"
+  ],
+  "properties": {
+    "schema_version": {"const": "authorization-a-core.v1"},
+    "local_contract_version": {"const": "authorization-a-core.v1"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "software_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "profile_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "client_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "contract_version": {"const": "authorization-a-core.v1"},
+    "target": {"type": "string", "minLength": 1, "maxLength": 32},
+    "arch": {"type": "string", "minLength": 1, "maxLength": 32},
+    "channel": {"type": "string", "minLength": 1, "maxLength": 32},
+    "authorization_id": {"type": "string", "minLength": 1, "maxLength": 64},
+    "authorization_revision": {"type": "integer", "minimum": 1},
+    "device_scope": {"$ref": "#/$defs/deviceScope"},
+    "decision": {"enum": ["active", "grace", "expired", "revoked", "blocked", "not_modified"]},
+    "state_code": {"type": "string", "minLength": 1, "maxLength": 32},
+    "issued_at": {"$ref": "#/$defs/epochSeconds"},
+    "expires_at": {"$ref": "#/$defs/epochSeconds"},
+    "server_time": {"$ref": "#/$defs/epochSeconds"},
+    "cache_until": {"$ref": "#/$defs/epochSeconds"},
+    "next_verify_at": {"$ref": "#/$defs/epochSeconds"},
+    "grace_until": {"$ref": "#/$defs/epochSeconds"},
+    "config_version": {"type": "string", "minLength": 1, "maxLength": 64},
+    "status": {"type": "string", "minLength": 1, "maxLength": 32},
+    "policy_version": {"type": "string", "minLength": 1, "maxLength": 64},
+    "adapter_key": {"type": "string", "minLength": 1, "maxLength": 64},
+    "adapter_version": {"type": "string", "minLength": 1, "maxLength": 64},
+    "capabilities": {"type": "object"},
+    "entitlements": {"type": "object"},
+    "support": {"$ref": "#/$defs/support"},
+    "announcement": {"$ref": "#/$defs/announcement"},
+    "purchase": {"type": ["object", "null"]},
+    "qr": {"type": ["object", "null"]},
+    "update": {"type": ["object", "null"]},
+    "modules": {"$ref": "#/$defs/modules"},
+    "binding_state": {"type": "string", "minLength": 1, "maxLength": 32},
+    "error": {"type": "object"},
+    "extensions": {"type": "object"},
+    "integrity": {
+      "type": "object",
+      "required": ["origin", "audience", "algorithm", "key_id", "canonicalization", "signature"],
+      "properties": {
+        "origin": {"const": "authorization-a"},
+        "audience": {"const": "authorization-a-core"},
+        "algorithm": {"const": "ed25519"},
+        "key_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "canonicalization": {"const": "JCS-RFC8785"},
+        "signature": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "not": {
+    "anyOf": [
+      {"required": ["device_public_key"]},
+      {"required": ["device_proof"]},
+      {"required": ["client_version"]},
+      {"required": ["nonce"]},
+      {"required": ["installation_id"]}
+    ]
+  },
+  "$defs": {
+    "epochSeconds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "support": {
+      "type": ["object", "null"],
+      "required": ["purchase_url", "qq", "wechat"],
+      "properties": {
+        "purchase_url": {"type": ["string", "null"], "maxLength": 2048},
+        "qq": {"type": ["string", "null"], "maxLength": 64},
+        "wechat": {"type": ["string", "null"], "maxLength": 64}
+      },
+      "additionalProperties": false
+    },
+    "announcement": {
+      "type": ["object", "null"],
+      "required": ["title", "body"],
+      "properties": {
+        "title": {"type": ["string", "null"], "maxLength": 120},
+        "body": {"type": ["string", "null"], "maxLength": 2000}
+      },
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "object",
+      "required": ["contact", "notice", "purchase", "qr", "update"],
+      "properties": {
+        "contact": {"$ref": "#/$defs/support"},
+        "notice": {"$ref": "#/$defs/announcement"},
+        "purchase": {"type": ["object", "null"]},
+        "qr": {"type": ["object", "null"]},
+        "update": {"type": ["object", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "deviceScope": {
+      "type": "object",
+      "required": ["scope", "device_id", "installation_id"],
+      "properties": {
+        "scope": {"type": "string", "const": "current_device", "minLength": 1, "maxLength": 32},
+        "device_id": {"type": ["string", "null"], "minLength": 1, "maxLength": 64},
+        "installation_id": {"type": ["string", "null"], "minLength": 1, "maxLength": 128}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

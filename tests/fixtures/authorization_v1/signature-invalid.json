@@ -1,0 +1,3 @@
+{
+  "error": {"code": "SIGNATURE_INVALID", "message": "响应完整性校验失败。", "request_id": "fixture-signature-invalid", "retryable": false}
+}

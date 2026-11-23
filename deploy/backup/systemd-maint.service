@@ -1,0 +1,7 @@
+[Unit]
+Description=Authorization Platform daily maintenance (session cleanup + disk watch)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/authorization-platform-maintenance.sh
+Nice=15

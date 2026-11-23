@@ -1,0 +1,28 @@
+{
+  "schema_version": "product-manifest.v1",
+  "product_id": "sample-product-b",
+  "display_name": "示例软件B",
+  "category": "media",
+  "adapter_id": "sample-legacy-bridge-b",
+  "adapter_version": "2.1.0",
+  "locale": "en-US",
+  "theme": {
+    "accent": "#0EA5E9",
+    "surface": "#0F172A",
+    "text": "#E0F2FE",
+    "danger": "#FB7185"
+  },
+  "core_path": "core/sample-product-b.exe",
+  "state_root": "state/sample-product-b",
+  "ipc_name": "a-auth-sample-product-b",
+  "compatibility": "legacy_auth",
+  "capabilities": [
+    {"id": "launch", "version": "1", "required": true},
+    {"id": "notices", "version": "2", "required": true}
+  ],
+  "protocol_parameters": {
+    "channel": "beta",
+    "legacy_api": "authorization.v2"
+  }
+}
+

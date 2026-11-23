@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authorization-a.local/schema/authorization-a-ui.v1.schema.json",
+  "title": "Authorization A UI profile",
+  "description": "Product-scoped presentation copy and optional module enablement for the shared Authorization A shell.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "product_id",
+    "profile_id",
+    "locale",
+    "copy",
+    "enabled_modules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "authorization-a-ui.v1"
+    },
+    "product_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "profile_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8}){0,2}$"
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "maxProperties": 64,
+      "properties": {
+        "app_kicker": {
+          "$ref": "#/$defs/copyText"
+        },
+        "headline": {
+          "$ref": "#/$defs/copyText"
+        },
+        "subheadline": {
+          "$ref": "#/$defs/copyText"
+        },
+        "credential_label": {
+          "$ref": "#/$defs/copyText"
+        },
+        "credential_placeholder": {
+          "$ref": "#/$defs/copyText"
+        },
+        "activate": {
+          "$ref": "#/$defs/copyText"
+        },
+        "retry": {
+          "$ref": "#/$defs/copyText"
+        },
+        "request_launch": {
+          "$ref": "#/$defs/copyText"
+        },
+        "loading": {
+          "$ref": "#/$defs/copyText"
+        },
+        "online": {
+          "$ref": "#/$defs/copyText"
+        },
+        "offline": {
+          "$ref": "#/$defs/copyText"
+        },
+        "authorized": {
+          "$ref": "#/$defs/copyText"
+        },
+        "grace": {
+          "$ref": "#/$defs/copyText"
+        },
+        "expired": {
+          "$ref": "#/$defs/copyText"
+        },
+        "revoked": {
+          "$ref": "#/$defs/copyText"
+        },
+        "blocked": {
+          "$ref": "#/$defs/copyText"
+        },
+        "unavailable": {
+          "$ref": "#/$defs/copyText"
+        },
+        "invalid_response": {
+          "$ref": "#/$defs/copyText"
+        },
+        "request_failed": {
+          "$ref": "#/$defs/copyText"
+        },
+        "purchase": {
+          "$ref": "#/$defs/copyText"
+        },
+        "support": {
+          "$ref": "#/$defs/copyText"
+        },
+        "qr": {
+          "$ref": "#/$defs/copyText"
+        },
+        "announcement": {
+          "$ref": "#/$defs/copyText"
+        },
+        "update": {
+          "$ref": "#/$defs/copyText"
+        },
+        "no_modules": {
+          "$ref": "#/$defs/copyText"
+        }
+      }
+    },
+    "enabled_modules": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 5,
+      "items": {
+        "enum": [
+          "contact",
+          "purchase",
+          "qr",
+          "announcement",
+          "update",
+          "notice"
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$"
+    },
+    "copyText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    }
+  }
+}

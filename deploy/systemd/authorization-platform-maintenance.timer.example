@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Authorization Platform maintenance hourly
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=10m
+Unit=authorization-platform-maintenance.service
+
+[Install]
+WantedBy=timers.target

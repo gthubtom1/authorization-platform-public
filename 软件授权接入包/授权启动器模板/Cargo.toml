@@ -1,0 +1,42 @@
+[package]
+name = "authorization-a-template"
+version = "0.1.0"
+edition = "2021"
+description = "Product-neutral Authorization A launcher: platform-shape contracts, verify session, runtime, UI shell and product profiles"
+license = "UNLICENSED"
+
+[lib]
+name = "authorization_a_template"
+path = "src/lib.rs"
+
+[dependencies]
+base64 = "=0.22.1"
+ed25519-dalek = { version = "=2.2.0", features = ["rand_core"] }
+rand_core = { version = "=0.6.4", features = ["getrandom"] }
+serde = "=1.0.228"
+serde_json = "=1.0.145"
+serde_jcs = "=0.1.0"
+sha2 = "=0.10.9"
+jsonschema = { version = "=0.33.0", default-features = false }
+ureq = { version = "=2.12.1", default-features = false, features = ["tls"] }
+url = "=2.5.8"
+
+[target.'cfg(windows)'.dependencies]
+tao = { version = "=0.36.0", default-features = false, features = ["rwh_06"] }
+wry = { version = "=0.56.1", default-features = false, features = ["os-webview"] }
+
+[[bin]]
+name = "a-template-demo"
+path = "src/bin/a-template-demo.rs"
+
+[[bin]]
+name = "a-template-core-conformance"
+path = "src/bin/a-template-core-conformance.rs"
+
+[[bin]]
+name = "a-template-simulation"
+path = "src/bin/a-template-simulation.rs"
+
+[[bin]]
+name = "a-template-webview-ui"
+path = "src/bin/a-template-webview-ui.rs"

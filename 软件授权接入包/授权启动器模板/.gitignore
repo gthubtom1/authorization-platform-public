@@ -1,0 +1,84 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.p12
+*.pfx
+*.key
+.npmrc
+.pypirc
+.netrc
+_netrc
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+kubeconfig
+google-services.json
+GoogleService-Info.plist
+*credentials*.json
+service-account*.json
+service_account*.json
+*.kdbx
+*.jks
+*.keystore
+*.mobileprovision
+
+# Dependencies and generated output
+node_modules/
+vendor/
+dist/
+build/
+out/
+coverage/
+target/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.next/
+.nuxt/
+.svelte-kit/
+.cache/
+.parcel-cache/
+.turbo/
+.vite/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.gradle/
+obj/
+
+# Product ledger and disposable work
+.hub/
+TEMP/
+
+# Local data and runtime state
+*.db
+*.sqlite
+*.sqlite3
+tmp/
+temp/
+# Issued test cards in plaintext (product-local only, reclaimed after testing)
+product-state/test-cards.json
+product-state/
+
+# Local tools and operating systems
+.DS_Store
+Thumbs.db
+*.log
+.codex/current-change.json
+.codex/active-plan.md
+.codex/write-lock.json
+work/
+scratch/
+.trash/
+*.tmp
+cache/
+
+# Local visual QA artifacts
+.playwright-cli/
+output/playwright/

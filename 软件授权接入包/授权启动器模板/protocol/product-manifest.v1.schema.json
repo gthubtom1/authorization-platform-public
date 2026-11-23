@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authorization-a.local/schema/product-manifest.v1.schema.json",
+  "title": "Authorization A product manifest",
+  "description": "Per-product identity, compatibility, presentation and isolation configuration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "product_id",
+    "display_name",
+    "category",
+    "adapter_id",
+    "adapter_version",
+    "locale",
+    "theme",
+    "core_path",
+    "state_root",
+    "ipc_name",
+    "compatibility",
+    "capabilities",
+    "protocol_parameters"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "product-manifest.v1"
+    },
+    "product_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "adapter_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "adapter_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8}){0,2}$"
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accent", "surface", "text", "danger"],
+      "properties": {
+        "accent": {"type": "string", "minLength": 1, "maxLength": 256},
+        "surface": {"type": "string", "minLength": 1, "maxLength": 256},
+        "text": {"type": "string", "minLength": 1, "maxLength": 256},
+        "danger": {"type": "string", "minLength": 1, "maxLength": 256}
+      }
+    },
+    "core_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(^|/)(\\.\\.|\\.)(/|$)).+$"
+    },
+    "state_root": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?!/)(?!.*(^|/)(\\.\\.|\\.)(/|$)).+$"
+    },
+    "ipc_name": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,127}$"
+    },
+    "compatibility": {
+      "enum": ["native_core", "legacy_auth", "wrapper_only"]
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "version", "required"],
+        "properties": {
+          "id": {"$ref": "#/$defs/identifier"},
+          "version": {"type": "string", "minLength": 1, "maxLength": 256},
+          "required": {"type": "boolean"}
+        }
+      }
+    },
+    "protocol_parameters": {
+      "type": "object",
+      "maxProperties": 128,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$"
+    }
+  }
+}

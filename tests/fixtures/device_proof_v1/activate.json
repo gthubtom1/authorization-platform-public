@@ -1,0 +1,16 @@
+{
+  "action": "activate",
+  "request_id": "req-device-proof-001",
+  "authorization_id": "",
+  "software_id": "godskin-test",
+  "profile_id": "stable",
+  "client_id": "godskin-test-windows",
+  "contract_version": "authorization.v1",
+  "target": "windows",
+  "arch": "x64",
+  "channel": "stable",
+  "installation_id": "install-001",
+  "device_public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "nonce": "nonce-proof-001",
+  "expected_canonical_json": "{\"action\":\"activate\",\"arch\":\"x64\",\"authorization_id\":\"\",\"channel\":\"stable\",\"client_id\":\"godskin-test-windows\",\"contract_version\":\"authorization.v1\",\"device_public_key\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"domain\":\"authorization-platform.device-proof.v1\",\"installation_id\":\"install-001\",\"nonce\":\"nonce-proof-001\",\"profile_id\":\"stable\",\"request_id\":\"req-device-proof-001\",\"software_id\":\"godskin-test\",\"target\":\"windows\"}"
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "authorization-a-ui.v1",
+  "product_id": "sample-product",
+  "profile_id": "profile-default",
+  "locale": "en-US",
+  "copy": {
+    "app_kicker": "AUTHORIZATION A",
+    "headline": "Access, kept in one place.",
+    "subheadline": "Verify your access, then continue to the product.",
+    "credential_label": "License credential",
+    "credential_placeholder": "Enter your credential",
+    "activate": "Activate access",
+    "retry": "Try again",
+    "request_launch": "Continue to product",
+    "loading": "Checking access",
+    "authorized": "Access verified",
+    "grace": "Grace access",
+    "expired": "Access expired",
+    "revoked": "Access revoked",
+    "blocked": "Access blocked",
+    "unavailable": "Service unavailable",
+    "invalid_response": "Unable to verify the authorization response",
+    "purchase": "Purchase",
+    "support": "Support",
+    "qr": "QR code",
+    "announcement": "Announcement",
+    "update": "Update",
+    "no_modules": "No optional information is available"
+  },
+  "enabled_modules": ["contact", "purchase", "announcement", "update"]
+}

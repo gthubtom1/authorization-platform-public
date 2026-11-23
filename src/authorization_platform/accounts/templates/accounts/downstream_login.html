@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% block title %}下游端登录 · 授权平台{% endblock %}
+{% block heading %}下游端登录{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-card">
+    <p class="eyebrow">DOWNSTREAM WEB</p>
+    <h2>下游工作台</h2>
+    <p class="section-copy">此入口仅接受 active 下游账号。</p>
+    {% include "accounts/_login_form.html" %}
+    <p class="form-footnote">还没有下游账号？<a href="{% url 'accounts:downstream_register' %}">使用邀请码注册</a></p>
+    <p class="form-footnote">需要管理入口？<a href="{% url 'accounts:manage_login' %}">进入管理端</a></p>
+  </div>
+</section>
+{% endblock %}

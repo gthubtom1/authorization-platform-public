@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+{% block title %}审计日志 · 授权平台{% endblock %}
+{% block heading %}审计日志{% endblock %}
+{% block content %}
+<section class="hero-panel compact-hero">
+  <div>
+    <p class="eyebrow">AUDIT TRACE / READ ONLY</p>
+    <h2>按范围查看不可变操作记录。</h2>
+    <p class="hero-copy">当前范围：{{ scope_label }}。记录只读，敏感值以摘要或脱敏形式展示。</p>
+  </div>
+  <div class="hero-stamp"><span class="stamp-label">F-019</span><strong>TRACE</strong><span>{{ page_obj.paginator.count }} 条结果</span></div>
+</section>
+
+<section class="panel form-panel">
+  <div class="panel-heading"><h3>筛选记录</h3><span class="tag">北京时间日期</span></div>
+  <form method="get" class="filter-grid">
+    <div class="form-field"><label for="id_from_date">{{ form.from_date.label }}</label>{{ form.from_date }}{% for error in form.from_date.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    <div class="form-field"><label for="id_to_date">{{ form.to_date.label }}</label>{{ form.to_date }}{% for error in form.to_date.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    <div class="form-field"><label for="id_action">{{ form.action.label }}</label>{{ form.action }}{% for error in form.action.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    <div class="form-field"><label for="id_outcome">{{ form.outcome.label }}</label>{{ form.outcome }}{% for error in form.outcome.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    <div class="form-field"><label for="id_object_type">{{ form.object_type.label }}</label>{{ form.object_type }}{% for error in form.object_type.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    <div class="form-field"><label for="id_object_public_id">{{ form.object_public_id.label }}</label>{{ form.object_public_id }}{% for error in form.object_public_id.errors %}<span class="form-error">{{ error }}</span>{% endfor %}</div>
+    {% for error in form.non_field_errors %}<p class="form-error filter-error">{{ error }}</p>{% endfor %}
+    <div class="filter-actions"><button class="primary-button" type="submit">应用筛选</button><a class="text-link" href="{% if is_admin %}{% url 'audit:admin_log' %}{% else %}{% url 'audit:downstream_log' %}{% endif %}">清除条件</a>{% if is_admin %}<a class="text-link" href="{% url 'audit:admin_export' %}{% if request.GET.urlencode %}?{{ request.GET.urlencode }}{% endif %}">导出 CSV</a>{% endif %}</div>
+  </form>
+</section>
+
+<section class="panel table-panel result-panel">
+  <div class="panel-heading"><h3>操作记录</h3><span class="tag">只读 / 不可删除</span></div>
+  <table class="data-table">
+    <thead><tr><th>时间</th><th>操作者</th><th>动作 / 结果</th><th>对象</th><th>原因</th><th>请求 / 来源</th><th>安全字段摘要</th></tr></thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td class="time-value">{{ row.occurred_at|date:'Y-m-d H:i:s' }}</td>
+        <td>{{ row.actor_label }}<br><span class="muted-text">{{ row.actor_role_label }}</span></td>
+        <td><strong>{{ row.action }}</strong><br><span class="tag {% if row.outcome_label == '失败' %}tag-warm{% endif %}">{{ row.outcome_label }}</span></td>
+        <td><strong>{{ row.object_label }}</strong>{% if row.object_type != '—' or row.object_public_id != '—' %}<br><span class="muted-text">{{ row.object_type }} · {{ row.object_public_id }}</span>{% endif %}<br><span class="muted-text">{{ row.object_summary }}</span></td>
+        <td>{{ row.reason_code }}</td>
+        <td><code>{{ row.request_id }}</code><br><span class="muted-text">{{ row.ip_address }}</span></td>
+        <td>{% for item in row.metadata_items %}<span class="metadata-item">{{ item.label }}={{ item.value }}</span>{% empty %}<span class="muted-text">无可展示字段</span>{% endfor %}</td>
+      </tr>
+      {% empty %}<tr><td colspan="7" class="empty-cell">当前范围没有符合条件的审计记录。</td></tr>{% endfor %}
+    </tbody>
+  </table>
+  {% if page_obj.paginator.num_pages > 1 %}
+  <nav class="pagination" aria-label="审计日志分页">
+    {% if page_obj.has_previous %}<a class="text-link" href="?{% for key,value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">上一页</a>{% endif %}
+    <span class="muted-text">第 {{ page_obj.number }} / {{ page_obj.paginator.num_pages }} 页</span>
+    {% if page_obj.has_next %}<a class="text-link" href="?{% for key,value in request.GET.items %}{% if key != 'page' %}{{ key }}={{ value|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">下一页</a>{% endif %}
+  </nav>
+  {% endif %}
+</section>
+{% endblock %}

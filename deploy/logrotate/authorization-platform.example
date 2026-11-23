@@ -1,0 +1,23 @@
+# 本文件只管**主机侧**的两个日志：小时维护日志与备份 runner 日志。
+#
+# Nginx 站点日志不在这里：/etc/logrotate.d/nginx 已经管着 /var/log/nginx/*.log，
+# 两处同时声明同一个文件时 logrotate 会报 "duplicate log entry" 并把整个 nginx
+# 轮转配置跳过——那正是本文件最初带 CRLF 时被语法错误掩盖掉的第二个问题。
+#
+# 必须保持 LF-only：CRLF 会让每条指令都解析成畸形关键字，整夜轮转直接中止。
+# 必须写 su root root：Ubuntu 的 /var/log 是 world-writable 的 sticky 目录，
+# 没有 su 时 logrotate 拒绝轮转 /var/log 下的文件。
+
+/var/log/authorization-platform-maintenance.log
+/var/lib/authorization-platform-backup/backup.log {
+    su root root
+    daily
+    rotate 14
+    maxsize 100M
+    missingok
+    notifempty
+    compress
+    delaycompress
+    create 0640 root adm
+    sharedscripts
+}

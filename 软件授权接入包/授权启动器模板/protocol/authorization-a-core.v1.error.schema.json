@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authorization-a.local/schema/authorization-a-core.v1.error.schema.json",
+  "title": "Authorization A to core authorization-a-core.v1 error",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol", "schema_version", "contract_version", "request_id", "product_id",
+    "software_id", "profile_id", "client_id", "device_scope", "device_id",
+    "error_code", "message", "retryable", "server_time", "integrity"
+  ],
+  "properties": {
+    "protocol": { "const": "authorization-a-core.v1" },
+    "schema_version": { "const": "authorization-a-core.v1" },
+    "contract_version": { "const": "authorization-a-core.v1" },
+    "request_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "product_id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9_.-]*$" },
+    "software_id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9_.-]*$" },
+    "profile_id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9_.-]*$" },
+    "client_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "device_scope": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "device_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+    "error_code": {
+      "type": "string",
+      "enum": [
+        "AUTH_INVALID", "INVALID_REQUEST", "RESPONSE_SCHEMA_INVALID", "MISSING_REQUIRED_FIELD", "UNAUTHORIZED", "FORBIDDEN",
+        "SOFTWARE_MISMATCH", "PROFILE_MISMATCH", "CONTRACT_VERSION_UNSUPPORTED",
+        "LICENSE_NOT_FOUND", "LICENSE_NOT_ACTIVE", "LICENSE_EXPIRED",
+        "AUTHORIZATION_REVOKED", "AUTHORIZATION_BLOCKED", "DEVICE_SCOPE_MISMATCH",
+        "DEVICE_NOT_BOUND", "DEVICE_LIMIT_REACHED",
+        "DEVICE_PROOF_REQUIRED", "DEVICE_PROOF_INVALID", "REPLAY_DETECTED", "SIGNATURE_INVALID", "KEY_UNKNOWN",
+        "TIME_ROLLBACK_DETECTED", "TIME_SKEW", "VERSION_BLOCKED", "RISK_BLOCKED",
+        "ADAPTER_UNSUPPORTED", "RATE_LIMITED", "SERVICE_TEMPORARILY_UNAVAILABLE",
+        "IDEMPOTENCY_CONFLICT", "INTERNAL_ERROR"
+      ]
+    },
+    "message": { "type": "string", "minLength": 1, "maxLength": 1024 },
+    "retryable": { "type": "boolean" },
+    "server_time": { "type": "integer", "minimum": 0 },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "key_id", "canonicalization", "signature", "origin", "audience"],
+      "properties": {
+        "algorithm": { "const": "ed25519" },
+        "key_id": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "canonicalization": { "const": "JCS-RFC8785" },
+        "signature": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "origin": { "const": "authorization-a" },
+        "audience": { "const": "authorization-a-core" }
+      }
+    }
+  }
+}

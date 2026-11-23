@@ -1,0 +1,3 @@
+# Preserve manifest byte hashes and the source snapshot's CRLF/blank EOF.
+** -text whitespace=cr-at-eol
+授权启动器模板/fixtures/profiles/*.json whitespace=cr-at-eol,-blank-at-eof

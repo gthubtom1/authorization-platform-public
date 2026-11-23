@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "RESPONSE_SCHEMA_INVALID",
+    "message": "授权响应结构不符合 authorization.v1。",
+    "request_id": "fixture-response-schema-invalid",
+    "retryable": false
+  }
+}

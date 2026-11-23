@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block title %}管理端登录 · 授权平台{% endblock %}
+{% block heading %}管理端登录{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-card">
+    <p class="eyebrow">MANAGEMENT WEB</p>
+    <h2>管理员工作台</h2>
+    <p class="section-copy">此入口仅接受平台管理员账号。</p>
+    {% include "accounts/_login_form.html" %}
+    <p class="form-footnote">需要下游业务入口？<a href="{% url 'accounts:downstream_login' %}">进入下游端</a></p>
+  </div>
+</section>
+{% endblock %}

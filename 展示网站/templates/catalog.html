@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{ title }} · {{ site.name }}{% endblock %}
+{% block body_class %}storefront{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{% static 'public-catalog.css' %}?v=20261117-catalog-2">{% endblock %}
+{% block body %}
+<header class="masthead" id="top">
+ <div class="topbar page-width">
+  <a href="{% url 'catalog' %}" class="brand" aria-label="{{ site.name }}首页"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 4h10v10H4zM19 4h9v10h-9zM4 19h10v9H4z" stroke="currentColor" stroke-width="1.7"/><path d="M19 19h9v9h-9z" fill="currentColor"/></svg><span>{{ site.name }}</span></a>
+  <form method="get" class="search" role="search">{% if category %}<input type="hidden" name="category" value="{{ category.pk }}">{% endif %}<label class="sr-only" for="catalogSearch">搜索软件名称或介绍</label><input type="search" name="q" id="catalogSearch" value="{{ query }}" placeholder="搜索软件名称或介绍" maxlength="200"><button type="submit" aria-label="搜索软件">{% include 'icons/search.html' %}</button></form>
+ </div>
+ <div class="heading page-width"><h1>{{ title }}</h1><p class="result-count">{{ page.paginator.count }} 款软件</p></div>
+ <div class="category-band"><nav class="categories page-width" aria-label="软件分类"><a href="{% url 'catalog' %}" class="category-link" {% if not category %}aria-current="page"{% endif %}><span>全部软件</span><span class="category-count">{{ total }}</span></a>{% for c in categories %}<a href="?category={{ c.pk }}" class="category-link" {% if category.pk == c.pk %}aria-current="page"{% endif %}><span>{{ c.name }}</span><span class="category-count">{{ c.count }}</span></a>{% endfor %}</nav></div>
+</header>
+<main id="main" class="page-width">
+ {% if site.demo %}<p class="demo-indicator">本地验收 · 示例内容</p>{% endif %}
+ {% if query %}<div class="search-context"><p>“{{ query }}” 的搜索结果</p><a class="clear-link" href="{% if category %}?category={{ category.pk }}{% else %}{% url 'catalog' %}{% endif %}">清空搜索</a></div>{% endif %}
+ <section class="software-list" aria-label="软件目录">{% include 'cards.html' %}{% if not cards %}<div class="empty-state"><h2>{% if query %}没有找到相关软件{% else %}暂无上架软件{% endif %}</h2>{% if query %}<p>换个关键词，或查看其他分类。</p><a class="button secondary" href="{% if category %}?category={{ category.pk }}{% else %}{% url 'catalog' %}{% endif %}">清空搜索</a>{% endif %}</div>{% endif %}</section>
+ {% include 'public-pagination.html' %}
+ <footer class="footer store-footer">{% if site.footer %}<p>{{ site.footer }}</p>{% endif %}<a href="#top">返回顶部<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6M12 8v13"/></svg></a></footer>
+</main>
+{% include 'lightbox.html' %}
+{% endblock %}

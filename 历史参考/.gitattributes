@@ -1,0 +1,2 @@
+# Preserve the captured reference bytes; these files are not production sources.
+** -text whitespace=cr-at-eol

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://authorization-a.local/schema/authorization-a-core.v1.frame.schema.json",
+  "title": "Authorization A to core authorization-a-core.v1 transport frame",
+  "description": "The bounded ACV1 JSON payload for a formal authorization response. The outer binary header is documented by the Rust transport module.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "product_id", "kind", "body"],
+  "properties": {
+    "protocol": { "const": "authorization-a-core.v1" },
+    "product_id": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9_.-]*$" },
+    "kind": { "enum": ["authorization_response", "authorization_error"] },
+    "body": {
+      "oneOf": [
+        { "$ref": "authorization-a-core.v1.schema.json" },
+        { "$ref": "authorization-a-core.v1.error.schema.json" }
+      ]
+    }
+  }
+}

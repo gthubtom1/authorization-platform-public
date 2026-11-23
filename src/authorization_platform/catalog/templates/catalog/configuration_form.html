@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% block title %}{{ heading }} · 授权平台{% endblock %}
+{% block heading %}{{ heading }}{% endblock %}
+{% block content %}
+<section class="detail-header"><div><p class="eyebrow">{{ eyebrow }}</p><h2>{{ heading }}</h2><p class="section-copy">{{ intro }}</p></div><span class="tag">类型化配置</span></section>
+<section class="panel result-panel narrow-panel">
+  <form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}<div class="field-error">{{ form.non_field_errors }}</div>{% endif %}
+    {% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<p class="form-footnote">{{ field.help_text }}</p>{% endif %}{% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}</div>{% endfor %}
+    <div class="toolbar"><a class="text-link" href="{{ cancel_href }}">取消</a><button class="primary-button" type="submit">保存配置</button></div>
+  </form>
+</section>
+{% if effective_configuration %}
+<section class="panel result-panel narrow-panel">
+  <div class="panel-heading"><h3>当前生效结果</h3><span class="tag">只读</span></div>
+  <div class="compact-grid">
+    <div><strong>联系方式</strong>{% if effective_configuration.support %}<p>购买链接：{{ effective_configuration.support.purchase_url|default:'未配置' }}</p><p>QQ：{{ effective_configuration.support.qq|default:'未配置' }}</p><p>微信：{{ effective_configuration.support.wechat|default:'未配置' }}</p>{% else %}<p class="muted-text">未配置</p>{% endif %}</div>
+    <div><strong>公告</strong>{% if effective_configuration.announcement %}<p>{{ effective_configuration.announcement.title|default:'无标题' }}</p><p class="muted-text">{{ effective_configuration.announcement.body|default:'无内容' }}</p>{% else %}<p class="muted-text">已关闭或未配置</p>{% endif %}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

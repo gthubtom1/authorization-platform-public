@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/png" href="app-mark.png" />
+    <title>软件授权</title>
+    <link rel="stylesheet" href="authorization-a-shell.css" />
+  </head>
+  <body>
+    <div class="prototype-ribbon" role="note" hidden>
+      原型预览 · 不联网 · 不启动程序
+    </div>
+
+    <main class="shell" data-state="login" aria-label="授权入口">
+      <section class="auth-panel">
+        <header class="panel-header">
+          <div class="brand-lockup">
+            <div class="brand-mark" aria-hidden="true">
+              <img src="app-mark.png" alt="" width="48" height="48" />
+            </div>
+            <div>
+              <p class="eyebrow" data-copy="app_kicker">本软件</p>
+            </div>
+          </div>
+          <div class="connection-chip" aria-live="polite" aria-label="授权平台连接状态">
+            <span class="connection-dot" aria-hidden="true"></span>
+            <span id="headerConnection">在线</span>
+          </div>
+        </header>
+
+        <div id="liveRegion" class="sr-only" role="status" aria-live="polite"></div>
+
+        <section class="activation-section" aria-labelledby="panelTitle">
+          <h1 id="panelTitle">授权验证</h1>
+          <form id="activationForm" novalidate>
+            <label class="sr-only" for="credential">卡密</label>
+            <div class="credential-row">
+              <input id="credential" name="credential" type="text" autocomplete="off" spellcheck="false" placeholder="请输入卡密" data-copy-placeholder="credential_placeholder" autofocus />
+              <span class="field-state">可见</span>
+            </div>
+            <button id="activateButton" class="primary-button" type="submit" data-copy="activate">立即激活</button>
+          </form>
+
+          <div id="feedbackPanel" class="feedback-panel" role="status" aria-live="polite" hidden>
+            <span class="feedback-indicator" aria-hidden="true"></span>
+            <div>
+              <strong id="feedbackTitle">正在检查</strong>
+              <p id="feedbackMessage">正在验证卡密和当前设备。</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="page-footer">
+          <div class="device-code-row">
+            <span>设备码</span>
+            <button id="deviceCode" class="device-code-chip" type="button" title="点击复制设备码">待确认</button>
+          </div>
+          <nav id="supportLinks" class="support-links" aria-label="辅助入口" hidden>
+            <button id="purchaseLink" class="support-link" type="button" data-copy="purchase">购买授权</button>
+            <span aria-hidden="true">·</span>
+            <button id="contactLink" class="support-link" type="button" data-copy="support">联系客服</button>
+          </nav>
+          <div id="contactBanner" class="contact-banner" hidden></div>
+        </div>
+
+        <span id="connectivityLabel" class="sr-only">在线</span>
+      </section>
+    </main>
+
+    <details class="prototype-tools" hidden>
+      <summary>原型状态预览</summary>
+      <label for="statePicker">选择状态</label>
+      <select id="statePicker" aria-label="选择演示状态">
+        <option value="login">首次激活</option>
+        <option value="loading">正在检查</option>
+        <option value="active">授权有效</option>
+        <option value="grace">离线宽限</option>
+        <option value="expired">授权已过期</option>
+        <option value="revoked">授权已撤销</option>
+        <option value="blocked">访问已阻断</option>
+        <option value="device_mismatch">设备不匹配</option>
+        <option value="unavailable">服务不可用</option>
+        <option value="invalid">响应无效</option>
+      </select>
+    </details>
+    <script src="authorization-a-shell.js"></script>
+  </body>
+</html>

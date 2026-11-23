@@ -1,0 +1,40 @@
+{
+  "schema": "device-proof.v1",
+  "domain": "authorization-platform.device-proof.v1",
+  "algorithm": "ed25519",
+  "signature_encoding": "base64url-no-padding",
+  "canonicalization": "JCS-RFC8785",
+  "message": {
+    "encoding": "UTF-8",
+    "object_fields": [
+      "domain",
+      "action",
+      "request_id",
+      "authorization_id",
+      "software_id",
+      "profile_id",
+      "client_id",
+      "contract_version",
+      "target",
+      "arch",
+      "channel",
+      "installation_id",
+      "device_public_key",
+      "nonce"
+    ],
+    "key_order": "lexicographic-jcs",
+    "string_normalization": "trim outer whitespace; preserve remaining UTF-8 code points",
+    "missing_authorization_id": "empty string for activate; required for verify/deactivate/launch-ticket/ticket-consume",
+    "action_values": ["activate", "verify", "deactivate", "launch-ticket", "ticket-consume"],
+    "nonce": "client-generated string, at least 8 characters, unique per request",
+    "request_id": "header/body value after trim; header and body must match exactly",
+    "device_public_key": "Ed25519 public key, exactly 32 decoded bytes, base64url; sign the normalized submitted encoding"
+  },
+  "verification": {
+    "signature_input": "JCS(message object) encoded as UTF-8 bytes",
+    "failure_code": "DEVICE_PROOF_INVALID",
+    "missing_code": "DEVICE_PROOF_REQUIRED",
+    "no_replay": "nonce is hashed and consumed once by the server"
+  },
+  "sensitive_values_included": false
+}

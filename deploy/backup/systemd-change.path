@@ -1,0 +1,10 @@
+[Unit]
+Description=Start backup when the app marks a ledger change
+
+[Path]
+PathExists=/var/lib/authorization-platform-backup/queue/need-run
+PathModified=/var/lib/authorization-platform-backup/queue/need-run
+Unit=authorization-platform-backup-full.service
+
+[Install]
+WantedBy=multi-user.target

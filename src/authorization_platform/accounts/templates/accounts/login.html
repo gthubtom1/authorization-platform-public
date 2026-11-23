@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% block title %}选择入口 · 授权平台{% endblock %}
+{% block heading %}选择访问入口{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-card">
+    <p class="eyebrow">WEB ACCESS</p>
+    <h2>进入授权平台</h2>
+    <p class="section-copy">管理员和下游使用各自的网页登录入口，账号权限不会在入口之间切换。</p>
+    <div class="entry-grid">
+      <a class="entry-choice" href="{% url 'accounts:manage_login' %}">
+        <strong>管理端</strong>
+        <span>平台配置、额度、授权和审计</span>
+      </a>
+      <a class="entry-choice" href="{% url 'accounts:downstream_login' %}">
+        <strong>下游端</strong>
+        <span>额度兑换、发卡和自己的业务记录</span>
+      </a>
+    </div>
+    <p class="form-footnote">还没有下游账号？<a href="{% url 'accounts:downstream_register' %}">使用邀请码注册</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,33 @@
+[Unit]
+Description=Authorization Platform queued backup dispatcher
+Wants=network-online.target
+After=network-online.target docker.service
+OnFailure=authorization-platform-backup-failure.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+TimeoutStartSec=7200
+EnvironmentFile=/etc/authorization-platform/production.env
+Environment=BACKUP_PROOF_FILE=/var/lib/authorization-platform-backup/backup-proof.json
+Environment=BACKUP_PROOF_GENERATOR=/srv/authorization-platform/scripts/backup_proof_generator.py
+Environment=BACKUP_EVIDENCE_COLLECTOR=/srv/authorization-platform/scripts/backup_evidence_collector.py
+Environment=BACKUP_LOG_FILE=/var/lib/authorization-platform-backup/backup.log
+Environment=BACKUP_SCHEDULE_STAMP_DIR=/var/lib/authorization-platform-backup/backup-stamps
+Environment=BACKUP_KEYS_DIR=/var/lib/authorization-platform-backup/keys
+Environment=BACKUP_DOWNLOAD_DIR=/var/lib/authorization-platform-backup/downloads
+Environment=BACKUP_STATUS_FILE=/var/lib/authorization-platform-backup/backup-status.json
+Environment=BACKUP_DUMP_PASS_FILE=/var/lib/authorization-platform-backup/host-secrets/github-dump-pass.txt
+Environment=BACKUP_MIGRATION_GRAPH_FILE=/var/lib/authorization-platform-backup/migration-graph.json
+ExecStart=/usr/local/sbin/ap-backup-dispatch.sh
+ExecStartPost=/srv/authorization-platform/.venv/bin/python /srv/authorization-platform/scripts/backup_mark_success.py --status-file /var/lib/authorization-platform-backup/backup-status.json --proof-file /var/lib/authorization-platform-backup/backup-proof.json --run-id-file /var/lib/authorization-platform-backup/current-run-id --skip-sentinel /var/lib/authorization-platform-backup/backup-stamps/last-exec-skipped
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=false
+ReadWritePaths=/var/lib/authorization-platform-backup
+
+[Install]
+WantedBy=multi-user.target

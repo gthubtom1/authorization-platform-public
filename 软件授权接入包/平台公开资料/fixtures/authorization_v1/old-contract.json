@@ -1,0 +1,3 @@
+{
+  "error": {"code": "CONTRACT_VERSION_UNSUPPORTED", "message": "客户端合同版本不受支持。", "request_id": "fixture-old-contract", "retryable": false}
+}

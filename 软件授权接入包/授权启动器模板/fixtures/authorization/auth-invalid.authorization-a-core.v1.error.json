@@ -1,0 +1,24 @@
+{
+  "protocol": "authorization-a-core.v1",
+  "schema_version": "authorization-a-core.v1",
+  "contract_version": "authorization-a-core.v1",
+  "request_id": "fixture-request-auth-invalid",
+  "product_id": "sample-product",
+  "software_id": "software-generic",
+  "profile_id": "profile-default",
+  "client_id": "fixture-client-1",
+  "device_scope": "current_device",
+  "device_id": "device-1",
+  "error_code": "AUTH_INVALID",
+  "message": "AUTH_INVALID",
+  "retryable": false,
+  "server_time": 1755000100,
+  "integrity": {
+    "algorithm": "ed25519",
+    "key_id": "fixture-a-key-auth-invalid",
+    "canonicalization": "JCS-RFC8785",
+    "signature": "fixture-a-signature-auth-invalid",
+    "origin": "authorization-a",
+    "audience": "authorization-a-core"
+  }
+}

@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}
+{% block title %}直建下游 · 授权平台{% endblock %}
+{% block heading %}直建下游账号{% endblock %}
+{% block content %}
+<section class="auth-layout"><div class="auth-card"><p class="eyebrow">ADMIN DIRECT CREATE</p><h2>只需要两个字段</h2><p class="section-copy">不需要邀请码、显示名称或联系方式。密码只用于创建，之后不能回显，只能重置。</p><form method="post" novalidate>{% csrf_token %}{{ form.non_field_errors }}{% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}</div>{% endfor %}<button class="primary-button" type="submit">创建下游账号</button></form></div></section>
+{% endblock %}

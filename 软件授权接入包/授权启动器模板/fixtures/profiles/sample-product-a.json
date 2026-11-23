@@ -1,0 +1,28 @@
+{
+  "schema_version": "product-manifest.v1",
+  "product_id": "sample-product-a",
+  "display_name": "示例软件A",
+  "category": "design",
+  "adapter_id": "sample-legacy-bridge-a",
+  "adapter_version": "1.0.0",
+  "locale": "zh-CN",
+  "theme": {
+    "accent": "#7C3AED",
+    "surface": "#111827",
+    "text": "#F9FAFB",
+    "danger": "#F43F5E"
+  },
+  "core_path": "core/sample-product-a.exe",
+  "state_root": "state/sample-product-a",
+  "ipc_name": "a-auth-sample-product-a",
+  "compatibility": "legacy_auth",
+  "capabilities": [
+    {"id": "launch", "version": "1", "required": true},
+    {"id": "updates", "version": "1", "required": false}
+  ],
+  "protocol_parameters": {
+    "channel": "stable",
+    "legacy_api": "authorization.v1"
+  }
+}
+

@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}
+{% block title %}查看授权卡密 · 授权平台{% endblock %}
+{% block heading %}查看授权卡密{% endblock %}
+{% block content %}
+<section class="auth-layout"><article class="auth-card"><p class="eyebrow">PROTECTED CREDENTIAL VIEW</p><h2>授权卡密已解密</h2><p class="section-copy">这是受保护的明文交付。查看、复制和下载不写“谁看过”审计；请通过安全方式交付，不要把卡密放入公开聊天、截图或日志。</p><div class="nested-card"><span class="metric-label">{{ card.software.name }} · {{ card.plan_snapshot.name }}</span><code class="credential-value">{{ plaintext }}</code></div><div class="toolbar form-actions"><a class="primary-button" href="{% url 'licensing:batch_list' %}">返回授权卡密</a></div></article></section>
+{% endblock %}

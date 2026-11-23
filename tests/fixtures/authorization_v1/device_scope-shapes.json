@@ -1,0 +1,33 @@
+{
+  "valid": {
+    "scope": "current_device",
+    "device_id": "device-a",
+    "installation_id": "install-a"
+  },
+  "string": "device-a",
+  "missing_installation_id": {
+    "scope": "current_device",
+    "device_id": "device-a"
+  },
+  "extra_field": {
+    "scope": "current_device",
+    "device_id": "device-a",
+    "installation_id": "install-a",
+    "software_id": "wrong-scope"
+  },
+  "wrong_scope": {
+    "scope": "all_devices",
+    "device_id": "device-a",
+    "installation_id": "install-a"
+  },
+  "wrong_device_id_type": {
+    "scope": "current_device",
+    "device_id": 123,
+    "installation_id": "install-a"
+  },
+  "too_long_installation_id": {
+    "scope": "current_device",
+    "device_id": "device-a",
+    "installation_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+}

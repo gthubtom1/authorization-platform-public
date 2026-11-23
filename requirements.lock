@@ -1,0 +1,13 @@
+# Generated from the PR-01 local runtime dependency set.
+# Update this file only after reviewing compatibility, license and exit cost.
+asgiref==3.12.1
+cffi==2.1.1
+cryptography==50.0.0
+Django==5.2.17
+gunicorn==26.1.0
+psycopg==3.2.13
+psycopg-binary==3.2.13
+pycparser==3.0
+sqlparse==0.6.0
+typing_extensions==4.16.0
+tzdata==2026.3

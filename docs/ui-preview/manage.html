@@ -1,0 +1,2163 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg?v=20260910-favicon-1" type="image/svg+xml" />
+    <title>管理端 · 授权控制室</title>
+    <script>
+      (() => {
+        const standalonePreview =
+          ["127.0.0.1", "localhost"].includes(window.location.hostname) &&
+          window.location.port !== "" &&
+          window.location.port !== "8123";
+        if (!standalonePreview) {
+          document.documentElement.classList.add("live-auth-pending");
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="preview.css?v=20261117-suite-1" />
+  </head>
+  <body class="preview-app role-admin" data-default-screen="overview">
+    <div class="app-shell">
+      <aside class="side-rail">
+        <div class="rail-brand">
+          <span class="brand-mark">AUTH</span><span>授权控制室</span
+          ><button
+            class="nav-toggle"
+            type="button"
+            aria-controls="manageNavigation"
+            aria-expanded="false"
+            aria-label="打开管理端导航"
+            data-open-label="打开管理端导航"
+            data-close-label="关闭管理端导航"
+          >
+            <span aria-hidden="true">☰</span>
+          </button>
+        </div>
+        <div class="rail-entry">
+          <span class="live-dot"></span><span>管理端</span><code>工作台</code>
+        </div>
+        <nav class="side-nav" id="manageNavigation" aria-label="管理端导航">
+          <a
+            class="is-active"
+            href="#overview"
+            data-screen="overview"
+            aria-current="page"
+            ><span aria-hidden="true">◈</span>总览</a
+          >
+          <a class="nav-secondary" href="#analytics" data-screen="analytics" data-nav-parent="overview"
+            ><span aria-hidden="true">⌁</span>统计分析</a
+          >
+          <a href="#software" data-screen="software"
+            ><span aria-hidden="true">□</span>软件与套餐</a
+          >
+          <a href="#downstreams" data-screen="downstreams"
+            ><span aria-hidden="true">↔</span>下游</a
+          >
+          <a href="#credits" data-screen="credits"
+            ><span aria-hidden="true">＋</span>额度</a
+          >
+          <a href="#licenses" data-screen="licenses"
+            ><span aria-hidden="true">◇</span>授权卡密</a
+          >
+          <a href="#risk" data-screen="risk"
+            ><span aria-hidden="true">!</span>设备与授权</a
+          >
+          <a href="#client" data-screen="client"
+            ><span aria-hidden="true">↗</span>客户端与版本</a
+          >
+          <a class="nav-secondary" href="#releases" data-screen="releases" data-nav-parent="client"
+            ><span aria-hidden="true">⇧</span>版本发布</a
+          >
+          <a href="#audit" data-screen="audit"
+            ><span aria-hidden="true">≡</span>审计记录</a
+          >
+          <a href="#backup" data-screen="backup"
+            ><span aria-hidden="true">▣</span>备份</a
+          >
+        </nav>
+        <div class="rail-bottom">
+          <p>当前账号<br /><strong>—</strong></p>
+        </div>
+      </aside>
+
+      <main class="app-main">
+        <header class="app-header">
+          <div class="breadcrumbs">
+            <span>管理端</span><b>/</b
+            ><strong data-page-label aria-live="polite">总览</strong>
+          </div>
+          <div class="header-actions">
+            <span class="preview-chip">静态预览</span>
+            <span class="scope-badge">全平台 · 全软件</span>
+            <span class="header-user"><i></i>平台管理员</span
+            ><button
+              class="text-button"
+              type="button"
+              data-dialog="passwordChangeDialog"
+            >
+              账户安全
+            </button
+            ><button
+              class="text-button"
+              type="button"
+              data-workspace-refresh
+            >
+              刷新
+            </button
+            ><button
+              class="text-button"
+              type="button"
+              data-global-search
+            >
+              只找完整卡密
+            </button
+            ><button
+              class="text-button"
+              type="button"
+              data-toast="预览模式不会清除真实会话。"
+            >
+              退出
+            </button>
+          </div>
+        </header>
+
+        <section class="screen is-visible" data-screen-panel="overview">
+          <div class="page-heading">
+            <div>
+              <h1>授权控制室</h1>
+            </div>
+            <div class="heading-actions">
+              <button
+                class="button button-secondary"
+                type="button"
+                data-screen-target="analytics"
+              >
+                查看统计</button
+              ><button
+                class="button button-primary"
+                type="button"
+                data-screen-target="software"
+              >
+                进入软件与套餐
+              </button>
+            </div>
+          </div>
+
+          <div class="signal-grid">
+            <article class="signal signal-credits">
+              <div class="signal-head">
+                <span>额度净消耗</span><span class="signal-label">近 30 天 · 全平台</span>
+              </div>
+              <strong data-overview-metric="credits">—</strong>
+              <div class="signal-line"><i style="width: 0%"></i></div>
+            </article>
+            <article class="signal signal-license">
+              <div class="signal-head">
+                <span>授权状态</span><span class="signal-label">待读取</span>
+              </div>
+              <strong data-overview-metric="authorizations">—</strong>
+              <div class="signal-line"><i style="width: 0%"></i></div>
+            </article>
+            <article class="signal signal-risk">
+              <div class="signal-head">
+                <span>风险状态</span><span class="signal-label">待读取</span>
+              </div>
+              <strong data-overview-metric="risk">—</strong>
+              <div class="signal-line"><i style="width: 0%"></i></div>
+            </article>
+          </div>
+          <div class="revenue-grid" aria-label="激活收入（额度）">
+            <article><span>今日收入（额度）</span><strong data-revenue-metric="today">—</strong></article>
+            <article><span>本月收入（额度）</span><strong data-revenue-metric="month">—</strong></article>
+            <article><span>累计收入（额度）</span><strong data-revenue-metric="total">—</strong></article>
+          </div>
+          <p class="form-hint" data-revenue-rule>
+            只统计已经激活的卡，把每张卡发卡时的套餐额度加起来。还没激活的不算。全平台累计等于各下游累计相加。测试卡成本是 0，激活了这里也仍是 0。
+          </p>
+
+          <div class="overview-grid overview-focus">
+            <section class="panel attention-panel">
+              <div class="panel-heading">
+                <div>
+                  <h2>需要处理</h2>
+                </div>
+              </div>
+              <div class="attention-list">
+                <p class="attention-empty">当前没有需要处理的事项。</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="analytics">
+          <div class="page-heading">
+            <div>
+              <h1>统计分析</h1>
+            </div>
+            <button
+              class="button button-secondary"
+              type="button"
+              data-analytics-refresh
+            >
+              ↻ 刷新数据
+            </button>
+          </div>
+          <section class="panel filter-panel">
+            <div class="filter-row" data-analytics-filters>
+              <label
+                >软件<select name="analytics_software">
+                  <option value="all">全部软件</option>
+                </select></label
+              ><label
+                >下游<select name="analytics_downstream">
+                  <option value="all">全部下游</option>
+                </select></label
+              ><label
+                >北京时间范围<select name="analytics_window">
+                  <option value="7d">近 7 天</option>
+                  <option value="30d">近 30 天</option>
+                  <option value="empty">无匹配区间</option>
+                </select></label
+              ><button
+                class="button button-primary"
+                type="button"
+                data-analytics-apply
+              >
+                应用范围
+              </button>
+            </div>
+          </section>
+
+            <section class="panel view-state compact-state" data-analytics-empty hidden>
+              <span class="state-symbol" aria-hidden="true">∅</span>
+              <h2>这个时间窗口没有激活或流水</h2>
+              <p>当前有效授权、已封禁风险和日历收入仍按现在的快照显示。柱图和软件拆分只反映这个窗口。</p>
+              <button
+                class="button button-primary"
+                type="button"
+                data-analytics-reset
+              >
+                查看近 7 天
+              </button>
+            </section>
+
+          <div data-analytics-content aria-live="polite">
+            <div class="analytics-scope">
+              <span>当前范围</span
+              ><strong data-analytics-scope
+                >全部软件 · 全部下游 · 近 7 天</strong
+              ><span>数据截至</span><b class="mono">—</b
+              ><button
+                class="button button-secondary"
+                type="button"
+                data-export="/manage/analytics/summary/export/" data-export-query="analytics" data-export-filename="analytics-summary.csv"
+              >
+                ↓ 导出今日/本月/累计收入
+              </button>
+            </div>
+            <div class="metric-grid">
+              <article class="metric-cell">
+                <span>当前有效授权</span
+                ><strong class="mono" data-analytics-metric="active"
+                  >—</strong
+                >
+              </article>
+              <article class="metric-cell">
+                <span>激活成功率</span
+                ><strong class="mono" data-analytics-metric="success"
+                  >—</strong
+                >
+              </article>
+              <article class="metric-cell">
+                <span>额度净消耗</span
+                ><strong class="mono" data-analytics-metric="credits"
+                  >—</strong
+                >
+              </article>
+              <article class="metric-cell metric-alert">
+                <span>已封禁风险</span
+                ><strong class="mono" data-analytics-metric="risk"
+                  >—</strong
+                >
+              </article>
+            </div>
+
+            <div class="analytics-layout" data-analytics-window-chart>
+              <section class="panel trend-panel">
+                <div class="panel-heading">
+                  <div>
+                    <h2>每日激活与验证</h2>
+                  </div>
+                  <span class="status status-green">服务端口径</span>
+                </div>
+                <div class="bar-chart" aria-label="所选范围每日激活量柱状图"></div>
+              </section>
+              <section class="panel definition-panel">
+                <h2>口径与边界</h2>
+                <dl class="definition-list">
+                  <div>
+                    <dt>时间边界</dt>
+                    <dd>UTC 存储，北京时间自然日聚合</dd>
+                  </div>
+                  <div>
+                    <dt>激活成功</dt>
+                    <dd>仅计服务端确认并建立授权实例</dd>
+                  </div>
+                  <div>
+                    <dt>额度净消耗</dt>
+                    <dd>来自不可变额度流水，不读取页面余额</dd>
+                  </div>
+                  <div>
+                    <dt>数据范围</dt>
+                    <dd>管理员全平台；筛选不会扩大权限</dd>
+                  </div>
+                </dl>
+              </section>
+            </div>
+
+            <section class="panel table-panel" data-analytics-window-table>
+              <div class="table-toolbar">
+                <span class="table-result">软件维度明细</span>
+                <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索软件名</span><input type="search" placeholder="软件名" autocomplete="off" /></label>
+              </div>
+              <div class="table-scroll">
+                <table data-row-slots="5">
+                  <thead>
+                    <tr>
+                      <th>软件</th>
+                      <th>窗口内激活</th>
+                      <th>窗口内收入(额度)</th>
+                    </tr>
+                  </thead>
+                  <tbody data-analytics-breakdown>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" data-screen-panel="software">
+          <div class="page-heading">
+            <div>
+              <h1>软件与套餐</h1>
+            </div>
+            <button
+              class="button button-primary"
+              type="button"
+              data-dialog="softwareDialog"
+              data-software-mode="create"
+            >
+              ＋ 新建软件
+            </button>
+          </div>
+          <section class="panel table-panel">
+            <div class="table-toolbar">
+              <label class="search-field"
+                ><span aria-hidden="true">⌕</span
+                ><span class="sr-only">搜索软件名称或软件标识</span
+                ><input
+                  type="search"
+                  placeholder="软件名称或软件标识"
+                  title="可搜软件名称或 software_id"
+                  autocomplete="off" /></label>
+              <div class="filter-chips" aria-label="软件状态筛选">
+                <button class="chip is-active" type="button" data-software-status="all">全部</button
+                ><button class="chip" type="button" data-software-status="active">运行中</button
+                ><button class="chip" type="button" data-software-status="testing">测试中</button
+                ><button class="chip" type="button" data-software-status="draft">草稿</button
+                ><button class="chip" type="button" data-software-status="archived">已归档</button>
+              </div>
+              <button
+                class="button button-secondary"
+                type="button"
+                data-export="/manage/catalog/export/" data-export-filename="catalog.csv"
+              >
+                ↓ 导出
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead>
+                  <tr>
+                    <th>软件</th>
+                    <th>配置Profile</th>
+                    <th>状态</th>
+                    <th>授权参数</th>
+                    <th>套餐与单卡额度</th>
+                    <th>客户端接入</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+        <section class="screen" data-screen-panel="downstreams">
+          <div class="page-heading">
+            <div>
+              <h1>下游管理</h1>
+            </div>
+          </div>
+          <div
+            class="work-view-shell"
+            data-work-view-scope="downstream-management"
+          >
+            <div class="record-tabs page-tabs" role="tablist" aria-label="下游管理内容">
+              <button type="button" role="tab" data-work-view="accounts" aria-selected="true">
+                下游账号</button
+              ><button type="button" role="tab" data-work-view="invitations" aria-selected="false">
+                邀请码
+              </button>
+            </div>
+            <section data-work-panel="accounts">
+              <div class="record-view-heading">
+                <div><h2>下游账号与经营范围</h2></div>
+                <button
+                  class="button button-primary"
+                  type="button"
+                  data-dialog="downstreamCreateDialog"
+                >
+                  ＋ 新建下游
+                </button>
+              </div>
+              <section class="panel table-panel">
+            <div class="table-toolbar">
+              <label class="search-field"
+                ><span aria-hidden="true">⌕</span
+                ><span class="sr-only">搜索下游用户名</span
+                ><input
+                  type="search"
+                  placeholder="搜索下游用户名"
+                  autocomplete="off" /></label>
+            </div>
+            <div class="credential-filter-bar" data-downstream-filters>
+              <label>状态<select name="downstream_status" aria-label="下游状态筛选"><option value="">全部状态</option><option value="active">正常</option><option value="suspended">已暂停</option><option value="closed">已归档</option></select></label>
+              <label>经营软件<select name="downstream_software" aria-label="下游软件筛选"><option value="">全部软件</option></select></label>
+              <label>额度状态<select name="downstream_balance" aria-label="下游额度筛选"><option value="">全部额度</option><option value="positive">有余额</option><option value="zero">零余额</option></select></label>
+              <label>最近活动<select name="downstream_activity" aria-label="下游活动筛选"><option value="">全部时间</option><option value="today">今天</option><option value="7d">近 7 天</option><option value="stale">超过 30 天</option></select></label>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead>
+                  <tr>
+                    <th>账号</th>
+                    <th>状态</th>
+                    <th>经营软件</th>
+                    <th>可用额度</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+              </section>
+            </section>
+            <section data-work-panel="invitations" hidden>
+              <div class="record-view-shell" data-record-view-scope="invitations">
+            <div class="record-view-heading">
+              <div>
+                <h2>单码列表</h2>
+              </div>
+              <div class="heading-actions">
+                <button
+                  class="button button-primary"
+                  type="button"
+                  data-dialog="inviteDialog"
+                >
+                  ＋ 生成邀请码
+                </button>
+                
+              </div>
+            </div>
+            
+            <section class="panel table-panel" data-record-panel="items" data-server-paginated="true">
+              <div class="panel-heading"><div><h2>单个邀请码</h2></div><span class="scope-badge">未使用永久有效</span></div>
+              <div class="table-toolbar">
+                <span class="table-result" data-record-scope-summary data-record-scope-default="全部邀请码">全部邀请码</span>
+                <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜注册账号，或粘客户发来的完整邀请码。屏幕尾号搜不到。列表里已有的行点查看后再显示完整码</span><input type="search" data-sensitive-search placeholder="注册账号，或粘客户发来的完整邀请码" title="搜注册账号。找某一个码请粘完整邀请码。屏幕尾号搜不到。" autocomplete="off" /></label>
+              </div>
+              <div class="credential-filter-bar" data-credential-filters>
+                <label>分类<select data-invitation-scope><option value="current">当前记录</option><option value="archived">归档记录</option><option value="all">全部记录</option></select></label>
+                <label>状态<select data-credential-filter="codeStatus"><option value="">全部状态</option><option value="未使用">未使用</option><option value="已使用">已使用</option><option value="已撤销">已撤销</option><option value="已过期">已过期</option><option value="已归档">已归档</option></select></label>
+</div>
+            <div class="selection-actions" data-record-selection-bar>
+              <span class="selection-summary" data-record-selection-summary role="status" aria-live="polite">已选 0 条</span>
+              <button class="text-button" type="button" data-record-select-filtered>选择全部筛选结果</button>
+              <button class="text-button" type="button" data-record-clear disabled>取消选择</button>
+                <button class="button button-secondary button-small" type="button" data-invitation-revoke-selected disabled>作废</button>
+                <button class="button button-secondary button-small" type="button" data-archive-selected disabled>归档</button>
+                <button class="button button-danger button-small" type="button" data-delete-selected disabled>删除</button>
+              
+            </div>
+            <div class="table-scroll">
+                <table data-row-slots="5">
+                  <thead><tr><th><input type="checkbox" data-select-all aria-label="全选本页" title="全选本页" /></th><th>邀请码</th><th>状态</th><th>注册账号</th><th>使用时间</th><th>操作</th></tr></thead>
+                  <tbody data-invite-item-table>
+                  </tbody>
+                </table>
+              </div>
+              <span class="risk-server-pagination" data-invitation-server-pagination hidden>
+                <button class="text-button" type="button" data-invitation-server-prev disabled>上一页</button>
+                <span class="mono" data-invitation-server-page>第 1 页</span>
+                <button class="text-button" type="button" data-invitation-server-next disabled>下一页</button>
+              </span>
+            </section>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="screen" data-screen-panel="credits">
+          <div class="page-heading">
+            <div>
+              <h1>额度管理</h1>
+            </div>
+          </div>
+          <section class="panel" data-quota-purchase-settings>
+            <div class="panel-heading"><div><h2>给下游买额度的网站</h2></div></div>
+            <label class="form-label">给下游买额度的网站<input type="url" data-quota-purchase-input placeholder="https://" value="" /></label>
+            <button class="button button-secondary" type="button" data-quota-purchase-save>保存链接</button>
+          </section>
+          <div class="work-view-shell" data-work-view-scope="credit-management">
+            <div class="record-tabs page-tabs" role="tablist" aria-label="额度管理内容">
+              <button type="button" role="tab" data-work-view="ledger" aria-selected="true">
+                账户流水</button
+              ><button type="button" role="tab" data-work-view="quota-cards" aria-selected="false">
+                额度兑换码
+              </button>
+            </div>
+            <section data-work-panel="ledger">
+              <div class="record-view-heading">
+                <div><h2>下游额度账户</h2></div>
+                <div class="heading-actions">
+                  <button
+                    class="button button-primary"
+                    type="button"
+                    data-dialog="creditAdjustDialog"
+                  >
+                    调整下游额度
+                  </button>
+                  <button
+                    class="button button-secondary"
+                    type="button"
+                    data-dialog="creditRecoverDeletedDialog"
+                  >
+                    扣回已删除下游余额
+                  </button>
+                </div>
+              </div>
+              <section class="ledger-layout">
+                <div class="panel balance-panel">
+                  <strong class="balance-number">—</strong>
+                  <p class="balance-caption">未删除下游余额合计</p>
+                  <div class="balance-line"><i style="width: 0%"></i></div>
+                </div>
+                <section class="panel table-panel" data-server-paginated="true">
+                  <div class="table-toolbar">
+                    <span class="table-result">全部下游账户流水</span>
+                    <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索流水对象、类型或原因</span><input type="search" data-admin-ledger-search placeholder="下游账号、类型、原因" autocomplete="off" /></label>
+                    <button
+                      class="button button-secondary"
+                      type="button"
+                      data-export="/manage/credits/ledger/export/" data-export-filename="credit-ledger.csv"
+                    >
+                      ↓ 导出
+                    </button>
+                  </div>
+                  <div class="table-scroll">
+                    <table data-row-slots="5">
+                      <thead>
+                        <tr>
+                          <th>时间</th>
+                          <th>对象</th>
+                          <th>类型</th>
+                          <th>变动</th>
+                          <th>该下游余额</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                  <span class="risk-server-pagination" data-admin-ledger-pagination hidden>
+                    <button class="text-button" type="button" data-admin-ledger-prev disabled>上一页</button>
+                    <span class="mono" data-admin-ledger-page>第 1 页</span>
+                    <button class="text-button" type="button" data-admin-ledger-next disabled>下一页</button>
+                  </span>
+                </section>
+              </section>
+            </section>
+            <section data-work-panel="quota-cards" hidden>
+              <div class="record-view-shell" data-record-view-scope="quota-cards">
+              <div class="record-view-heading">
+                <div>
+                  <h2>单码列表</h2>
+                </div>
+                <div class="heading-actions">
+                  <button
+                    class="button button-primary"
+                    type="button"
+                    data-dialog="quotaCardDialog"
+                  >
+                    ＋ 生成额度兑换码
+                  </button>
+                  
+                </div>
+              </div>
+              
+              <section class="panel table-panel" data-record-panel="items" data-server-paginated="true">
+                <div class="table-toolbar">
+                  <span class="table-result" data-record-scope-summary data-record-scope-default="当前额度兑换码">当前额度兑换码</span>
+                  <button class="button button-secondary" type="button" data-export="/manage/credits/cards/export/" data-export-query="quota-cards" data-export-filename="quota-cards.csv">↓ 导出摘要</button>
+                  <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜兑换下游或面额，或粘客户发来的完整兑换码。屏幕尾号搜不到。列表里已有的行点查看后再显示完整码</span><input type="search" data-sensitive-search placeholder="兑换下游、面额，或粘客户发来的完整兑换码" title="搜兑换下游或面额。找某一个码请粘完整兑换码。屏幕尾号搜不到。" autocomplete="off" /></label>
+                </div>
+                <div class="credential-filter-bar" data-credential-filters>
+                  <label>分类<select data-credential-filter="recordScope"><option value="current">当前记录</option><option value="archived">归档记录</option><option value="all">全部记录</option></select></label>
+                  <label>状态<select data-credential-filter="codeStatus"><option value="">全部状态</option><option value="未兑换">未兑换</option><option value="已兑换">已兑换</option><option value="已作废">已作废</option><option value="已归档">已归档</option></select></label>
+                  <label>单码额度<select data-credential-filter="codeAmount"><option value="">全部面额</option></select></label>
+                  <label>兑换下游<select data-credential-filter="codeDownstream"><option value="">全部下游</option></select></label>
+</div>
+            <div class="selection-actions" data-record-selection-bar>
+              <span class="selection-summary" data-record-selection-summary role="status" aria-live="polite">已选 0 条</span>
+              <button class="text-button" type="button" data-record-select-filtered>选择全部筛选结果</button>
+              <button class="text-button" type="button" data-record-clear disabled>取消选择</button>
+                  <button class="button button-secondary button-small" type="button" data-quota-revoke-selected disabled>作废</button>
+                  <button class="button button-secondary button-small" type="button" data-archive-selected disabled>归档</button>
+                  <button class="button button-danger button-small" type="button" data-delete-selected disabled>删除</button>
+                
+            </div>
+            <div class="table-scroll">
+                  <table data-row-slots="5">
+                    <thead><tr><th><input type="checkbox" data-select-all aria-label="全选本页" title="全选本页" /></th><th>额度兑换码</th><th>面值</th><th>状态</th><th>兑换下游</th><th>兑换时间</th><th>操作</th></tr></thead>
+                    <tbody data-quota-card-item-table>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="risk-server-pagination" data-quota-card-server-pagination hidden>
+                  <button class="text-button" type="button" data-quota-card-server-prev disabled>上一页</button>
+                  <span class="mono" data-quota-card-server-page>第 1 页</span>
+                  <button class="text-button" type="button" data-quota-card-server-next disabled>下一页</button>
+                </span>
+              </section>
+            </div>
+            </section>
+          </div>
+        </section>
+        <section class="screen" data-screen-panel="licenses">
+          <div class="page-heading">
+            <div>
+              <h1>全平台授权卡密</h1>
+              <p class="form-hint">发卡在下游工作台。这里只能监管和回收。</p>
+            </div>
+            <div class="heading-actions">
+              <button class="button button-secondary" type="button" data-export="/manage/licenses/cards/export/" data-export-filename="license-cards.csv" data-export-query="licenses">↓ 导出摘要</button>
+            </div>
+          </div>
+          <div class="record-view-shell" data-record-view-scope="management-licenses">
+            <div class="record-view-heading">
+              <div>
+                <h2>单卡列表</h2>
+              </div>
+              
+            </div>
+          
+          <section class="panel table-panel" data-record-panel="items" data-server-paginated="true">
+            <div class="table-toolbar">
+              <span class="table-result" data-record-scope-summary data-record-scope-default="当前授权卡密 · 默认脱敏">当前授权卡密 · 默认脱敏</span>
+              <div class="heading-actions">
+                <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜软件、套餐、下游账号或客户端设备码，或粘客户发来的完整卡密。屏幕尾号搜不到。列表里已有的行点查看/交付再显示完整码</span><input type="search" data-sensitive-search placeholder="软件、套餐、下游账号、设备码，或粘客户发来的完整卡密" title="搜软件名、套餐、下游账号、客户端设备码。找某一张卡请粘完整卡密。屏幕尾号搜不到。" autocomplete="off" /></label>
+                <span class="risk-server-pagination" data-license-server-pagination hidden>
+                  <button class="text-button" type="button" data-license-server-prev disabled>上一页</button>
+                  <span class="mono" data-license-server-page>第 1 页</span>
+                  <button class="text-button" type="button" data-license-server-next disabled>下一页</button>
+                </span>
+              </div>
+            </div>
+            <div class="credential-filter-bar" data-credential-filters>
+              <label>分类<select data-credential-filter="recordScope"><option value="current">当前记录</option><option value="archived">归档记录</option><option value="all">全部记录</option></select></label>
+              <label>状态<select data-credential-filter="codeStatus" aria-label="授权卡密状态筛选"><option value="">全部状态</option><option value="未激活">未激活</option><option value="已激活">已激活</option><option value="已过期">已过期</option><option value="已回收">已回收</option><option value="已撤销">已撤销</option></select></label>
+              <label>软件<select data-credential-filter="codeSoftware"><option value="">全部软件</option></select></label>
+              <label>套餐<select data-credential-filter="codePlan"><option value="">全部套餐</option></select></label>
+              <label>设备<select data-credential-filter="codeDeviceState"><option value="">全部设备</option><option value="未绑定">未绑定</option></select></label>
+              <label>期限<select data-credential-filter="codeExpiryState"><option value="">全部期限</option><option value="未开始">激活后开始计时</option></select></label>
+</div>
+            <div class="selection-actions" data-record-selection-bar>
+              <span class="selection-summary" data-record-selection-summary role="status" aria-live="polite">已选 0 条</span>
+              <button class="text-button" type="button" data-record-select-filtered>选择全部筛选结果</button>
+              <button class="text-button" type="button" data-record-clear disabled>取消选择</button>
+              <button class="button button-danger button-small" type="button" data-reclaim-selected data-reclaim-selection-dialog="adminReclaimDialog" disabled>回收</button>
+              <button class="button button-secondary button-small" type="button" data-archive-selected disabled>归档</button>
+              <button class="button button-danger button-small" type="button" data-delete-selected disabled>删除</button>
+            
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead><tr><th><input type="checkbox" data-select-all aria-label="全选本页" title="全选本页" /></th><th>授权卡密</th><th>状态</th><th>软件</th><th>套餐</th><th>下游</th><th>激活规则</th><th>操作</th></tr></thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          </div>
+        </section>
+        <section class="screen" data-screen-panel="risk">
+          <div class="page-heading">
+            <div>
+              <h1>设备与授权</h1>
+            </div>
+            <button class="button button-secondary" type="button" data-dialog="riskSignalsDialog">
+              异常记录 <span data-risk-signal-count>待读取</span>
+            </button>
+          </div>
+          <section class="panel table-panel" data-server-paginated="true">
+            <div class="table-toolbar">
+              <label class="search-field" data-risk-search-field>
+                <span aria-hidden="true">⌕</span>
+                <span class="sr-only">搜软件、套餐、下游、设备码，或粘完整卡密</span>
+                <input type="search" data-risk-search placeholder="软件、套餐、下游、设备码，或粘完整卡密" title="搜软件名、套餐、下游、设备码。找某一张卡请粘完整卡密。" autocomplete="off" />
+              </label>
+              <div class="table-toolbar-actions">
+                <span class="table-result">当前范围 · 设备数量待读取</span>
+                <button class="button button-secondary button-small" type="button" data-risk-search-submit>搜索</button>
+                <button
+                  class="button button-secondary"
+                  type="button"
+                  data-export="/manage/authorizations/export/" data-export-filename="authorizations.csv" data-export-query="risk"
+                >
+                  ↓ 导出
+                </button>
+              </div>
+            </div>
+            <div class="credential-filter-bar" data-device-authorization-filters>
+              <label>授权状态<select aria-label="授权状态筛选" data-risk-filter="status"><option value="">全部授权</option><option value="active">可用</option><option value="blocked">已阻断</option><option value="revoked">已撤销</option><option value="expired">已过期</option></select></label>
+              <label>设备状态<select aria-label="设备状态筛选" data-risk-filter="device_state"><option value="">全部设备</option><option value="bound">已绑定</option><option value="blocked">已阻断</option><option value="unbound">已解绑</option></select></label>
+              <label>设备封禁<select aria-label="设备封禁筛选" data-risk-filter="risk_state"><option value="">全部封禁</option><option value="normal">未封禁</option><option value="blocked">已封禁</option></select></label>
+              <label>软件<select aria-label="设备软件筛选" data-risk-filter="software_id"><option value="">全部软件</option></select></label>
+              <label>下游<select aria-label="设备下游筛选" data-risk-filter="downstream_public_id"><option value="">全部下游</option></select></label>
+              <label>到期<select aria-label="设备到期筛选" data-risk-filter="expiry_state"><option value="">全部期限</option><option value="soon">7 天内</option><option value="expired">已到期</option><option value="long">30 天以上</option></select></label>
+            </div>
+            <div class="selection-actions" data-risk-selection-bar>
+              <span class="selection-summary" data-risk-selection-summary role="status" aria-live="polite">已选 0 条</span>
+              <button class="text-button" type="button" data-risk-select-filtered>选择全部筛选结果</button>
+              <button class="text-button" type="button" data-clear-selection disabled>取消选择</button>
+              <button class="button button-primary button-small" type="button" data-renew-open disabled>加时间</button>
+              <button class="button button-danger button-small" type="button" data-bulk-revoke-open disabled>撤销授权</button>
+              <button class="button button-danger button-small" type="button" data-bulk-block-open disabled>封禁设备</button>
+              <button class="button button-secondary button-small" type="button" data-bulk-unblock-open disabled>解封设备</button>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" data-renew-select-all aria-label="全选本页" title="全选本页" /></th>
+                    <th>客户</th>
+                    <th>授权卡密</th>
+                    <th>软件</th>
+                    <th>套餐</th>
+                    <th>客户端设备码</th>
+                    <th>授权状态</th>
+                    <th>设备封禁</th>
+                    <th>到期时间</th>
+                    <th>最近验证</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination" data-risk-server-pagination-wrapper>
+              <span></span>
+              <span class="risk-server-pagination" data-risk-server-pagination hidden>
+                <button class="table-btn table-btn-detail" type="button" data-risk-server-prev disabled>上一页</button>
+                <span class="mono" data-risk-server-page>第 1 页</span>
+                <button class="table-btn table-btn-detail" type="button" data-risk-server-next disabled>下一页</button>
+              </span>
+            </div>
+          </section>
+        </section>
+        <section class="screen" data-screen-panel="client">
+          <div class="page-heading">
+            <div>
+              <h1>客户端运营</h1>
+            </div>
+            <label class="context-select"
+              ><span>当前软件</span
+              ><select data-client-context>
+                <option value="">暂无可用软件</option>
+              </select></label
+            >
+          </div>
+          <div class="support-grid">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <h2 data-client-title>当前软件配置</h2>
+                </div>
+                <span class="status status-gray" data-client-publish-status>待读取</span>
+              </div>
+              <div class="support-lines">
+                <div>
+                  <span>公告</span
+                  ><b data-client-announcement>—</b>
+                </div>
+                <div>
+                  <span>当前验签密钥</span
+                  ><b class="mono" data-signing-key-id>—</b>
+                </div>
+              </div>
+              <p class="form-hint">验签公钥用来核对授权信封，不是卡密。页上的密钥标识用来对上是哪一把，不是卡密。</p>
+              <div class="heading-actions">
+                <button
+                  class="button button-secondary"
+                  type="button"
+                  data-copy-signing-key
+                >
+                  复制当前验签公钥
+                </button>
+                <button
+                  class="button button-primary"
+                  type="button"
+                  data-dialog="clientConfigDialog"
+                >
+                  编辑客户端配置
+                </button>
+              </div>
+            </section>
+            <section class="panel">
+              <strong class="version-stamp mono" data-client-version
+                >—</strong
+              >
+              <div class="precedence-list">
+                <span><i>1</i>Profile 默认配置</span
+                ><span><i>2</i>下游软件覆盖</span
+                ><span><i>3</i>授权实例覆盖</span>
+              </div>
+              <p data-client-release>暂无版本数据</p>
+              <button
+                class="button button-secondary"
+                type="button"
+                data-screen-target="releases"
+              >
+                查看版本发布
+              </button>
+            </section>
+          </div>
+        </section>
+        <section class="screen" data-screen-panel="releases">
+          <div class="page-heading">
+            <div>
+              <h1>版本发布</h1>
+              <p class="form-hint">发版必须有版本号。客户点更新后打开网盘地址。本站安装包谁都能下。</p>
+            </div>
+            <button
+              class="button button-primary"
+              type="button"
+              data-dialog="releaseDialog"
+            >
+              发布更新
+            </button>
+          </div>
+
+          <div class="release-overview">
+            <section class="panel release-current">
+              <div class="panel-heading">
+                <div>
+                  <h2>当前软件 · 当前通道</h2>
+                </div>
+                <span class="status status-green" data-current-release-status
+                  >暂无发布</span
+                >
+              </div>
+              <strong class="release-version mono" data-current-release
+                >—</strong
+              >
+              <dl class="definition-list compact">
+                <div>
+                  <dt>平台 / 架构</dt>
+                  <dd>—</dd>
+                </div>
+                <div>
+                  <dt>发布时间</dt>
+                  <dd class="mono">—</dd>
+                </div>
+                <div>
+                  <dt>SHA-256</dt>
+                  <dd class="mono">—</dd>
+                </div>
+                <div>
+                  <dt>发布签名</dt>
+                  <dd>—</dd>
+                </div>
+              </dl>
+            </section>
+            <section class="panel update-preview">
+              <h2>授权 A 查询结果</h2>
+              <div class="update-route">
+                <span class="mono">—</span><i>→</i
+                ><strong class="mono" data-update-target>—</strong>
+              </div>
+              <p data-update-copy>
+                暂无可用版本数据。
+              </p>
+              <button
+                class="button button-secondary"
+                type="button"
+                data-release-check
+              >
+                ↻ 重新检查
+              </button>
+            </section>
+          </div>
+
+          <section class="panel table-panel" data-server-paginated="true">
+            <div class="table-toolbar">
+              <label class="context-select"
+                ><span>当前软件</span
+                ><select data-release-context>
+                  <option value="">暂无可用软件</option>
+                </select></label
+              >
+              <div class="filter-chips" aria-label="发布状态筛选">
+                <button class="chip is-active" type="button" data-release-status="all">全部</button
+                ><button class="chip" type="button" data-release-status="published">已发布</button
+                ><button class="chip" type="button" data-release-status="draft">草稿</button
+                ><button class="chip" type="button" data-release-status="withdrawn">已撤回</button
+                ><button class="chip" type="button" data-release-status="archived">已归档</button>
+              </div>
+              <span class="table-result" data-release-count>版本列表待读取</span>
+              <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索版本号、通道或说明</span><input type="search" data-release-search placeholder="版本号、通道、说明" autocomplete="off" /></label>
+              <span class="risk-server-pagination" data-release-server-pagination hidden>
+                <button class="text-button" type="button" data-release-prev disabled>上一页</button>
+                <span class="mono" data-release-page>第 1 页</span>
+                <button class="text-button" type="button" data-release-next disabled>下一页</button>
+              </span>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead>
+                  <tr>
+                    <th>版本 / 通道</th>
+                    <th>平台 / 架构</th>
+                    <th>Manifest</th>
+                    <th>校验</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody data-release-table>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+        <section class="screen" data-screen-panel="audit">
+          <div class="page-heading">
+            <div>
+              <h1>审计记录</h1>
+            </div>
+            <button
+              class="button button-secondary"
+              type="button"
+              data-audit-export
+            >
+              ↓ 导出审计
+            </button>
+          </div>
+          <section class="panel filter-panel">
+            <div class="filter-row">
+              <label
+                >时间范围<select data-audit-filter="range">
+                  <option value="">全部时间</option>
+                  <option value="today">今天</option>
+                  <option value="7d">近 7 天</option>
+                  <option value="30d">近 30 天</option>
+                </select></label
+              ><label
+                >事件<select data-audit-filter="action">
+                  <option value="">全部事件</option>
+                  <option value="auth.login">登录</option>
+                  <option value="auth.logout">退出</option>
+                  <option value="authorization.activate">激活授权</option>
+                  <option value="authorization.verify">验证授权</option>
+                  <option value="license_card.search">精确查找卡密</option>
+                  <option value="license_card.reveal">查看完整卡密</option>
+                  <option value="license_card.reclaim">回收未激活卡</option>
+                  <option value="license_batch.issue">生成授权卡</option>
+                  <option value="quota_card.redeem">兑换额度</option>
+                  <option value="quota.manual_credit">调整下游额度</option>
+                  <option value="release.publish">发布版本</option>
+                  <option value="release.publish_link">发布网盘更新</option>
+                  <option value="release.update_link">修改网盘地址</option>
+                  <option value="audit.export">导出审计</option>
+                  <option value="backup.download.delete">删除加密备份</option>
+                </select></label
+              ><label
+                >结果<select data-audit-filter="outcome">
+                  <option value="">全部结果</option>
+                  <option value="success">成功</option>
+                  <option value="failure">失败</option>
+                </select></label
+              ><label
+                >操作主体<select data-audit-filter="subject">
+                  <option value="">全部主体</option>
+                  <option value="me">我的操作</option>
+                  <option value="client">客户端</option>
+                </select></label
+              ><label
+                >来源<select data-audit-filter="source">
+                  <option value="">全部来源</option>
+                  <option value="platform_admin">管理端</option>
+                  <option value="downstream">下游端</option>
+                  <option value="anonymous">客户端</option>
+                </select></label
+              ><label
+                >下游<input type="text" data-audit-filter="downstream" placeholder="输入下游公开 ID" /></label
+              ><label
+                >软件<input type="text" data-audit-filter="software" placeholder="输入软件 ID" /></label
+              ><button
+                class="button button-primary"
+                type="button"
+                data-audit-apply
+              >
+                应用筛选
+              </button>
+            </div>
+          </section>
+          <section class="panel table-panel" data-server-paginated="true">
+            <div class="table-toolbar">
+              <span class="table-result" data-audit-count>审计记录待读取</span>
+              <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索事件、设备码、对象、操作者或原因码</span><input type="search" data-audit-search placeholder="事件、设备码、对象、操作者、原因码" autocomplete="off" /></label>
+              <span class="risk-server-pagination" data-admin-audit-pagination hidden>
+                <button class="text-button" type="button" data-admin-audit-prev disabled>上一页</button>
+                <span class="mono" data-admin-audit-page>第 1 页</span>
+                <button class="text-button" type="button" data-admin-audit-next disabled>下一页</button>
+              </span>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="10">
+                <thead>
+                  <tr>
+                    <th>北京时间</th>
+                    <th>操作者</th>
+                    <th>做了啥（操作内容）</th>
+                    <th>涉及对象</th>
+                    <th>结果</th>
+                    <th>详情</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+        <section class="screen" data-screen-panel="backup">
+          <div class="page-heading">
+            <div>
+              <h1>备份</h1>
+            </div>
+            <div class="backup-status-line">
+              <span>上次备份结果</span>
+              <strong class="mono" data-backup-metric="last-result">—</strong>
+              <span>排队中</span>
+              <strong class="mono" data-backup-metric="queue">—</strong>
+              <span>上次成功</span>
+              <strong class="mono" data-backup-metric="last-success">—</strong>
+              <span>变动备份</span>
+              <strong class="mono" data-backup-metric="auto">—</strong>
+              <span>定时备份</span>
+              <strong class="mono" data-backup-metric="schedule">—</strong>
+              <span>各留份数</span>
+              <strong class="mono" data-backup-metric="retention">—</strong>
+              <span class="status status-warm" data-backup-health-status>—</span>
+            </div>
+          </div>
+          <section class="panel backup-setup-panel">
+            <form data-backup-form>
+              <p class="form-error" data-form-error role="alert"></p>
+              <div class="backup-setup-row">
+                <div class="form-check-row">
+                  <label><input name="enabled" type="checkbox" /> 备份总开关</label>
+                  <label><input name="github_enabled" type="checkbox" /> 同时拷到 GitHub</label>
+                </div>
+                <div class="heading-actions">
+                  <button class="button button-secondary" type="button" data-backup-probe>
+                    试连 GitHub
+                  </button>
+                  <button class="button button-secondary" type="button" data-backup-run="full">
+                    现在备份
+                  </button>
+                  <button class="button button-primary" type="submit" data-backup-save>
+                    保存备份设置
+                  </button>
+                </div>
+              </div>
+              <div class="backup-schedule-settings" data-backup-schedule-fields>
+                <div class="form-check-row">
+                  <label><input name="schedule_enabled" type="checkbox" /> 按计划自动备份</label>
+                </div>
+                <div class="form-grid form-grid-two">
+                  <label class="form-label"
+                    >每天全量时间（北京时间）<input
+                      name="full_time"
+                      type="time"
+                      min="00:00"
+                      max="23:59"
+                      value="02:15"
+                      required /></label
+                  ><label class="form-label"
+                    >增量间隔（小时）<input
+                      name="diff_interval_hours"
+                      type="number"
+                      min="1"
+                      max="24"
+                      step="1"
+                      value="6"
+                      required /></label>
+                </div>
+                <p class="form-hint">打开定时开关后，主机每 15 分钟检查一次；到点只排队一份，再由备份程序执行。</p>
+              </div>
+              <div class="form-grid form-grid-two" data-backup-github-fields hidden>
+                <label class="form-label"
+                  >GitHub 仓库<input
+                    name="github_repository"
+                    type="text"
+                    maxlength="200"
+                    placeholder="your-name/authorization-platform-backup"
+                    autocomplete="off"
+                    value="" /></label
+                ><label class="form-label"
+                  >访问令牌<input
+                    name="github_token"
+                    type="password"
+                    maxlength="255"
+                    autocomplete="new-password"
+                    placeholder="已保存则留空"
+                    value="" /></label>
+              </div>
+              <p class="backup-dest-copy" data-backup-dest-copy>打开总开关后，整份账本（软件、套餐、卡密、下游、额度、发版和网盘地址、审计）打成加密包，放到这台服务器；勾了 GitHub 再拷一份。不含本站安装包文件。网盘更新靠地址，恢复后地址还在。</p>
+            </form>
+          </section>
+          <div
+            class="work-view-shell"
+            data-work-view-scope="backup-management"
+          >
+            <div class="record-tabs page-tabs" role="tablist" aria-label="备份内容">
+              <button type="button" role="tab" data-work-view="records" aria-selected="true">
+                备份记录</button
+              ><button type="button" role="tab" data-work-view="downloads" aria-selected="false">
+                下载加密备份
+              </button
+              ><button type="button" role="tab" data-work-view="restore" aria-selected="false">
+                导入备份
+              </button>
+            </div>
+            <section data-work-panel="records">
+          <section class="panel table-panel">
+            <div class="panel-heading"><div><h2>备份记录</h2></div>
+              <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索备份记录</span><input type="search" placeholder="类型、状态、说明" autocomplete="off" /></label>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="5">
+                <thead>
+                  <tr>
+                    <th>北京时间</th>
+                    <th>类型</th>
+                    <th>状态</th>
+                    <th>说明</th>
+                  </tr>
+                </thead>
+                <tbody data-backup-run-table>
+                </tbody>
+              </table>
+              <p class="table-empty" data-table-empty>还没有备份记录。这是备份运行记录，和「下载加密备份」页签里的磁盘 .enc 不是同一张表。</p>
+            </div>
+          </section>
+            </section>
+            <section data-work-panel="downloads" hidden>
+          <section class="panel table-panel">
+            <div class="panel-heading"><div><h2>下载加密备份</h2>
+              <p class="form-hint">列表里是完整加密库。</p></div>
+              <label class="search-field"><span aria-hidden="true">⌕</span><span class="sr-only">搜索备份文件名</span><input type="search" placeholder="文件名" autocomplete="off" /></label>
+            </div>
+            <div class="table-scroll">
+              <table data-row-slots="5">
+                <thead>
+                  <tr>
+                    <th>文件</th>
+                    <th>大小</th>
+                    <th>更新时间</th>
+                    <th>校验</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody data-backup-download-table>
+                </tbody>
+              </table>
+              <p class="table-empty" data-table-empty>还没有可下载的加密包</p>
+            </div>
+          </section>
+            </section>
+            <section data-work-panel="restore" hidden>
+          <section class="panel">
+            <div class="panel-heading"><div><h2>导入备份</h2>
+              <p class="form-hint">只有当前没有业务数据时才能导入，避免覆盖正在用的账本、卡密和下游痕迹。导入前必须先用导出备份当时的环境变量启动，不能新装一套密钥再导。现在线上是测试数据，不要把测试备份当客户账本。</p></div></div>
+            <form data-backup-restore-form>
+              <p class="form-error" data-form-error role="alert"></p>
+              <p class="form-hint" data-backup-restore-gate>当前有业务数据，不能导入。</p>
+              <div class="form-grid form-grid-two">
+                <label class="form-label"
+                  >加密备份文件<input
+                    name="backup_file"
+                    type="file"
+                    accept=".enc,application/octet-stream" /></label
+                ><label class="form-label"
+                  >备份口令<input
+                    name="passphrase"
+                    type="password"
+                    maxlength="256"
+                    autocomplete="off"
+                    value="" /></label>
+              </div>
+              <p class="form-hint">口令不在网页上，在密钥包/服务器口令文件。</p>
+              <div class="heading-actions">
+                <button class="button button-secondary" type="submit" data-backup-restore-inspect>
+                  核对备份
+                </button>
+              </div>
+              <div data-backup-restore-confirm hidden>
+                <p data-backup-restore-time></p>
+                <label class="form-label"
+                  >抄上面的北京时间，不要抄文件名<input
+                    name="confirmed_backup_time"
+                    type="text"
+                    maxlength="32"
+                    autocomplete="off"
+                    value="" /></label>
+                <p class="form-hint backup-restore-danger">将覆盖当前库，包括管理员。</p>
+                <div class="heading-actions">
+                  <button class="button button-danger" type="button" data-backup-restore-apply disabled>
+                    确认导入
+                  </button>
+                </div>
+              </div>
+            </form>
+          </section>
+            </section>
+          </div>
+          <details class="secondary-disclosure">
+            <summary>存储清理（不含加密备份）</summary>
+            <section class="panel">
+              <div class="panel-heading"><div><h2>存储清理</h2></div></div>
+              <p>只清超过保留期的已撤回安装包、临时导出和日志。不含本页下载表里的加密备份 .enc。审计与额度流水不会删除。</p>
+              <div class="heading-actions">
+                <button class="button button-secondary" type="button" data-storage-scan data-toast="静态预览不执行真实残留扫描。">扫描残留</button>
+                <button class="button button-secondary" type="button" data-storage-cleanup data-toast="静态预览不执行真实文件清理。">清理可删文件</button>
+              </div>
+            </section>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <dialog
+      class="modal modal-wide"
+      id="softwareDialog"
+      aria-labelledby="softwareDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="softwareDialogTitle" data-software-dialog-title>新建软件</h2>
+        <div class="connection-note" data-client-connection-status>
+          <span class="status status-warm">尚未接通客户端</span>
+        </div>
+        <div data-software-stage="form">
+          <div class="form-grid form-grid-two">
+            <label class="form-label">软件名称<input id="softwareName" type="text" maxlength="120" placeholder="输入软件名称" required /></label>
+            <label class="form-label">软件标识<input id="softwareCode" class="mono" type="text" placeholder="创建时由后台自动生成" readonly /></label>
+          </div>
+          <details class="secondary-disclosure software-advanced" data-software-rules>
+            <summary>授权规则 · 默认 1 台设备 / 每 1 分钟验证</summary>
+            <div class="form-grid form-grid-two disclosure-fields">
+              <label class="form-label">默认设备数<input id="softwareMaxDevices" type="number" min="1" max="20" value="1" required /></label>
+              <label class="form-label">验证间隔（分钟）<input id="softwareVerifyInterval" type="number" min="1" max="1440" value="1" required /></label>
+              <label class="form-label">断网宽限（小时）<input id="softwareOfflineGrace" type="number" min="0" max="720" value="0" required /></label>
+              <label class="form-label">每日换机次数<input id="softwareSwitchLimit" type="number" min="0" max="100" value="5" required /></label>
+            </div>
+            <div class="form-check-row"><label><input id="softwareAllowSwitch" type="checkbox" checked /> 满员时允许新电脑挤掉旧电脑</label></div>
+            <p class="form-hint">验证间隔像心跳；默认 1 分钟。已售卡下次验证读取现行间隔，不必为改间隔再发卡。</p>
+          </details>
+          <details class="secondary-disclosure software-advanced" data-software-advanced>
+            <summary>高级接入 · Windows / x64 / stable</summary>
+            <div class="form-grid form-grid-two disclosure-fields">
+              <label class="form-label">目标平台<select id="softwarePlatform" required><option value="windows">Windows</option><option value="macos">macOS</option><option value="linux">Linux</option><option value="web">Web</option></select></label>
+              <label class="form-label">架构<select id="softwareArch" required><option value="x64">x64</option><option value="arm64">arm64</option><option value="x86">x86</option><option value="any">不限</option></select></label>
+              <label class="form-label">Profile ID<input id="softwareProfile" class="mono" type="text" value="stable" maxlength="64" required pattern="[a-z0-9][a-z0-9._\-]*" /></label>
+              <label class="form-label">发布通道<input id="softwareChannel" type="text" value="stable" maxlength="32" required pattern="[a-z0-9][a-z0-9._\-]*" /></label>
+              <label class="form-label">授权模板<select id="softwarePolicy" required><option value="generic-online-v1">通用在线授权</option></select></label>
+            </div>
+          </details>
+          <div class="form-check-row"><label><input id="softwareAddPlan" type="checkbox" /> 同时添加首个套餐（可稍后添加）</label></div>
+          <div id="softwareOptionalPlan" class="form-grid form-grid-two" hidden>
+            <label class="form-label">卡种名称<input id="softwarePlanName" type="text" maxlength="120" placeholder="例如：月卡" disabled /></label>
+            <label class="form-label">有效期数值<input id="softwarePlanDuration" type="number" min="1" max="3650" disabled /></label>
+            <label class="form-label">有效期单位<select id="softwarePlanDurationUnit" disabled><option value="minute">分钟</option><option value="hour">小时</option><option value="day" selected>天</option></select></label>
+            <label class="form-label">单卡额度成本<input id="softwarePlanCost" type="number" min="1" max="1000000" placeholder="由你确定" disabled /></label>
+          </div>
+          <p class="form-error" data-form-error role="alert"></p>
+          <div class="modal-actions"><button class="button button-secondary" type="button" value="cancel">取消</button><button class="button button-primary" type="button" data-software-save>创建软件</button></div>
+        </div>
+        <div class="result-state" data-software-stage="result" hidden>
+          <span class="result-mark" aria-hidden="true">✓</span>
+          <h3>平台配置已保存</h3>
+          <p><b data-software-result-name>—</b> 已保存，客户端仍待接入。</p>
+          <dl class="result-list">
+            <div><dt>软件标识</dt><dd class="mono" data-software-result-id>—</dd></div>
+            <div><dt>Profile</dt><dd class="mono" data-software-result-profile>—</dd></div>
+            <div><dt>首个套餐</dt><dd data-software-result-plan>—</dd></div>
+            <div><dt>客户端接入</dt><dd data-software-result-connection>待客户端联调 · 未接通</dd></div>
+          </dl>
+          <div class="modal-actions"><button class="button button-primary" type="button" data-integration-download disabled>下载接入配置</button>
+            <button type="button" class="button button-primary" value="cancel">完成</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="policyDialog" aria-labelledby="policyDialogTitle">
+      <form method="dialog" data-policy-form>
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="policyDialogTitle">编辑授权参数</h2>
+        <p class="form-hint" data-policy-context>当前软件 / Profile</p>
+        <div class="form-grid form-grid-two">
+          <label class="form-label">最大设备数（已售不跟）<input id="policyMaxDevices" type="number" min="1" max="100" required /></label>
+          <label class="form-label">验证间隔（分钟）（已售跟着变）<input id="policyVerifyInterval" type="number" min="1" max="10080" required /></label>
+          <label class="form-label">断网宽限（小时）（已售不跟）<input id="policyOfflineGrace" type="number" min="0" max="720" required /></label>
+          <label class="form-label">每日换机次数（已售跟着变）<input id="policySwitchLimit" type="number" min="0" max="100" required /></label>
+        </div>
+        <div class="form-check-row">
+          <label><input id="policyAllowSwitch" type="checkbox" /> 满员时允许新电脑挤掉旧电脑（已售跟着变）</label>
+          <label><input id="policyProofRequired" type="checkbox" /> 要求设备证明（已售不跟）</label>
+        </div>
+        <p class="form-hint">保存会生成新的策略版本。已售跟着变：满员挤机开关、每日次数、验证间隔（下次硬挤/再问读现行）。已售不跟：最大设备数、断网宽限、设备证明（锁发卡快照）。</p>
+        <p class="form-error" data-policy-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-primary" type="button" data-policy-save>保存授权参数</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="softwareUnlistDialog" aria-labelledby="softwareUnlistDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="softwareUnlistDialogTitle">下架这个软件？</h2>
+        <div class="impact-box">
+          <span>软件</span><b data-software-unlist-name>—</b>
+          <span>规则</span><b data-software-status-impact>停新发、未激活不能开通、已激活用到过期。不会立刻掐掉在线用户。</b>
+        </div>
+        <label class="form-label">操作原因<textarea name="reason" required minlength="4" maxlength="255" placeholder="填写可追溯的原因"></textarea></label>
+        <p class="form-error" data-software-unlist-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-software-unlist-confirm>确认下架</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-wide" id="planManagerDialog" aria-labelledby="planManagerDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <div class="plan-manager-heading">
+          <div>
+            <h2 id="planManagerDialogTitle">套餐管理</h2>
+            <p class="plan-manager-context" data-plan-manager-context>当前软件</p>
+          </div>
+          <span class="plan-manager-count" data-plan-manager-count>0 个套餐</span>
+        </div>
+        <div class="plan-manager-toolbar">
+          <span>套餐名称、有效期、额度成本和当前状态</span>
+          <button class="button button-primary button-small" type="button" data-plan-manager-add>＋ 新增套餐</button>
+        </div>
+        <div class="table-scroll plan-manager-scroll">
+          <table class="plan-manager-table" data-row-slots="5">
+            <thead>
+              <tr><th>套餐名称</th><th>有效期</th><th>单卡额度</th><th>状态</th><th>快照</th><th>操作</th></tr>
+            </thead>
+            <tbody data-plan-manager-rows></tbody>
+          </table>
+        </div>
+        <span class="risk-server-pagination" data-plan-manager-pagination hidden>
+          <button class="text-button" type="button" data-plan-manager-prev disabled>上一页</button>
+          <span class="mono" data-plan-manager-page>第 1 页</span>
+          <button class="text-button" type="button" data-plan-manager-next disabled>下一页</button>
+        </span>
+        <p class="form-error" data-plan-manager-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">关闭</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="planLifecycleDialog" aria-labelledby="planLifecycleDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="planLifecycleDialogTitle" data-plan-lifecycle-title>归档套餐</h2>
+        <div class="impact-box">
+          <span>套餐</span><b data-plan-lifecycle-target>—</b>
+          <span>结果</span><b data-plan-lifecycle-impact>—</b>
+        </div>
+        <label class="form-label">操作原因<textarea name="reason" required minlength="4" maxlength="255" placeholder="填写可追溯的原因"></textarea></label>
+        <p class="form-error" data-plan-lifecycle-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-plan-lifecycle-confirm>确认归档</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="planDialog" aria-labelledby="planDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="planDialogTitle">套餐定价</h2>
+        <div data-plan-stage="form">
+          <div class="form-grid form-grid-two">
+            <label class="form-label">软件<select id="planSoftware" required>
+              <option value="">暂无可用软件</option>
+            </select></label
+            ><label class="form-label">卡种名称<input id="planName" type="text" placeholder="输入套餐名称" value="" required /></label
+            ><label class="form-label">有效期数值<input id="planDuration" type="number" min="1" max="3650" value="" required /></label
+            ><label class="form-label">有效期单位<select id="planDurationUnit" required>
+              <option value="minute">分钟</option><option value="hour">小时</option><option value="day" selected>天</option>
+            </select></label
+            ><label class="form-label">单卡额度成本<input id="planQuotaCost" type="number" min="0" max="1000000" value="" required /></label
+            ><label class="form-label">套餐类型<select id="planStatus" required><option value="active">可用</option><option value="test">仅测试</option></select></label>
+          </div>
+          <p class="form-hint">正式套餐额度成本至少为 1。仅测试套餐才可以填 0。</p>
+          <p class="form-error" data-plan-error role="alert"></p>
+          <div class="modal-actions">
+            <button type="button" class="button button-secondary" value="cancel">取消</button
+            ><button class="button button-primary" type="button" data-plan-save>保存套餐定价</button>
+          </div>
+        </div>
+        <div class="result-state" data-plan-stage="result" hidden>
+          <span class="result-mark" aria-hidden="true">✓</span><h3>套餐定价已保存</h3>
+          <p data-plan-result-summary>—</p>
+          <dl class="result-list"><div><dt>历史卡密</dt><dd>继续使用原套餐快照，不受本次修改影响</dd></div><div><dt>新发卡</dt><dd>下一次成本预览使用新额度成本</dd></div></dl>
+          <div class="modal-actions"><button type="button" class="button button-primary" value="cancel">完成</button></div>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="inviteDialog" aria-labelledby="inviteDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="inviteDialogTitle">生成邀请码</h2>
+        <div data-invite-stage="form">
+          <div class="form-grid form-grid-two">
+            <label class="form-label">生成数量<input id="inviteQuantity" type="number" min="1" max="100" value="" required /></label>
+          </div>
+          <div class="rule-note"><b>固定规则</b><span>不绑定下游 · 未使用永久有效 · 注册成功后立即消费</span></div>
+          <p class="form-error" data-invite-error role="alert"></p>
+          <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-primary" type="button" data-invite-generate>确认生成</button></div>
+        </div>
+        <div class="result-state" data-invite-stage="result" hidden>
+          <span class="result-mark" aria-hidden="true">✓</span><h3>邀请码已生成</h3>
+          <dl class="result-list"><div><dt>数量</dt><dd data-invite-result-count>—</dd></div><div><dt>归属 / 期限</dt><dd>不绑定下游 · 未使用永久有效</dd></div><div><dt>使用规则</dt><dd>注册成功一次后消费</dd></div></dl>
+          <div class="credential-code-list" data-invite-codes></div>
+          <div class="modal-actions"><button class="button button-secondary" type="button" data-copy-generated-codes>复制全部</button><button class="button button-secondary" type="button" data-download-generated-codes>下载</button><button type="button" class="button button-primary" value="cancel">完成</button></div>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="quotaCardDialog" aria-labelledby="quotaCardDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="quotaCardDialogTitle">生成额度兑换码</h2>
+        <div data-quota-card-stage="form">
+          <div class="form-grid form-grid-two">
+            <label class="form-label">单码额度<input id="quotaCardAmount" type="number" min="1" max="1000000" value="" required /></label
+            ><label class="form-label">生成数量<input id="quotaCardQuantity" type="number" min="1" max="100" value="" required /></label>
+          </div>
+          <div class="rule-note"><b>固定规则</b><span>不绑定下游 · 未兑换永久有效 · 成功兑换一次</span></div>
+          <p class="form-error" data-quota-card-error role="alert"></p>
+          <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-primary" type="button" data-quota-card-generate>确认生成</button></div>
+        </div>
+        <div class="result-state" data-quota-card-stage="result" hidden>
+          <span class="result-mark" aria-hidden="true">✓</span><h3>额度兑换码已生成</h3>
+          <dl class="result-list"><div><dt>使用范围</dt><dd>任一活跃下游</dd></div><div><dt>总额度面值</dt><dd data-quota-card-result-total>—</dd></div><div><dt>期限 / 次数</dt><dd>未兑换永久有效 · 成功兑换一次</dd></div></dl>
+          <div class="credential-code-list" data-quota-card-codes></div>
+          <div class="modal-actions"><button class="button button-secondary" type="button" data-copy-generated-codes>复制全部</button><button class="button button-secondary" type="button" data-download-generated-codes>下载</button><button type="button" class="button button-primary" value="cancel">完成</button></div>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal"
+      id="creditAdjustDialog"
+      aria-labelledby="creditAdjustDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="creditAdjustDialogTitle">调整下游额度</h2>
+        <label class="form-label"
+          >目标下游<select name="downstream" required>
+            <option value="">暂无可用下游</option>
+          </select></label
+        ><label class="form-label"
+          >调整类型<select name="adjustment_type" required>
+            <option value="credit">增加额度</option>
+            <option value="debit">管理员扣回</option>
+          </select></label
+        ><label class="form-label"
+          >额度数量<input
+            name="amount"
+            type="number"
+            min="1"
+            max="1000000"
+            required
+            inputmode="numeric"
+        /></label>
+        <label class="form-label"
+          >原因<textarea
+            name="reason"
+            required
+            minlength="4"
+            placeholder="填写可追溯的业务原因"
+          ></textarea>
+        </label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button
+            class="button button-primary"
+            type="button"
+            data-credit-adjust-confirm
+          >
+            确认调整
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal"
+      id="creditRecoverDeletedDialog"
+      aria-labelledby="creditRecoverDeletedDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="creditRecoverDeletedDialogTitle">扣回已删除下游余额</h2>
+        <p class="form-hint">只处理档案已删除、额度还冻在墓碑账户里的下游。在档下游请用「调整下游额度」。</p>
+        <label class="form-label">已删除下游<select name="downstream_public_id" required><option value="">请选择已删除下游</option></select></label>
+        <label class="form-label">扣回额度<input name="amount" type="number" min="1" required /></label>
+        <label class="form-label">原因<textarea name="reason" required minlength="2" maxlength="255" placeholder="填写可追溯原因"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-danger" type="button" data-credit-recover-deleted-confirm>确认扣回</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="quotaRevokeDialog" aria-labelledby="quotaRevokeDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="quotaRevokeDialogTitle">作废未兑换额度码？</h2>
+        <p class="form-hint">作废后任何人不能再兑换。已兑换的码不能靠作废扣回额度。</p>
+        <div class="impact-box"><span>选中张数</span><b data-quota-revoke-count>0 张</b></div>
+        <label class="form-label">作废原因<textarea name="reason" required minlength="2" maxlength="255" placeholder="填写可追溯的作废原因"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-quota-revoke-confirm>确认作废</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-wide credential-detail-dialog" id="credentialDetailDialog" aria-labelledby="credentialDetailTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="credentialDetailTitle">单码完整详情</h2>
+        <div class="credential-secret">
+          <span>完整码</span><code class="mono" data-credential-full>••••••••••••••••</code>
+          <div class="table-actions"><button class="button button-secondary button-small" type="button" data-credential-reveal>显示完整码</button><button class="button button-secondary button-small" type="button" data-credential-copy disabled>复制完整码</button></div>
+        </div>
+        <dl class="credential-detail-grid">
+          <div><dt>类型</dt><dd data-detail-type>—</dd></div><div><dt>状态</dt><dd data-detail-status>—</dd></div>
+          <div><dt>软件</dt><dd data-detail-software>不适用</dd></div>
+          <div><dt>套餐面额</dt><dd data-detail-plan>不适用</dd></div><div><dt>实际下游</dt><dd data-detail-downstream>尚未产生</dd></div>
+          <div><dt>客户端设备码</dt><dd class="mono" data-detail-device-code>尚未产生</dd></div>
+          <div><dt>平台设备 UUID</dt><dd class="mono" data-detail-device-uuid>尚未产生</dd></div>
+          <div><dt>设备状态</dt><dd class="mono" data-detail-device>尚未产生</dd></div><div><dt>IP</dt><dd class="mono" data-detail-ip>尚未产生</dd></div>
+          <div><dt>最近业务时间</dt><dd class="mono" data-detail-activity>尚未产生</dd></div><div><dt>有效期</dt><dd class="mono" data-detail-expires>永久有效</dd></div>
+        </dl>
+        <div class="modal-actions"><button type="button" class="button button-primary" value="cancel">关闭详情</button></div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal-danger"
+      id="adminReclaimDialog"
+      aria-labelledby="adminReclaimDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="adminReclaimDialogTitle">管理员代下游回收</h2>
+        <div class="impact-box">
+          <span>选中卡密</span
+          ><b class="mono" data-admin-reclaim-batch>未选择</b
+          ><span>原始下游</span
+          ><b data-admin-reclaim-downstream>当前下游</b
+          ><span>未激活卡</span><b data-admin-reclaim-count>0 张</b
+          ><span>预计返还</span
+          ><b class="amount-plus" data-admin-reclaim-credit>+0 额度</b
+          ><span>规则</span><b>回收后客户手里的码立即作废</b>
+        </div>
+        <label class="form-label">操作原因<textarea
+            name="reason"
+            required
+            minlength="4"
+            placeholder="填写代下游回收的可追溯原因"
+          ></textarea>
+        </label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button
+            class="button button-danger"
+            type="button"
+            data-reclaim-confirm
+          >
+            确认回收
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal-danger"
+      id="licenseLifecycleDialog"
+      aria-labelledby="licenseLifecycleDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="licenseLifecycleDialogTitle" data-license-lifecycle-title>归档选中卡密？</h2>
+        <p class="form-hint" data-license-lifecycle-impact>归档后停止验证和回收，但保留记录与全部历史。</p>
+        <label class="form-label"
+          >操作原因<textarea
+            name="reason"
+            required
+            minlength="4"
+            placeholder="填写可追溯的归档或删除原因"
+          ></textarea>
+        </label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button
+            class="button button-danger"
+            type="button"
+            data-license-lifecycle-confirm
+          >
+            确认归档
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal"
+      id="clientConfigDialog"
+      aria-labelledby="clientConfigDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="clientConfigDialogTitle">编辑客户端配置</h2>
+        <p class="form-hint">这里只改公告。客户软件里的购买和联系方式由发卡下游自己填，管理员改不了。</p>
+        <label class="form-label"
+          >公告<textarea name="announcement" maxlength="240"></textarea
+          >
+        </label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button
+            class="button button-primary"
+            type="button"
+            data-client-config-save
+          >
+            保存配置
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal-wide"
+      id="releaseDialog"
+      aria-labelledby="releaseDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="releaseDialogTitle">发布更新</h2>
+        <p class="form-hint">版本号必须是 1.2.3 这种三段数字，不要写成 2.8 或 2.7.6-beta。同一版本号再发会覆盖旧链接；撤回后也可重发同一号。客户端靠它判断有没有新版。默认填网盘地址。上传 ZIP 谁都能下。</p>
+        <div class="stepper" data-release-stepper>
+          <span class="is-current"><i>1</i>填写地址</span
+          ><span><i>2</i>校验摘要</span><span><i>3</i>发布结果</span>
+        </div>
+        <div data-release-stage="upload">
+          <label class="form-label"
+            >软件<select id="releaseSoftware" required>
+              <option value="">暂无可用软件</option>
+            </select></label
+          >
+          <label class="form-label"
+            >通道<select id="releaseChannel" required>
+              <option value="stable">stable</option>
+              <option value="test">test</option>
+            </select></label
+          >
+          <label class="form-label"
+            >版本号<input id="releaseExternalVersion" class="mono" type="text" placeholder="必须是 1.2.3" autocomplete="off" /></label
+          >
+          <label class="form-label"
+            >更新说明<textarea id="releaseExternalNotes" minlength="4" placeholder="写给客户看的更新说明"></textarea></label
+          >
+          <label class="form-label"
+            >网盘下载地址<input id="releaseExternalUrl" type="url" placeholder="https://" autocomplete="off" /></label
+          >
+          <label class="form-label"
+            >安装包 SHA-256（可选，防劫持投毒）<input id="releaseExternalSha256" class="mono" type="text" maxlength="64" placeholder="可选 64 位十六进制散列值" autocomplete="off" /></label
+          >
+          <p class="form-error" data-release-link-error role="alert"></p>
+          <div class="modal-actions">
+            <button type="button" class="button button-secondary" value="cancel">取消</button
+            ><button class="button button-primary" type="button" data-release-publish-link>
+              发布网盘地址
+            </button>
+          </div>
+          <details class="secondary-disclosure">
+            <summary>备用：上传安装包到本站（消耗 VPS 流量）</summary>
+          <label class="form-label file-field"
+            >客户端构建包<input
+              id="releasePackage"
+              name="release_package"
+              type="file"
+              accept=".zip,application/zip"
+            /><small
+              >构建包上限 500 MB；仅接受带 client-release.v1 的 ZIP。本站安装包谁都能下，会消耗 VPS 流量。</small
+            ></label
+          >
+          <p class="form-error" data-release-error role="alert"></p>
+          <div class="modal-actions">
+            <button
+              class="button button-secondary"
+              type="button"
+              data-release-next
+              disabled
+            >
+              检查构建包
+            </button>
+          </div>
+          </details>
+        </div>
+        <div data-release-stage="verify" hidden>
+          <div class="verification-list">
+            <div>
+              <span>Manifest</span
+              ><b class="status status-green">client-release.v1 · 通过</b>
+            </div>
+            <div>
+              <span>版本</span><b class="mono" data-release-version>—</b>
+            </div>
+            <div>
+              <span>平台 / 架构 / 通道</span
+              ><b data-release-target>—</b>
+            </div>
+            <div>
+              <span>文件大小</span><b class="mono" data-release-size>—</b>
+            </div>
+            <div>
+              <span>SHA-256</span><b class="mono" data-release-hash>—</b>
+            </div>
+            <div>
+              <span>发布签名</span><b class="status status-gray" data-release-signature-status>待校验</b>
+            </div>
+          </div>
+          <label class="form-label"
+            >更新说明<textarea id="releaseNotes" required minlength="4"></textarea
+            >
+          </label>
+          <p class="form-error" data-release-confirm-error role="alert"></p>
+          <div class="modal-actions">
+            <button
+              class="button button-secondary"
+              type="button"
+              data-release-back
+            >
+              返回</button
+            ><button
+              class="button button-primary"
+              type="button"
+              data-release-confirm
+            >
+              确认发布
+            </button>
+          </div>
+        </div>
+        <div class="result-state" data-release-stage="result" hidden>
+          <span class="result-mark" aria-hidden="true">✓</span>
+          <h3 data-release-result-heading>版本已发布</h3>
+          <dl class="result-list">
+            <div>
+              <dt>软件</dt>
+              <dd data-release-result-software>—</dd>
+            </div>
+            <div>
+              <dt>版本 / 通道</dt>
+              <dd class="mono" data-release-result-version>—</dd>
+            </div>
+            <div>
+              <dt>状态</dt>
+              <dd data-release-result-status>已发布 · 可撤回</dd>
+            </div>
+          </dl>
+          <div class="modal-actions">
+            <button type="button" class="button button-primary" value="cancel">完成</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal-danger"
+      id="withdrawReleaseDialog"
+      aria-labelledby="withdrawReleaseDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button
+        >
+        <h2 id="withdrawReleaseDialogTitle">撤回当前版本？</h2>
+        <div class="impact-box">
+          <span>软件</span><b data-withdraw-software>—</b><span>通道</span><b data-withdraw-channel>—</b
+          ><span>当前状态</span><b data-withdraw-status>—</b><span>回退候选</span><b data-withdraw-fallback>—</b>
+        </div>
+        <p class="form-hint">已安装的不会被卸掉。目录不再提供这个版本下载。安装包 ZIP 仍留在磁盘，不会立刻删除。</p>
+        <label class="form-label"
+          >撤回原因<textarea
+            name="reason"
+            required
+            minlength="4"
+            maxlength="255"
+            placeholder="填写可追溯的撤回原因"
+          ></textarea>
+        </label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button
+            class="button button-danger"
+            type="button"
+            data-withdraw-confirm
+          >
+            确认撤回
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="editReleaseUrlDialog" aria-labelledby="editReleaseUrlDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="editReleaseUrlDialogTitle">修改网盘地址</h2>
+        <div class="impact-box">
+          <span>软件</span><b data-edit-url-software>—</b><span>版本</span><b data-edit-url-version>—</b><span>通道</span><b data-edit-url-channel>—</b>
+        </div>
+        <p class="form-hint">只改下载地址，版本号不变。客户下次检查更新会打开新链接。换文件必须同步填新哈希，留空保留旧哈希。</p>
+        <label class="form-label"
+          >网盘下载地址<input id="releaseEditUrl" type="url" placeholder="https://" autocomplete="off"
+        /></label>
+        <label class="form-label"
+          >安装包 SHA-256（可选，换文件时必填，留空保留旧值）<input id="releaseEditSha256" class="mono" type="text" maxlength="64" placeholder="64 位十六进制，留空保留" autocomplete="off"
+        /></label>
+        <label class="form-check"><input id="releaseEditSha256Clear" type="checkbox" /> 清空已有哈希（换了文件但暂无新哈希时勾选）</label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button class="button button-primary" type="button" data-edit-url-confirm>保存新地址</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      class="modal modal-danger"
+      id="deleteReleasePackageDialog"
+      aria-labelledby="deleteReleasePackageDialogTitle"
+    >
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="deleteReleasePackageDialogTitle">删除这份安装包？</h2>
+        <div class="impact-box">
+          <span>软件</span><b data-delete-package-software>—</b><span>版本</span><b data-delete-package-version>—</b>
+        </div>
+        <p class="form-hint">删除后安装包 ZIP 从磁盘去掉。版本历史行保留，状态仍是已撤回。版本号不能再用来上传。</p>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button
+          ><button class="button button-danger" type="button" data-release-delete-package-confirm>确认删除安装包</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="passwordChangeDialog" aria-labelledby="passwordChangeDialogTitle">
+      <form method="dialog" data-password-change-form>
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="passwordChangeDialogTitle">修改我的密码</h2>
+        <p class="form-hint">修改成功后当前会话继续保留，其他旧会话会失效。密码不会显示在结果、日志或审计摘要中。</p>
+        <div class="form-grid form-grid-two">
+          <label class="form-label">当前密码<input name="current_password" type="password" autocomplete="current-password" required minlength="1" /></label>
+          <span></span>
+          <label class="form-label">新密码<input name="new_password" type="password" autocomplete="new-password" required minlength="10" /></label>
+          <label class="form-label">确认新密码<input name="new_password_confirm" type="password" autocomplete="new-password" required minlength="10" /></label>
+        </div>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-primary" type="button" data-password-change-submit>保存新密码</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="passwordResetDialog" aria-labelledby="passwordResetDialogTitle">
+      <form method="dialog" data-password-reset-form>
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="passwordResetDialogTitle">重置下游密码</h2>
+        <div class="impact-box"><span>目标账号</span><b class="mono" data-password-reset-target>—</b><span>生效范围</span><b>该账号的所有旧会话立即失效</b></div>
+        <div class="form-grid form-grid-two">
+          <label class="form-label">新密码<input name="new_password" type="password" autocomplete="new-password" required minlength="10" /></label>
+          <label class="form-label">确认新密码<input name="new_password_confirm" type="password" autocomplete="new-password" required minlength="10" /></label>
+        </div>
+        <label class="form-label">重置原因<textarea name="reason" required minlength="2" maxlength="255" placeholder="填写可追溯的重置原因"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-password-reset-submit>确认重置密码</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="downstreamCreateDialog" aria-labelledby="downstreamCreateDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="downstreamCreateDialogTitle">新建下游账号</h2>
+        <p class="form-hint">下游只需用户名和初始密码。开通软件用经营范围；入账用「调整下游额度」，这里填写不会写流水。</p>
+        <div class="form-grid form-grid-two">
+          <label class="form-label">用户名<input name="username" required minlength="3" placeholder="仅账号名" /></label>
+          <label class="form-label">初始密码<input name="password" type="password" required minlength="10" /></label>
+        </div>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-primary" type="button" data-downstream-create>创建账号</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="storageCleanupDialog" aria-labelledby="storageCleanupDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="storageCleanupDialogTitle">清理撤回包和临时文件？</h2>
+        <p class="form-hint">只删除超过保留期的已撤回安装包、临时导出和日志。不含本页「下载加密备份」里的 .enc。审计、额度流水、卡密、授权和设备历史不会删除。此操作不可撤销。</p>
+        <p class="form-hint" data-storage-cleanup-summary>本次扫描数量尚未读取。</p>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-storage-cleanup-confirm>确认清理</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="backupDownloadDeleteDialog" aria-labelledby="backupDownloadDeleteDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="backupDownloadDeleteDialogTitle">删除这份加密备份？</h2>
+        <p class="form-hint" data-backup-download-delete-summary>下载目录至少留 N 份。此操作不可撤销，只删下载表里的加密账本，不含安装包。</p>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-backup-download-delete-confirm>确认删除</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-wide" id="auditDetailDialog" aria-labelledby="auditDetailDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="auditDetailDialogTitle">审计详情</h2>
+        <p class="form-hint">主表只显示定位信息；完整的来源、请求关联和状态变化在这里查看。</p>
+        <dl class="credential-detail-grid">
+          <div><dt>北京时间</dt><dd class="mono" data-audit-detail-field="occurred">—</dd></div>
+          <div><dt>操作者 / 来源</dt><dd data-audit-detail-field="actor">—</dd></div>
+          <div><dt>事件</dt><dd class="mono" data-audit-detail-field="action">—</dd></div>
+          <div><dt>结果</dt><dd data-audit-detail-field="outcome">—</dd></div>
+          <div><dt>对象</dt><dd data-audit-detail-field="object">—</dd></div>
+          <div><dt>IP</dt><dd class="mono" data-audit-detail-field="ip">—</dd></div>
+          <div><dt>request_id</dt><dd class="mono" data-audit-detail-field="request">—</dd></div>
+          <div><dt>原因 / 前后变化</dt><dd data-audit-detail-field="metadata">—</dd></div>
+        </dl>
+        <div class="modal-actions"><button type="button" class="button button-primary" value="cancel">关闭详情</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-wide" id="riskDetailDialog" aria-labelledby="riskDetailDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="riskDetailDialogTitle">授权详情</h2>
+        <p class="form-hint">这里集中显示排障需要的事实；主表只保留定位和处置字段。</p>
+        <dl class="credential-detail-grid">
+          <div><dt>客户</dt><dd data-risk-detail="customer">—</dd></div>
+          <div><dt>授权卡密</dt><dd class="mono" data-risk-detail="card">—</dd></div>
+          <div><dt>软件</dt><dd data-risk-detail="software">—</dd></div>
+          <div><dt>套餐</dt><dd data-risk-detail="plan">—</dd></div>
+          <div><dt>授权状态</dt><dd data-risk-detail="authorization">—</dd></div>
+          <div><dt>客户端设备码</dt><dd class="mono" data-risk-detail="deviceCode">—</dd></div>
+          <div><dt>平台设备 UUID</dt><dd class="mono" data-risk-detail="deviceUuid">—</dd></div>
+          <div><dt>设备绑定状态</dt><dd class="mono" data-risk-detail="device">—</dd></div>
+          <div><dt>设备封禁</dt><dd data-risk-detail="risk">—</dd></div>
+          <div><dt>IP</dt><dd class="mono" data-risk-detail="ip">—</dd></div>
+          <div><dt>激活时间</dt><dd class="mono" data-risk-detail="activated">—</dd></div>
+          <div><dt>绑定时间</dt><dd class="mono" data-risk-detail="bound">—</dd></div>
+          <div><dt>最近验证</dt><dd class="mono" data-risk-detail="verified">—</dd></div>
+          <div><dt>最后访问</dt><dd class="mono" data-risk-detail="seen">—</dd></div>
+          <div><dt>到期时间</dt><dd class="mono" data-risk-detail="expires">—</dd></div>
+          <div><dt>续期增补</dt><dd data-risk-detail="renewal">—</dd></div>
+          <div><dt>审计引用</dt><dd class="mono" data-risk-detail="audit">—</dd></div>
+          <div><dt>绑定历史</dt><dd data-risk-detail="history">—</dd></div>
+        </dl>
+        <div class="modal-actions"><button type="button" class="button button-primary" value="cancel">关闭详情</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="managementActionDialog" aria-labelledby="managementActionDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="managementActionDialogTitle" data-management-action-title>确认管理操作</h2>
+        <div class="impact-box"><span>影响对象</span><b data-management-action-target>—</b><span>规则</span><b data-management-action-impact>—</b><span>财产清单</span><b data-management-action-inventory>—</b></div>
+        <label class="checkbox-label" data-time-recovery-confirm hidden><input type="checkbox" name="server_time_checked" />我已核对服务器时间已恢复正常</label>
+        <label class="form-label">操作原因<textarea name="reason" required minlength="4" maxlength="255" placeholder="填写可追溯的原因"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions"><button type="button" class="button button-secondary" value="cancel">取消</button><button class="button button-danger" type="button" data-management-action-confirm>确认操作</button></div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-wide" id="riskSignalsDialog" aria-labelledby="riskSignalsDialogTitle" aria-describedby="riskSignalsScope">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭异常记录">×</button>
+        <h2 id="riskSignalsDialogTitle">异常记录</h2>
+        <p class="form-hint" id="riskSignalsScope">全平台最近 50 条，不随授权列表筛选。记录用于核对，不会自动冻结卡密。</p>
+        <p class="risk-evidence-note">先核对请求与接入配置。无法确认归属的请求不能作为冻卡依据；确认具体授权后，再到对应卡密行人工处置。</p>
+        <p class="form-error" data-risk-signals-error role="alert"></p>
+        <p class="table-empty" data-risk-signals-empty>连接后台后读取异常记录。</p>
+        <ol class="risk-signals-list" data-risk-signals-list aria-label="异常记录列表"></ol>
+        <div class="risk-signals-pagination" data-risk-signals-pagination hidden>
+          <button class="button button-secondary button-small" type="button" data-risk-signals-prev disabled>上一页</button>
+          <span data-risk-signals-page aria-live="polite"></span>
+          <button class="button button-secondary button-small" type="button" data-risk-signals-next disabled>下一页</button>
+        </div>
+        <div class="modal-actions">
+          <button class="button button-secondary" type="button" data-risk-signals-refresh>刷新记录</button>
+          <button class="button button-primary" type="button" value="cancel">关闭</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="invitationRevokeDialog" aria-labelledby="invitationRevokeDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="invitationRevokeDialogTitle">作废所选邀请码？</h2>
+        <p class="form-hint">作废后不能再用来注册。已使用的邀请码不能作废。</p>
+        <div class="impact-box"><span>邀请码</span><b class="mono" data-invitation-revoke-target>—</b></div>
+        <label class="form-label">作废原因<textarea name="reason" required minlength="2" maxlength="255" placeholder="填写可追溯的作废原因"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-danger" type="button" data-invitation-revoke-confirm>确认作废</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="renewAuthorizationDialog" aria-labelledby="renewAuthorizationDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="renewAuthorizationDialogTitle">给这些授权补时间？</h2>
+        <p class="form-hint">
+          只对<b>已激活且未过期</b>的正常授权加时间；已过期、撤销或冻结项不可处理。
+          补偿不扣额度、不写<b>额度流水</b>，客户下次验证自动获取新到期时间。
+        </p>
+        <div class="impact-box">
+          <span>本次范围</span><b data-renew-scope>—</b>
+          <span>增加时间</span><b data-renew-count>—</b>
+        </div>
+        <label class="form-label">加多久<input id="renewAmount" type="number" min="1" max="8784" step="1" value="1" required /></label>
+        <label class="form-label">单位<select id="renewUnit"><option value="day">天</option><option value="hour">小时</option></select></label>
+        <label class="form-label">加时间原因<textarea id="renewReason" name="reason" required minlength="2" maxlength="255" placeholder="例如：软件故障，给所选客户补偿时间"></textarea></label>
+        <p class="form-hint" data-renew-preview-list>还没有读取续期范围。</p>
+        <p class="form-error" data-renew-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-primary" type="button" data-renew-confirm disabled>确认加时间</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="archiveReleaseDialog" aria-labelledby="archiveReleaseDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="archiveReleaseDialogTitle">归档这个版本？</h2>
+        <p class="form-hint">
+          归档后这条版本从版本表默认列表消失，历史行、操作记录和审计都保留，版本号仍被占用。
+          如果它还在分发中，归档后客户端就查不到这个版本了，公开目录会回退到剩余已发布里版本最高的那条。
+        </p>
+        <div class="impact-box"><span>版本</span><b class="mono" data-archive-target>—</b></div>
+        <label class="form-label">归档原因<textarea name="reason" required minlength="4" maxlength="255" placeholder="例如：历史版本太多，整理一下"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-danger" type="button" data-archive-confirm>确认归档</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="renameReleaseDialog" aria-labelledby="renameReleaseDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="renameReleaseDialogTitle">就地改版本号？</h2>
+        <p class="form-hint">
+          用于「网盘地址不变、只换了文件」的情况：把版本号往上改（例如 2.0.8 → 2.0.9），客户端下次检查就会提示更新，而且不会新增一条版本历史。
+          仅网盘发布可直接改号。本站安装包请重新构建、签名并发布。新号须高于同通道其他已发布版本。
+        </p>
+        <div class="impact-box"><span>当前版本</span><b class="mono" data-rename-target>—</b></div>
+        <label class="form-label">新版本号<input name="version" required pattern="v?[0-9]+\.[0-9]+\.[0-9]+" placeholder="2.0.9" /></label>
+        <label class="form-label">改号原因<textarea name="reason" required minlength="4" maxlength="255" placeholder="例如：网盘文件已替换，版本号跟着走"></textarea></label>
+        <p class="form-error" data-form-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-primary" type="button" data-rename-confirm>确认改号</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="bulkRevokeDialog" aria-labelledby="bulkRevokeDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="bulkRevokeDialogTitle">撤销所选授权？</h2>
+        <p class="form-hint">
+          将选中的有效授权与对应卡密彻底撤销，当前绑定的设备立刻失效并递增授权版本，下一次验证收到不可恢复的拒绝。此操作不可逆。
+        </p>
+        <div class="impact-box">
+          <span>待撤销数量</span><b data-bulk-revoke-count>0 条</b>
+        </div>
+        <label class="form-label">撤销原因<textarea id="bulkRevokeReason" name="reason" required minlength="2" maxlength="255" placeholder="例如：黑产违规刷卡退款/渠道泄露作废"></textarea></label>
+        <p class="form-error" data-bulk-revoke-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-danger" type="button" data-bulk-revoke-confirm disabled>确认撤销</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal modal-danger" id="bulkBlockDialog" aria-labelledby="bulkBlockDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="bulkBlockDialogTitle">封禁所选授权绑定的设备？</h2>
+        <p class="form-hint">
+          将选中授权当前绑定的物理硬件设备全部打入封禁黑名单，所有挂在该设备上的有效绑定全部立即阻断。未绑定有效设备的授权将被跳过。
+        </p>
+        <div class="impact-box">
+          <span>涉及授权数量</span><b data-bulk-block-count>0 条</b>
+        </div>
+        <label class="form-label">封禁原因<textarea id="bulkBlockReason" name="reason" required minlength="2" maxlength="255" placeholder="例如：批量多开外挂违规机器拉黑"></textarea></label>
+        <p class="form-error" data-bulk-block-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-danger" type="button" data-bulk-block-confirm disabled>确认封禁设备</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="modal" id="bulkUnblockDialog" aria-labelledby="bulkUnblockDialogTitle">
+      <form method="dialog">
+        <button type="button" class="modal-close" value="cancel" aria-label="关闭">×</button>
+        <h2 id="bulkUnblockDialogTitle">解封所选授权的被封设备？</h2>
+        <p class="form-hint">
+          将选中授权名下被封禁的物理硬件设备移出黑名单，解封后该设备可用新卡重新激活，但已阻断的旧座位不会复活。没有被封绑定的授权将被跳过。
+        </p>
+        <div class="impact-box">
+          <span>涉及授权数量</span><b data-bulk-unblock-count>0 条</b>
+        </div>
+        <label class="form-label">解封原因<textarea id="bulkUnblockReason" name="reason" required minlength="2" maxlength="255" placeholder="例如：误封申诉通过/设备已整改"></textarea></label>
+        <p class="form-error" data-bulk-unblock-error role="alert"></p>
+        <div class="modal-actions">
+          <button type="button" class="button button-secondary" value="cancel">取消</button>
+          <button class="button button-primary" type="button" data-bulk-unblock-confirm disabled>确认解封设备</button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="preview.js?v=20261117-suite-1"></script>
+  </body>
+</html>

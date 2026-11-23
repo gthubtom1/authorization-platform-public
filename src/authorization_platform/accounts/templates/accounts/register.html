@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+{% block title %}下游注册 · 授权平台{% endblock %}
+{% block heading %}创建下游账号{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-card">
+    <p class="eyebrow">INVITATION REGISTRATION</p>
+    <h2>用邀请码开始</h2>
+    <p class="section-copy">注册成功后邀请码立即消费。用户名只用于登录，平台不要求显示名称或联系方式。</p>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      {% for field in form %}<div class="form-field"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<p class="form-hint">{{ field.help_text }}</p>{% endif %}{% for error in field.errors %}<p class="field-error">{{ error }}</p>{% endfor %}</div>{% endfor %}
+      <button class="primary-button" type="submit">注册并前往登录</button>
+    </form>
+    <p class="form-footnote">已有账号？<a href="{% url 'accounts:downstream_login' %}">返回下游端登录</a></p>
+  </div>
+</section>
+{% endblock %}

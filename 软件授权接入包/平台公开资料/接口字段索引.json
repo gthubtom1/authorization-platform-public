@@ -1,0 +1,1424 @@
+{
+  "schema": "authorization-client-reference.v1",
+  "runtime_connected": false,
+  "scope": "offline reference; fixed per-software values come only from controlled software-bind.v2",
+  "endpoints": {
+    "activate": {
+      "method": "POST",
+      "path": "/api/v1/public/licenses/activate",
+      "proof_action": "activate",
+      "headers": [
+        "Content-Type: application/json",
+        "X-Request-Id",
+        "Idempotency-Key"
+      ],
+      "request_required_for_new_client": [
+        "arch",
+        "channel",
+        "client_id",
+        "client_version",
+        "contract_version",
+        "device_proof",
+        "device_public_key",
+        "idempotency_key",
+        "installation_id",
+        "license_key",
+        "nonce",
+        "profile_id",
+        "request_id",
+        "software_id",
+        "target"
+      ],
+      "request_optional": [
+        "known_authorization_revision",
+        "known_config_version"
+      ],
+      "compatibility_alias": {
+        "config_version": "known_config_version; prefer known_config_version"
+      },
+      "response_kind": "authorization"
+    },
+    "verify": {
+      "method": "POST",
+      "path": "/api/v1/public/licenses/verify",
+      "proof_action": "verify",
+      "headers": [
+        "Content-Type: application/json",
+        "X-Request-Id",
+        "Idempotency-Key"
+      ],
+      "request_required_for_new_client": [
+        "arch",
+        "authorization_id",
+        "channel",
+        "client_id",
+        "client_version",
+        "contract_version",
+        "device_proof",
+        "device_public_key",
+        "idempotency_key",
+        "installation_id",
+        "nonce",
+        "profile_id",
+        "request_id",
+        "software_id",
+        "target"
+      ],
+      "request_optional": [
+        "known_authorization_revision",
+        "known_config_version"
+      ],
+      "compatibility_alias": {
+        "config_version": "known_config_version; prefer known_config_version"
+      },
+      "response_kind": "authorization"
+    },
+    "deactivate": {
+      "method": "POST",
+      "path": "/api/v1/public/licenses/deactivate",
+      "proof_action": "deactivate",
+      "headers": [
+        "Content-Type: application/json",
+        "X-Request-Id",
+        "Idempotency-Key"
+      ],
+      "request_required_for_new_client": [
+        "arch",
+        "authorization_id",
+        "channel",
+        "client_id",
+        "client_version",
+        "contract_version",
+        "device_proof",
+        "device_public_key",
+        "idempotency_key",
+        "installation_id",
+        "nonce",
+        "profile_id",
+        "request_id",
+        "software_id",
+        "target"
+      ],
+      "request_optional": [
+        "known_authorization_revision",
+        "known_config_version"
+      ],
+      "compatibility_alias": {
+        "config_version": "known_config_version; prefer known_config_version"
+      },
+      "response_kind": "authorization"
+    },
+    "launch_ticket": {
+      "method": "POST",
+      "path": "/api/v1/public/licenses/launch-ticket",
+      "proof_action": "launch-ticket",
+      "headers": [
+        "Content-Type: application/json",
+        "X-Request-Id",
+        "Idempotency-Key"
+      ],
+      "request_required_for_new_client": [
+        "arch",
+        "authorization_id",
+        "channel",
+        "client_id",
+        "client_version",
+        "contract_version",
+        "device_proof",
+        "device_public_key",
+        "idempotency_key",
+        "installation_id",
+        "nonce",
+        "profile_id",
+        "request_id",
+        "software_id",
+        "target"
+      ],
+      "request_optional": [
+        "known_authorization_revision",
+        "known_config_version"
+      ],
+      "compatibility_alias": {
+        "config_version": "known_config_version; prefer known_config_version"
+      },
+      "response_kind": "issued"
+    },
+    "consume_launch_ticket": {
+      "method": "POST",
+      "path": "/api/v1/public/licenses/launch-ticket/consume",
+      "proof_action": "ticket-consume",
+      "headers": [
+        "Content-Type: application/json",
+        "X-Request-Id",
+        "Idempotency-Key"
+      ],
+      "request_required_for_new_client": [
+        "arch",
+        "authorization_id",
+        "channel",
+        "client_id",
+        "client_version",
+        "contract_version",
+        "device_proof",
+        "device_public_key",
+        "idempotency_key",
+        "installation_id",
+        "nonce",
+        "profile_id",
+        "request_id",
+        "software_id",
+        "target",
+        "ticket_id"
+      ],
+      "request_optional": [
+        "known_authorization_revision",
+        "known_config_version"
+      ],
+      "compatibility_alias": {
+        "config_version": "known_config_version; prefer known_config_version"
+      },
+      "response_kind": "consumed"
+    },
+    "releases": {
+      "method": "GET",
+      "path": "/api/v1/public/software/{software_id}/profiles/{profile_id}/releases/",
+      "query_required_for_new_client": [
+        "client_id",
+        "target",
+        "arch",
+        "channel",
+        "version"
+      ],
+      "response_kind": "releases",
+      "current_version_format": "three numeric components from real build"
+    },
+    "download": {
+      "method": "GET",
+      "path": "/api/v1/public/software/{software_id}/profiles/{profile_id}/releases/{release_id}/download/",
+      "url_source": "release.download_url",
+      "response_kind": "zip-or-error",
+      "optional_channel": true
+    }
+  },
+  "not_client_runtime": {
+    "quota-settings": "/api/v1/public/quota-settings/",
+    "administrator": "/api/v1/manage/",
+    "downstream": "/api/v1/downstream/"
+  },
+  "configuration_transport": "ordinary signed authorization response; no public manifest GET",
+  "request_common_allowed": [
+    "arch",
+    "channel",
+    "client_id",
+    "client_version",
+    "config_version",
+    "contract_version",
+    "device_proof",
+    "device_public_key",
+    "idempotency_key",
+    "installation_id",
+    "known_authorization_revision",
+    "known_config_version",
+    "nonce",
+    "profile_id",
+    "request_id",
+    "software_id",
+    "target"
+  ],
+  "response_contracts": {
+    "authorization": {
+      "schema_file": "protocol/authorization.v1.schema.json",
+      "required": [
+        "schema_version",
+        "request_id",
+        "software_id",
+        "profile_id",
+        "client_id",
+        "contract_version",
+        "target",
+        "arch",
+        "channel",
+        "authorization_id",
+        "authorization_revision",
+        "device_scope",
+        "decision",
+        "state_code",
+        "issued_at",
+        "expires_at",
+        "server_time",
+        "cache_until",
+        "next_verify_at",
+        "grace_until",
+        "config_version",
+        "support",
+        "announcement",
+        "modules",
+        "integrity"
+      ],
+      "allowed": [
+        "schema_version",
+        "request_id",
+        "software_id",
+        "profile_id",
+        "client_id",
+        "contract_version",
+        "target",
+        "arch",
+        "channel",
+        "authorization_id",
+        "authorization_revision",
+        "device_scope",
+        "decision",
+        "state_code",
+        "issued_at",
+        "expires_at",
+        "server_time",
+        "cache_until",
+        "next_verify_at",
+        "grace_until",
+        "config_version",
+        "status",
+        "policy_version",
+        "adapter_key",
+        "adapter_version",
+        "capabilities",
+        "entitlements",
+        "support",
+        "announcement",
+        "purchase",
+        "qr",
+        "update",
+        "modules",
+        "binding_state",
+        "error",
+        "extensions",
+        "integrity"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "authorization.v1"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "software_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "client_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "contract_version": {
+          "const": "authorization.v1"
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "arch": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "channel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "authorization_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "authorization_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "device_scope": {
+          "$ref": "#/$defs/deviceScope"
+        },
+        "decision": {
+          "enum": [
+            "active",
+            "grace",
+            "expired",
+            "revoked",
+            "blocked",
+            "not_modified",
+            "unbound"
+          ]
+        },
+        "state_code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "issued_at": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "server_time": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "cache_until": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "next_verify_at": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "grace_until": {
+          "$ref": "#/$defs/epochSeconds"
+        },
+        "config_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "adapter_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "adapter_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "capabilities": {
+          "type": "object"
+        },
+        "entitlements": {
+          "type": "object"
+        },
+        "support": {
+          "$ref": "#/$defs/support"
+        },
+        "announcement": {
+          "$ref": "#/$defs/announcement"
+        },
+        "purchase": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "qr": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "update": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "modules": {
+          "$ref": "#/$defs/modules"
+        },
+        "binding_state": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "error": {
+          "type": "object"
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "integrity": {
+          "$ref": "#/$defs/integrity"
+        }
+      },
+      "definitions": {
+        "deviceScope": {
+          "type": "object",
+          "required": [
+            "scope",
+            "device_id",
+            "installation_id"
+          ],
+          "properties": {
+            "scope": {
+              "type": "string",
+              "const": "current_device",
+              "minLength": 1,
+              "maxLength": 32
+            },
+            "device_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "installation_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1,
+              "maxLength": 128
+            }
+          },
+          "additionalProperties": false
+        },
+        "epochSeconds": {
+          "type": "integer",
+          "minimum": -9223372036854775808,
+          "maximum": 9223372036854775807
+        },
+        "support": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "purchase_url",
+            "qq",
+            "wechat"
+          ],
+          "properties": {
+            "purchase_url": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2048
+            },
+            "qq": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "wechat": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            }
+          },
+          "additionalProperties": false
+        },
+        "announcement": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "title",
+            "body"
+          ],
+          "properties": {
+            "title": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 120
+            },
+            "body": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 2000
+            }
+          },
+          "additionalProperties": false
+        },
+        "modules": {
+          "type": "object",
+          "required": [
+            "contact",
+            "notice",
+            "purchase",
+            "qr",
+            "update"
+          ],
+          "properties": {
+            "contact": {
+              "$ref": "#/$defs/support"
+            },
+            "notice": {
+              "$ref": "#/$defs/announcement"
+            },
+            "purchase": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "qr": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "update": {
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "integrity": {
+          "type": "object",
+          "required": [
+            "algorithm",
+            "key_id",
+            "canonicalization",
+            "signature"
+          ],
+          "properties": {
+            "algorithm": {
+              "const": "ed25519"
+            },
+            "key_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "canonicalization": {
+              "const": "JCS-RFC8785"
+            },
+            "signature": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "signed": true
+    },
+    "local_authorization": {
+      "schema_file": "protocol/authorization-a-core.v1.schema.json",
+      "required": [
+        "schema_version",
+        "local_contract_version",
+        "request_id",
+        "software_id",
+        "profile_id",
+        "client_id",
+        "contract_version",
+        "target",
+        "arch",
+        "channel",
+        "authorization_id",
+        "authorization_revision",
+        "device_scope",
+        "decision",
+        "state_code",
+        "issued_at",
+        "expires_at",
+        "server_time",
+        "cache_until",
+        "next_verify_at",
+        "grace_until",
+        "config_version",
+        "support",
+        "announcement",
+        "modules",
+        "integrity"
+      ],
+      "allowed": [
+        "schema_version",
+        "local_contract_version",
+        "request_id",
+        "software_id",
+        "profile_id",
+        "client_id",
+        "contract_version",
+        "target",
+        "arch",
+        "channel",
+        "authorization_id",
+        "authorization_revision",
+        "device_scope",
+        "decision",
+        "state_code",
+        "issued_at",
+        "expires_at",
+        "server_time",
+        "cache_until",
+        "next_verify_at",
+        "grace_until",
+        "config_version",
+        "status",
+        "policy_version",
+        "adapter_key",
+        "adapter_version",
+        "capabilities",
+        "entitlements",
+        "support",
+        "announcement",
+        "purchase",
+        "qr",
+        "update",
+        "modules",
+        "binding_state",
+        "error",
+        "extensions",
+        "integrity"
+      ],
+      "signed": true,
+      "trust": "separate A-core contract, not interchangeable with cloud proof"
+    },
+    "issued": {
+      "signed": true,
+      "payload": "complete object including ticket and integrity; use downloaded launch_ticket_contract"
+    },
+    "consumed": {
+      "required": [
+        "schema_version",
+        "contract_version",
+        "request_id",
+        "software_id",
+        "profile_id",
+        "authorization_id",
+        "decision",
+        "server_time",
+        "ticket_id"
+      ],
+      "signed": false,
+      "decision": "consumed",
+      "not_authorization": true
+    },
+    "releases": {
+      "required": [
+        "software_id",
+        "profile_id",
+        "minimum_client_version",
+        "has_update",
+        "release",
+        "generated_at"
+      ],
+      "signed": false,
+      "release_nullable": true,
+      "release_fields": [
+        "release_id",
+        "software_id",
+        "software_name",
+        "profile_id",
+        "version",
+        "target",
+        "arch",
+        "channel",
+        "minimum_client_version",
+        "notes",
+        "manifest",
+        "package_name",
+        "package_size",
+        "package_sha256",
+        "external_download_url",
+        "distribution",
+        "signature",
+        "status",
+        "created_at",
+        "published_at",
+        "withdrawn_at",
+        "withdrawal_reason",
+        "archived_at",
+        "archived_from_status",
+        "archive_reason",
+        "package_available"
+      ],
+      "conditional_release_fields": [
+        "update_open_url",
+        "download_url"
+      ],
+      "version_path": "release.version",
+      "update_url_path": "release.update_open_url",
+      "zip_url_path": "release.download_url",
+      "time_format": "ISO-8601, not authorization epoch seconds"
+    },
+    "error": {
+      "top_level": "error",
+      "required": [
+        "code",
+        "message",
+        "request_id",
+        "retryable"
+      ],
+      "signed": false
+    }
+  },
+  "signature": {
+    "algorithm": "ed25519",
+    "canonicalization": "JCS-RFC8785",
+    "remove_only": "integrity.signature",
+    "input": "complete parsed original JSON object before DTO projection",
+    "encoding": "base64url-no-padding",
+    "unknown_key": "deny"
+  },
+  "device_proof": {
+    "schema": "device-proof.v1",
+    "domain": "authorization-platform.device-proof.v1",
+    "algorithm": "ed25519",
+    "signature_encoding": "base64url-no-padding",
+    "canonicalization": "JCS-RFC8785",
+    "message": {
+      "encoding": "UTF-8",
+      "object_fields": [
+        "domain",
+        "action",
+        "request_id",
+        "authorization_id",
+        "software_id",
+        "profile_id",
+        "client_id",
+        "contract_version",
+        "target",
+        "arch",
+        "channel",
+        "installation_id",
+        "device_public_key",
+        "nonce"
+      ],
+      "key_order": "lexicographic-jcs",
+      "string_normalization": "trim outer whitespace; preserve remaining UTF-8 code points",
+      "missing_authorization_id": "empty string for activate; required for verify/deactivate/launch-ticket/ticket-consume",
+      "action_values": [
+        "activate",
+        "verify",
+        "deactivate",
+        "launch-ticket",
+        "ticket-consume"
+      ],
+      "nonce": "client-generated string, at least 8 characters, unique per request",
+      "request_id": "header/body value after trim; header and body must match exactly",
+      "device_public_key": "Ed25519 public key, exactly 32 decoded bytes, base64url; sign the normalized submitted encoding"
+    },
+    "verification": {
+      "signature_input": "JCS(message object) encoded as UTF-8 bytes",
+      "failure_code": "DEVICE_PROOF_INVALID",
+      "missing_code": "DEVICE_PROOF_REQUIRED",
+      "no_replay": "nonce is hashed and consumed once by the server"
+    },
+    "sensitive_values_included": false
+  },
+  "public_authorization_error_sources": {
+    "ADAPTER_UNSUPPORTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 679
+      }
+    ],
+    "ALGORITHM_UNSUPPORTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 298
+      }
+    ],
+    "AUTHORIZATION_NOT_FOUND": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 741
+      }
+    ],
+    "AUTHORIZATION_STATE_INCONSISTENT": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1387
+      }
+    ],
+    "CANONICALIZATION_UNSUPPORTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 300
+      }
+    ],
+    "CONTRACT_VERSION_UNSUPPORTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 667
+      }
+    ],
+    "DEVICE_CONFLICT": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 803
+      }
+    ],
+    "DEVICE_KEY_INVALID": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 618
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 616
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 624
+      }
+    ],
+    "DEVICE_KEY_MISMATCH": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 845
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 884
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 825
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 843
+      }
+    ],
+    "DEVICE_KEY_REUSED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 823
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 836
+      }
+    ],
+    "DEVICE_LIMIT_REACHED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1560
+      }
+    ],
+    "DEVICE_NOT_BOUND": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2040
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2060
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1709
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1725
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1820
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1824
+      }
+    ],
+    "DEVICE_PROOF_INVALID": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 640
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 638
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 644
+      }
+    ],
+    "DEVICE_PROOF_REQUIRED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 633
+      }
+    ],
+    "DEVICE_SCOPE_MISMATCH": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1190
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2199
+      }
+    ],
+    "DEVICE_SWITCH_LIMIT_REACHED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1443
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1568
+      }
+    ],
+    "DOWNSTREAM_NOT_ACTIVE": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 751
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 757
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 755
+      }
+    ],
+    "IDEMPOTENCY_CONFLICT": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1126
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1134
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1055
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2108
+      }
+    ],
+    "INVALID_REQUEST": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 223
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 494
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 498
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 518
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 527
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 534
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 537
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 549
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1943
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1951
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 228
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 564
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 737
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1324
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1946
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2184
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 82
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 85
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 87
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 95
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 97
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 105
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 113
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 93
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 376
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 308
+      }
+    ],
+    "KEY_UNKNOWN": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 304
+      }
+    ],
+    "LAUNCH_TICKET_DISABLED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2033
+      }
+    ],
+    "LICENSE_BLOCKED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1374
+      }
+    ],
+    "LICENSE_EXPIRED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1382
+      }
+    ],
+    "LICENSE_NOT_ACTIVE": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 762
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 764
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 775
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2058
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1360
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1376
+      }
+    ],
+    "LICENSE_NOT_FOUND": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 721
+      }
+    ],
+    "LICENSE_REVOKED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1367
+      }
+    ],
+    "METHOD_NOT_ALLOWED": [
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 272
+      },
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 352
+      }
+    ],
+    "MISSING_REQUIRED_FIELD": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 492
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 488
+      }
+    ],
+    "POLICY_VERSION_UNSUPPORTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 696
+      }
+    ],
+    "PROFILE_MISMATCH": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 673
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 709
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2028
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 662
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1700
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1811
+      }
+    ],
+    "PROFILE_NOT_ACTIVE": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 665
+      }
+    ],
+    "RATE_LIMITED": [
+      {
+        "source": "src/authorization_platform/licensing/api.py",
+        "line": 205
+      }
+    ],
+    "REPLAY_DETECTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 863
+      }
+    ],
+    "RESPONSE_SCHEMA_INVALID": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 328
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 293
+      }
+    ],
+    "RISK_BLOCKED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2042
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 805
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1714
+      }
+    ],
+    "SIGNATURE_INVALID": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 296
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 308
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 324
+      }
+    ],
+    "SIGNATURE_UNAVAILABLE": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 280
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 1961
+      }
+    ],
+    "SIGNING_KEY_UNAVAILABLE": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 245
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 236
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 240
+      }
+    ],
+    "TICKET_ALREADY_CONSUMED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2217
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2114
+      }
+    ],
+    "TICKET_EXPIRED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2201
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2110
+      }
+    ],
+    "TICKET_NOT_FOUND": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2194
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2192
+      }
+    ],
+    "TICKET_NOT_YET_VALID": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2203
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2112
+      }
+    ],
+    "TIME_ROLLBACK_DETECTED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 2047
+      }
+    ],
+    "VERSION_BLOCKED": [
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 684
+      },
+      {
+        "source": "src/authorization_platform/licensing/authorization.py",
+        "line": 686
+      }
+    ]
+  },
+  "error_policy": {
+    "retryable_rate_limit": "bounded retry with Retry-After; never extend last valid online window",
+    "unknown_nonretryable": "deny; do not translate all unknown codes to success",
+    "hard_failures": [
+      "LICENSE_REVOKED",
+      "LICENSE_BLOCKED",
+      "LICENSE_EXPIRED",
+      "DEVICE_NOT_BOUND",
+      "RISK_BLOCKED",
+      "DEVICE_KEY_INVALID",
+      "DEVICE_KEY_MISMATCH"
+    ]
+  },
+  "platform_feature_names": {
+    "F-028": "新软件自助接入",
+    "F-001": "软件管理",
+    "F-002": "下游管理",
+    "F-003": "下游-软件关系",
+    "F-004": "套餐管理",
+    "F-005": "邀请码与账号",
+    "F-006": "额度卡发行与兑换",
+    "F-007": "额度流水",
+    "F-008": "授权卡密单卡管理",
+    "F-009": "卡密扣款",
+    "F-010": "未激活卡回收",
+    "F-011": "管理员额度回收",
+    "F-012": "客户激活验证 API",
+    "F-013": "授权实例和设备绑定",
+    "F-014": "强制撤销授权",
+    "F-015": "基础风控",
+    "F-016": "渠道支持",
+    "F-017": "客户端配置与公告",
+    "F-018": "版本和更新元数据",
+    "F-019": "审计日志与存储清理",
+    "F-020": "仪表盘和统计",
+    "F-021": "备份、恢复与VPS迁移治理",
+    "F-022": "静态预览空态与候选样本防回归",
+    "F-023": "管理端备份中心、下载、渠道设置与空站点导入",
+    "F-024": "授权续期（批量补时间）",
+    "F-025": "版本归档与就地改版本号",
+    "F-026": "反套利安全硬化与批量管理",
+    "F-027": "一次性启动票据"
+  },
+  "known_limitations": [
+    "target-specific stable hardware, core feature gates, direct-core protection and dual-machine acceptance remain PARTIAL"
+  ]
+}

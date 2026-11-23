@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.svg?v=20260910-favicon-1" type="image/svg+xml" />
+    <title>下游注册 · 授权平台</title>
+    <link rel="stylesheet" href="preview.css?v=20261117-suite-1" />
+  </head>
+  <body class="preview-index access-preview">
+    <header class="preview-bar">
+      <span class="preview-brand"
+        ><span class="brand-mark">AUTH</span><span>授权平台</span></span
+      ><span class="preview-state"><i></i> 下游注册</span>
+    </header>
+    <main class="access-shell">
+      <section class="access-context">
+        <h1>创建下游账号</h1>
+      </section>
+      <section class="access-panel" aria-labelledby="registerTitle">
+        <h2 id="registerTitle">使用邀请码注册</h2>
+        <form method="post" action="#" data-preview-destination="downstream-login.html" novalidate>
+          <label class="form-label"
+            >邀请码<input
+              name="invitation_code"
+              class="mono"
+              type="text"
+              autocomplete="one-time-code"
+              required
+              minlength="8" /></label
+          ><label class="form-label"
+            >下游用户名<input
+              name="username"
+              type="text"
+              autocomplete="username"
+              required
+              minlength="3" /></label
+          ><label class="form-label"
+            >密码<input
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="10" /></label
+          ><p class="form-hint">至少 10 位，不能全是数字，不能是常见密码。</p
+          ><label class="form-label"
+            >确认密码<input
+              name="password_confirm"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="10"
+          /></label>
+          <p class="form-error" data-form-error role="alert"></p>
+          <button class="button button-primary access-submit" type="submit">
+            注册并前往登录
+          </button>
+        </form>
+        <a class="quota-purchase-link" data-quota-purchase-link href="#" hidden>购买额度卡</a>
+        <p class="form-hint">付款不会自动到账。请把兑换码贴到额度页。</p>
+        <a class="access-back" href="downstream-login.html">← 返回下游登录</a>
+      </section>
+    </main>
+    <div class="toast" role="status" aria-live="polite"></div>
+    <script src="preview.js?v=20261117-suite-1"></script>
+  </body>
+</html>

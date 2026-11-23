@@ -1,0 +1,53 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<section class="hero-panel">
+  <div>
+    <p class="eyebrow">LOCAL FIRST / SERVER AUTHORITATIVE</p>
+    <h2>先把授权事实源搭稳，<br>再接入每一个软件。</h2>
+    <p class="hero-copy">当前已完成账号、邀请码、会话和下游归属隔离。服务端时间以 UTC 为事实，运营显示统一使用北京时间；后续软件通过独立 Profile 接入。</p>
+  </div>
+  <div class="hero-stamp" aria-label="系统当前状态">
+    <span class="stamp-label">SERVICE</span>
+    <strong>READY</strong>
+    <span>PR-03 READY</span>
+  </div>
+</section>
+
+<section class="metric-grid" aria-label="系统状态指标">
+  <article class="metric-card">
+    <span class="metric-label">服务状态</span>
+    <strong class="metric-value accent">正常</strong>
+    <span class="metric-note">Django 本地进程</span>
+  </article>
+  <article class="metric-card">
+    <span class="metric-label">数据库模式</span>
+    <strong class="metric-value">SQLite</strong>
+    <span class="metric-note">可切换本机 PostgreSQL</span>
+  </article>
+  <article class="metric-card">
+    <span class="metric-label">服务端时间</span>
+    <strong class="metric-value time-value">{{ display_time }}</strong>
+    <span class="metric-note">{{ display_timezone }} · UTC 事实源</span>
+  </article>
+</section>
+
+<section class="two-column">
+  <article class="panel">
+    <div class="panel-heading"><h3>已固化的基础规则</h3><span class="tag">PR-00</span></div>
+    <ul class="rule-list">
+      <li><span class="rule-index">01</span><span>新软件使用独立 SoftwareProfile，不复制平台模块。</span></li>
+      <li><span class="rule-index">02</span><span>套餐时长保存为整数秒，1 分钟测试卡为 60 秒。</span></li>
+      <li><span class="rule-index">03</span><span>客户端本机改时间不能绕过服务端到期判断。</span></li>
+    </ul>
+  </article>
+  <article class="panel">
+    <div class="panel-heading"><h3>下一步</h3><span class="tag tag-warm">BUILDING</span></div>
+    <div class="next-step"><span class="step-number">02</span><div><strong>账号与租户隔离</strong><p>管理员、下游、邀请码和权限范围已进入本地切片。</p></div><span class="arrow">✓</span></div>
+    <div class="next-step"><span class="step-number">03</span><div><strong>软件、Profile 与套餐</strong><p>软件隔离、经营范围和不可变套餐快照已接入。</p></div><span class="arrow">✓</span></div>
+    <div class="next-step"><span class="step-number">04</span><div><strong>额度卡与额度账本</strong><p>下一步把下游余额和不可变额度流水接上。</p></div><span class="arrow">→</span></div>
+  </article>
+</section>
+
+<p class="page-footnote">Server time: <code>{{ server_time }}</code> · 到期判断只在服务端完成</p>
+{% endblock %}

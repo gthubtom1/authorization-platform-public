@@ -1,0 +1,3 @@
+{
+  "error": {"code": "TIME_ROLLBACK_DETECTED", "message": "检测到可信时间回退。", "request_id": "fixture-time-rollback", "retryable": false, "server_time": 1787104800}
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=Authorization Platform daily maintenance timer
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+Persistent=true
+RandomizedDelaySec=15m
+Unit=authorization-platform-maintenance.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,41 @@
+{
+  "protocol": "authorization-a-core.v1",
+  "schema_version": "authorization-a-core.v1",
+  "contract_version": "authorization-a-core.v1",
+  "request_id": "fixture-request-1",
+  "product_id": "sample-product",
+  "software_id": "software-generic",
+  "profile_id": "profile-default",
+  "client_id": "fixture-client-1",
+  "device_scope": {
+    "scope": "current_device",
+    "device_id": "device-1",
+    "installation_id": "installation-1"
+  },
+  "device_id": "device-1",
+  "authorization_id": "fixture-authorization-1",
+  "target": "windows",
+  "arch": "x86_64",
+  "channel": "stable",
+  "authorization_revision": 7,
+  "config_version": "config-7",
+  "snapshot_id": "fixture-snapshot-1",
+  "decision": "active",
+  "state_code": "AUTH_ACTIVE",
+  "issued_at": 1755000000,
+  "expires_at": 1755000200,
+  "server_time": 1755000100,
+  "cache_until": 1755000180,
+  "next_verify_at": 1755000120,
+  "grace_until": 1755000200,
+  "integrity": {
+    "algorithm": "ed25519",
+    "key_id": "fixture-a-key-1",
+    "canonicalization": "JCS-RFC8785",
+    "signature": "fixture-a-signature-1",
+    "origin": "authorization-a",
+    "audience": "authorization-a-core"
+  },
+  "capabilities": ["launch"],
+  "modules": []
+}

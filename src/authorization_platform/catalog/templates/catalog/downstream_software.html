@@ -1,0 +1,7 @@
+{% extends "core/base.html" %}
+{% block title %}可用软件 · 授权平台{% endblock %}
+{% block heading %}可用软件{% endblock %}
+{% block content %}
+<section class="hero-panel compact-hero"><div><p class="eyebrow">DOWNSTREAM SOFTWARE SCOPE</p><h2>只展示已开放的经营范围。</h2><p class="hero-copy">当前列表由服务端根据登录身份和下游-软件关系生成，不接受 URL 中的其他下游 ID。</p></div><div class="hero-stamp"><span class="stamp-label">SCOPE</span><strong>{{ rows|length }}</strong><span>个软件</span></div></section>
+<section class="action-grid">{% for row in rows %}<article class="action-card"><span class="action-kicker">{{ row.software.software_id }}</span><strong>{{ row.software.name }}</strong><span>{{ row.plans.count }} 个可用套餐</span><div>{% for plan in row.plans %}<span class="tag">{{ plan.name }} · {{ plan.duration_seconds }} 秒</span>{% empty %}<span class="muted-text">暂无可用套餐</span>{% endfor %}</div><a class="text-link" href="{% url 'catalog:downstream_configuration' software_id=row.software.software_id %}">配置支持信息</a></article>{% empty %}<article class="panel"><p class="section-copy">管理员还没有开放软件给你。请联系平台管理员确认经营范围。</p></article>{% endfor %}</section>
+{% endblock %}

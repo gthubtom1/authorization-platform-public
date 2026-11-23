@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+
+{% block title %}访问被拒绝 · 授权控制台{% endblock %}
+{% block heading %}访问被拒绝{% endblock %}
+
+{% block content %}
+<section class="error-panel" aria-labelledby="forbidden-title">
+  <div class="error-code" aria-hidden="true">403</div>
+  <div class="error-panel-copy">
+    <p class="eyebrow">REQUEST BLOCKED</p>
+    <h2 id="forbidden-title">当前账号没有访问权限</h2>
+    <p class="section-copy">这个页面属于其他工作范围。你的账号和已有数据未被修改。</p>
+    <div class="error-actions">
+      <a class="primary-button" href="/">返回总览</a>
+      {% if is_platform_admin_user %}
+        <a class="text-link" href="{% url 'accounts:manage_dashboard' %}">回到管理控制台</a>
+      {% elif is_active_downstream_user %}
+        <a class="text-link" href="{% url 'accounts:downstream_dashboard' %}">回到下游工作台</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

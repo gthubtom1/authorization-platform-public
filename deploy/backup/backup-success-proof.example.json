@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "example-only",
+  "backup_run_id": "replace-with-unique-backup-run-id",
+  "repositories": [
+    {
+      "name": "primary",
+      "status": "replace-with-success",
+      "backup_run_id": "replace-with-unique-backup-run-id",
+      "backup_sha256": "replace-with-64-hex-digest",
+      "evidence_file": "<absolute-protected-repo-1-proof-file>",
+      "evidence_sha256": "replace-with-64-hex-digest"
+    },
+    {
+      "name": "secondary",
+      "status": "replace-with-success",
+      "backup_run_id": "replace-with-unique-backup-run-id",
+      "backup_sha256": "replace-with-64-hex-digest",
+      "evidence_file": "<absolute-protected-repo-2-proof-file>",
+      "evidence_sha256": "replace-with-64-hex-digest"
+    }
+  ],
+  "wal": {
+    "backup_run_id": "replace-with-unique-backup-run-id",
+    "status": "replace-with-success",
+    "archive_ready": false,
+    "start_lsn": "replace-with-start-lsn",
+    "end_lsn": "replace-with-end-lsn",
+    "last_archived_at_utc": "replace-with-utc-timestamp",
+    "evidence_file": "<absolute-protected-wal-proof-file>",
+    "evidence_sha256": "replace-with-64-hex-digest"
+  },
+  "object_manifest": {
+    "backup_run_id": "replace-with-unique-backup-run-id",
+    "status": "replace-with-success",
+    "manifest_sha256": "replace-with-64-hex-digest",
+    "source": "object-storage",
+    "object_count": 1,
+    "evidence_file": "<absolute-protected-object-manifest-file>",
+    "evidence_sha256": "replace-with-64-hex-digest"
+  },
+  "recovery_inventory": {
+    "backup_run_id": "replace-with-unique-backup-run-id",
+    "status": "replace-with-success",
+    "ciphertext_verification": false,
+    "matches": false,
+    "inventory_sha256": "replace-with-64-hex-digest",
+    "evidence_file": "<absolute-protected-recovery-inventory-file>",
+    "evidence_sha256": "replace-with-64-hex-digest"
+  },
+  "binding": {
+    "backup_run_id": "replace-with-unique-backup-run-id",
+    "candidate_commit": "replace-with-candidate-commit",
+    "migration_graph_sha256": "replace-with-64-hex-digest",
+    "dump_sha256": "replace-with-64-hex-digest",
+    "dump_file": "<absolute-protected-dump-file>",
+    "migration_graph_file": "<absolute-protected-migration-graph-file>",
+    "key_versions": ["replace-with-secret-version-references"]
+  },
+  "secret_values_exposed": false
+}

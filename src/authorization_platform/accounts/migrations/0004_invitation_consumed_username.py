@@ -1,0 +1,17 @@
+from __future__ import annotations
+
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ("accounts", "0003_invitation_lifecycle_freeze"),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name="invitationcode",
+            name="consumed_username",
+            field=models.CharField(blank=True, max_length=150),
+        ),
+    ]

@@ -1,0 +1,134 @@
+name: authorization-platform-candidate
+
+services:
+  db:
+    image: ${POSTGRES_IMAGE_REF:-postgres:17-alpine}
+    restart: unless-stopped
+    env_file: ./postgres.env
+    volumes:
+      - authorization-platform-candidate-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "7"
+
+  object-store:
+    image: ${MINIO_IMAGE_REF:-minio/minio:latest}
+    restart: unless-stopped
+    env_file: ./object-store.env
+    command: server --certs-dir /certs /data --console-address ":9001"
+    expose:
+      - "9000"
+    volumes:
+      - authorization-platform-candidate-objects:/data
+      - ./object-store-tls:/certs:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl --cacert /certs/ca.crt -fsS https://object-store:9000/minio/health/live || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "7"
+
+  object-store-init:
+    image: ${MINIO_MC_IMAGE_REF:-minio/mc:latest}
+    restart: "no"
+    env_file: ./object-store-init.env
+    depends_on:
+      object-store:
+        condition: service_healthy
+    volumes:
+      - ./object-store-policy.json:/config/object-store-policy.json:ro
+      - ./object-store-tls/ca.crt:/var/lib/authorization-platform-private/.mc/certs/CAs/object-store-ca.crt:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        set -eu;
+        mc alias set local https://object-store:9000 "$${MINIO_ROOT_USER}" "$${MINIO_ROOT_PASSWORD}";
+        mc mb --ignore-existing "local/$${OBJECT_STORAGE_BUCKET}";
+        mc admin policy info local authorization-platform-policy >/dev/null 2>&1 ||
+          mc admin policy create local authorization-platform-policy /config/object-store-policy.json;
+        mc admin user info local "$${OBJECT_STORAGE_ACCESS_KEY_ID}" >/dev/null 2>&1 ||
+          mc admin user add local "$${OBJECT_STORAGE_ACCESS_KEY_ID}" "$${OBJECT_STORAGE_SECRET_ACCESS_KEY}";
+        mc admin policy attach local authorization-platform-policy --user "$${OBJECT_STORAGE_ACCESS_KEY_ID}";
+
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE_REF:-python:3.12-slim-bookworm}
+    restart: unless-stopped
+    env_file: ./production.env
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: "5432"
+      # BACKUP_ROOT in production.env is the host-side mount source. Keep
+      # application paths fixed inside the container so custom host paths do
+      # not break the need-run trigger or status reads.
+      BACKUP_ROOT: /var/lib/authorization-platform-backup
+      BACKUP_KEYS_DIR: /var/lib/authorization-platform-backup/keys
+      BACKUP_DOWNLOAD_DIR: /var/lib/authorization-platform-backup/downloads
+      BACKUP_LOG_FILE: /var/lib/authorization-platform-backup/backup.log
+      BACKUP_STATUS_FILE: /var/lib/authorization-platform-backup/backup-status.json
+      BACKUP_SCHEDULE_STAMP_DIR: /var/lib/authorization-platform-backup/backup-stamps
+      OBJECT_STORAGE_ENDPOINT: https://object-store:9000
+      OBJECT_STORAGE_CA_CERT: /app/object-store-ca.crt
+      OBJECT_STORAGE_PATH_STYLE: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+      object-store-init:
+        condition: service_completed_successfully
+    # The app had no healthcheck at all, so `restart: unless-stopped` only ever
+    # reacted to the process dying.  A wedged worker -- process alive, every
+    # request 500 or timing out -- stayed that way indefinitely.  /healthz/
+    # answers 503 exactly when the database, the shared cache or the migration
+    # state means requests would fail right now.
+    # The probe must send a Host header Django accepts: production forbids
+    # 127.0.0.1/localhost in ALLOWED_HOSTS, so a bare loopback request comes back
+    # 400 DisallowedHost and the container would look permanently broken.
+    # Host resolution order: `HEALTHCHECK_HOST` when set, else the first
+    # ALLOWED_HOSTS entry.  The fallback assumed entry #1 is the live public
+    # name; on 2026-10-02 the retired test station `retired.example.com` was still first
+    # and every probe followed a 302 to that dead host and timed out, so the
+    # container sat `unhealthy` and the app-guard restart path lost its verdict.
+    # `X-Forwarded-Proto: https` stops SECURE_SSL_REDIRECT from answering 302:
+    # the renderer trusts that header, so the probe gets the real 200/503 body
+    # from the loopback socket instead of chasing a public URL.
+    # The start period covers the legitimate transient where the app is up but
+    # `manage.py migrate` has not run yet, so a deploy is not read as broken.
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import os,urllib.request as u; h=(os.environ.get('HEALTHCHECK_HOST') or (os.environ.get('ALLOWED_HOSTS') or '').split(',')[0]).strip(); r=u.Request('http://127.0.0.1:8000/healthz/', headers={'Host': h, 'X-Forwarded-Proto': 'https'}); u.urlopen(r, timeout=4)\""]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 90s
+    ports:
+      - "127.0.0.1:${APP_HOST_PORT:-8000}:8000"
+    volumes:
+      - authorization-platform-candidate-storage:/app/storage
+      - ${BACKUP_ROOT:-/var/lib/authorization-platform-backup}:/var/lib/authorization-platform-backup:rw
+      - ./object-store-tls/ca.crt:/app/object-store-ca.crt:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "7"
+
+volumes:
+  authorization-platform-candidate-db:
+    name: authorization-platform-candidate-db
+  authorization-platform-candidate-objects:
+    name: authorization-platform-candidate-objects
+  authorization-platform-candidate-storage:
+    name: authorization-platform-candidate-storage
