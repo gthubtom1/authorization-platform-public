@@ -1,6 +1,6 @@
 {
   "schema": "public-source-snapshot.v1",
-  "source_commit": "4fb229955086a795b5acdc216f80e0bde90f1aad",
+  "source_commit": "fb32c1fcc28aa3600c9e57644c3da27f5cb96a51",
   "history_included": false,
   "files": {
     ".env.example": {
@@ -580,8 +580,8 @@
       "sha256": "92750d67613f5ebc41f545f8eb5e8164051a4d42df6038ca323040df437caa1e"
     },
     "scripts/generate-fresh-platform-secrets.py": {
-      "size": 9802,
-      "sha256": "b56bc8f3ec4d7aadee25c1a8e8b1b3c57885b25f82a0df932d7c9158ef710b64"
+      "size": 9831,
+      "sha256": "b1ec48263b5147b496469996f61c9eceadbb24fe6bcf7e3473179a74d31a08fb"
     },
     "scripts/isolated-postgresql-backup-restore-acceptance.ps1": {
       "size": 11497,
@@ -3160,8 +3160,8 @@
       "sha256": "107e2a8711d0a91c6522d35ef1b3105a472ccbb7759502b2c6ffb46e68f47887"
     },
     "部署与恢复/11-新建独立平台.md": {
-      "size": 6477,
-      "sha256": "0ecfb5703e518d6759175ab1387a76d99c7bc1d54d1476de2fafc0e4499f9d20"
+      "size": 6413,
+      "sha256": "c18aeff084242d2507ce633e0dd7be623c56d1beafaec2a959c92929f00d575f"
     },
     "部署与恢复/nginx/authorization-platform-retired.example.com.conf": {
       "size": 3193,

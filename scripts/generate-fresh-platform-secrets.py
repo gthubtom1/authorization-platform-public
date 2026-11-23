@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import getpass
 import os
 import re
 import secrets
@@ -200,9 +201,10 @@ For a single removable-media disaster-recovery artifact, rerun this tool with
 bundle contains these files and this README, but never contains its password.
 """)
         if bundle_output:
-            if not args.bundle_password_file:
-                raise SystemExit("--bundle-password-file is required with --bundle-output")
-            password = args.bundle_password_file.read_text(encoding="utf-8").rstrip("\r\n").encode("utf-8")
+            if args.bundle_password_file:
+                password = args.bundle_password_file.read_text(encoding="utf-8").rstrip("\r\n").encode("utf-8")
+            else:
+                password = getpass.getpass("Recovery kit password: ").encode("utf-8")
             if len(password) < 16:
                 raise SystemExit("bundle password must contain at least 16 characters")
             digest = pack_directory(output, bundle_output, password)
