@@ -22,6 +22,8 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.fernet import Fernet
 
+from recovery_kit import pack_directory
+
 ROOT = Path(__file__).resolve().parents[1]
 ENV_FILES = (
     "production.env",
@@ -101,14 +103,19 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--domain", required=True, help="confirmed hostname without scheme")
     parser.add_argument("--candidate-commit", required=True, help="deployed source commit SHA")
+    parser.add_argument("--bundle-output", type=Path, help="optional encrypted recovery-kit output path")
+    parser.add_argument("--bundle-password-file", type=Path, help="password file for non-interactive kit creation")
     args = parser.parse_args()
     validate_domain(args.domain)
     if not re.fullmatch(r"[0-9a-f]{7,64}", args.candidate_commit, re.IGNORECASE):
         raise SystemExit("--candidate-commit must be a Git commit SHA")
 
     output = args.output_dir.resolve()
+    bundle_output = args.bundle_output.resolve() if args.bundle_output else None
     if output.exists():
         raise SystemExit(f"refusing to overwrite existing directory: {output}")
+    if bundle_output and bundle_output.parent == output or bundle_output and output in bundle_output.parents:
+        raise SystemExit("--bundle-output must be outside --output-dir")
     output.mkdir(parents=True)
     try:
         authorization_seed, release_public, release_seed = ed25519_seed_and_public()
@@ -187,13 +194,29 @@ signing a release.
 The generated platform signing key, card encryption keys, database password,
 and object-store credentials must remain unchanged for this platform. Do not
 run this tool during an upgrade or a recovery of an existing platform.
+
+For a single removable-media disaster-recovery artifact, rerun this tool with
+--bundle-output and a password stored separately from the encrypted kit. The
+bundle contains these files and this README, but never contains its password.
 """)
+        if bundle_output:
+            if not args.bundle_password_file:
+                raise SystemExit("--bundle-password-file is required with --bundle-output")
+            password = args.bundle_password_file.read_text(encoding="utf-8").rstrip("\r\n").encode("utf-8")
+            if len(password) < 16:
+                raise SystemExit("bundle password must contain at least 16 characters")
+            digest = pack_directory(output, bundle_output, password)
+        else:
+            digest = None
     except BaseException:
         shutil.rmtree(output)
         raise
 
     print(f"generated fresh platform secret set: {output}")
     print("files: " + ", ".join(ENV_FILES) + ", release-signing-private.pem, README.txt")
+    if bundle_output:
+        print(f"encrypted recovery kit: {bundle_output}")
+        print(f"recovery kit sha256: {digest}")
     print("private values were written to files only; none were printed")
     print("next: copy the five env files to deploy/, then run install-site.sh and require VERIFY_OK")
     return 0

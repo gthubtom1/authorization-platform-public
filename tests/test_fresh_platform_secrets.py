@@ -27,6 +27,9 @@ class FreshPlatformSecretTests(unittest.TestCase):
     def test_generates_a_complete_independent_secret_set_without_printing_values(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "fresh"
+            bundle = Path(directory) / "usb" / "authorization-platform-recovery-kit.enc"
+            password_file = Path(directory) / "kit-password.txt"
+            password_file.write_text("separate-recovery-password-1234\n", encoding="utf-8")
             result = subprocess.run(
                 [
                     sys.executable,
@@ -37,6 +40,10 @@ class FreshPlatformSecretTests(unittest.TestCase):
                     "auth-new.example.net",
                     "--candidate-commit",
                     "0123456789abcdef0123456789abcdef01234567",
+                    "--bundle-output",
+                    str(bundle),
+                    "--bundle-password-file",
+                    str(password_file),
                 ],
                 cwd=ROOT,
                 capture_output=True,
@@ -45,6 +52,30 @@ class FreshPlatformSecretTests(unittest.TestCase):
             )
             self.assertNotIn("replace-with", result.stdout)
             self.assertIn("private values were written to files only", result.stdout)
+            self.assertTrue(bundle.is_file())
+            self.assertNotIn(b"AUTHORIZATION_SIGNING_PRIVATE_KEY", bundle.read_bytes())
+            restored = Path(directory) / "restored"
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/recovery_kit.py"),
+                    "unpack",
+                    "--kit",
+                    str(bundle),
+                    "--output-dir",
+                    str(restored),
+                    "--password-file",
+                    str(password_file),
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            self.assertEqual(
+                (restored / "production.env").read_bytes(),
+                (output / "production.env").read_bytes(),
+            )
             production = read_env(output / "production.env")
             postgres = read_env(output / "postgres.env")
             object_store = read_env(output / "object-store.env")

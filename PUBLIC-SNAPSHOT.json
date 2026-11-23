@@ -1,6 +1,6 @@
 {
   "schema": "public-source-snapshot.v1",
-  "source_commit": "d0fbbd1164c22b12427d5466d306f269b8b9dc43",
+  "source_commit": "cae8171987e4bddf0fa7c9cdb9e6903d7931fcc1",
   "history_included": false,
   "files": {
     ".env.example": {
@@ -580,8 +580,8 @@
       "sha256": "92750d67613f5ebc41f545f8eb5e8164051a4d42df6038ca323040df437caa1e"
     },
     "scripts/generate-fresh-platform-secrets.py": {
-      "size": 8386,
-      "sha256": "5a0b93f66d3d6dac96fd3bd9701411f1647849e2c5f585a87495bc833b8d46cc"
+      "size": 9802,
+      "sha256": "b56bc8f3ec4d7aadee25c1a8e8b1b3c57885b25f82a0df932d7c9158ef710b64"
     },
     "scripts/isolated-postgresql-backup-restore-acceptance.ps1": {
       "size": 11497,
@@ -618,6 +618,10 @@
     "scripts/prepare_browser_acceptance.py": {
       "size": 10113,
       "sha256": "48c21d65199cc15ef2d7ae5f782ac0d8ec5693a70ce239d79811ad8cf4023c78"
+    },
+    "scripts/recovery_kit.py": {
+      "size": 6068,
+      "sha256": "c570977e4b44cc04f750b6c9aa99f4b6da75b7da56de116385151893f4875934"
     },
     "scripts/release_candidate_acceptance.py": {
       "size": 167820,
@@ -1724,8 +1728,8 @@
       "sha256": "da8e959df9e17b7215e4dfee28e9d913ae5100d29844b14e43630835f99ab9ba"
     },
     "tests/test_fresh_platform_secrets.py": {
-      "size": 5291,
-      "sha256": "e92f6aca433a442e808a620676890d65ceddf6a54fab1f4790535dcc625a8dbf"
+      "size": 6608,
+      "sha256": "2560c4552e55d8abf04ae78fc5a2dd3b4ad4f0e2d44a1875c588b34f09a8e084"
     },
     "tests/test_invitation_lifecycle.py": {
       "size": 11984,
@@ -3156,8 +3160,8 @@
       "sha256": "107e2a8711d0a91c6522d35ef1b3105a472ccbb7759502b2c6ffb46e68f47887"
     },
     "部署与恢复/11-新建独立平台.md": {
-      "size": 4730,
-      "sha256": "236514017726a34d0a7ce4404d0b2cc5797a1db2a8db6242031281d671d8bbfa"
+      "size": 6477,
+      "sha256": "0ecfb5703e518d6759175ab1387a76d99c7bc1d54d1476de2fafc0e4499f9d20"
     },
     "部署与恢复/nginx/authorization-platform-retired.example.com.conf": {
       "size": 3193,
