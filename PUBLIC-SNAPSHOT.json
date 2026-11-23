@@ -1,6 +1,6 @@
 {
   "schema": "public-source-snapshot.v1",
-  "source_commit": "c79b68f83fc152a6d9453d9565add7a6620cbe5a",
+  "source_commit": "d0fbbd1164c22b12427d5466d306f269b8b9dc43",
   "history_included": false,
   "files": {
     ".env.example": {
@@ -184,8 +184,8 @@
       "sha256": "a63bcaba195e2620ee32520ee189ee2a542aebe7589fcb4f7be1158612e770a2"
     },
     "deploy/production.env.example": {
-      "size": 5156,
-      "sha256": "5ea957c560c0a9f7dc8808e6c51ce44b9d39d306eccfa06f11f9af09aa673909"
+      "size": 5482,
+      "sha256": "cb8aa7434cfaf5e40d540b5531699aac3cccb2f556ce606f77680b795a314f54"
     },
     "deploy/README.md": {
       "size": 1156,
@@ -468,8 +468,8 @@
       "sha256": "4e6e45cf37ef780da84aa3e26c3e28ed24ec4d173e2a714746bcb3480db5aeee"
     },
     "README.md": {
-      "size": 5423,
-      "sha256": "9de49a890f89d4b441485349fa6751c62e3b9d0435c441e9e4ca5226cffb20f3"
+      "size": 5989,
+      "sha256": "36660b2ddf422cb28fa7928fd878ec116f87d8c9cc752198a16cdcf6bbae182c"
     },
     "requirements.lock": {
       "size": 340,
@@ -578,6 +578,10 @@
     "scripts/frozen_8123_acceptance.js": {
       "size": 52740,
       "sha256": "92750d67613f5ebc41f545f8eb5e8164051a4d42df6038ca323040df437caa1e"
+    },
+    "scripts/generate-fresh-platform-secrets.py": {
+      "size": 8386,
+      "sha256": "5a0b93f66d3d6dac96fd3bd9701411f1647849e2c5f585a87495bc833b8d46cc"
     },
     "scripts/isolated-postgresql-backup-restore-acceptance.ps1": {
       "size": 11497,
@@ -1718,6 +1722,10 @@
     "tests/test_final_operations.py": {
       "size": 18064,
       "sha256": "da8e959df9e17b7215e4dfee28e9d913ae5100d29844b14e43630835f99ab9ba"
+    },
+    "tests/test_fresh_platform_secrets.py": {
+      "size": 5291,
+      "sha256": "e92f6aca433a442e808a620676890d65ceddf6a54fab1f4790535dcc625a8dbf"
     },
     "tests/test_invitation_lifecycle.py": {
       "size": 11984,
@@ -3100,8 +3108,8 @@
       "sha256": "c8981a21ee48149034b6dce3bbe232142fd4c767a5241abde512f5090578de3d"
     },
     "部署与恢复/00-先读我.md": {
-      "size": 2390,
-      "sha256": "67aa6738db484be237c843b96aa5d4fa6c61432d54a93a76ff602ff9d2ba280a"
+      "size": 2561,
+      "sha256": "f2ff6a9fa63be87680831d1ec666cc5762943162fb1a42b7189ab07302196829"
     },
     "部署与恢复/01-换机时密钥怎么用.md": {
       "size": 1003,
@@ -3146,6 +3154,10 @@
     "部署与恢复/10-GitHub备份库.md": {
       "size": 1902,
       "sha256": "107e2a8711d0a91c6522d35ef1b3105a472ccbb7759502b2c6ffb46e68f47887"
+    },
+    "部署与恢复/11-新建独立平台.md": {
+      "size": 4730,
+      "sha256": "236514017726a34d0a7ce4404d0b2cc5797a1db2a8db6242031281d671d8bbfa"
     },
     "部署与恢复/nginx/authorization-platform-retired.example.com.conf": {
       "size": 3193,

@@ -28,9 +28,13 @@
 
 五个授权POST（激活、验证、解绑、票据签发、票据核销）和更新查询、包下载共七条客户端路由，统一查 [接口字段索引](软件授权接入包/平台公开资料/接口字段索引.json)；方法、身份、字段与响应以 [API合同](docs/API-CONTRACT.md) 为准。核心EXE只调用本软件授权A的本机接口。
 
-## 服务器安装（一台新 Ubuntu，只这一条命令）
+## 服务器安装
 
-人准备：代码放到 `/opt/authorization-platform`，把 `部署与恢复/灾备钥匙包/` 带上（或已经解开的五个 `deploy/*.env`），域名 A 记录指到这台机，安全组 22/80/443。然后以 root：
+如果是从公开源码新建一套完全独立的空平台，先读 [`部署与恢复/11-新建独立平台.md`](部署与恢复/11-新建独立平台.md)，用 `scripts/generate-fresh-platform-secrets.py` 生成新平台的五个 env 和发布密钥，再按该文档首次验收。
+
+如果是已有平台换 VPS、恢复客户数据或更新现有正式站，不能生成新密钥；必须读 [`部署与恢复/08-完整部署SOP.md`](部署与恢复/08-完整部署SOP.md) 和 [`部署与恢复/05-密钥永远一套.md`](部署与恢复/05-密钥永远一套.md)，携带原 env、数据库和对象存储材料。
+
+人准备：代码放到 `/opt/authorization-platform`，把对应的私有密钥材料或新生成的五个 `deploy/*.env` 带上，域名 A 记录指到这台机，安全组 22/80/443。然后以 root：
 
 ```bash
 AUTH_DOMAIN=你的域名 bash /opt/authorization-platform/deploy/install-site.sh
